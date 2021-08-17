@@ -13,6 +13,7 @@ import com.skilldistillery.foodfinder.services.UserService;
 
 @RestController
 @RequestMapping("api")
+@CrossOrigin({"*", "http://localhost:4242"})
 public class UserController {
 	
 	@Autowired
