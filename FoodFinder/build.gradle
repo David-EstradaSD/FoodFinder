@@ -23,12 +23,11 @@ repositories {
 
 dependencies {
 
-	implementation ('org.springframework.boot:spring-boot-starter-tomcat') // this is for our deployment to EC2 Tomcat server
-	
 	implementation project(':JPAFoodFinder')
 	
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation ('org.springframework.boot:spring-boot-starter-tomcat') // this is for our deployment to EC2 Tomcat server
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa' // This is for JPA repos
+	implementation 'org.springframework.boot:spring-boot-starter-web' // This is for Controllers, etc
 	implementation 'org.springframework.boot:spring-boot-starter-security' // this is for Authentication
 	runtimeOnly 'mysql:mysql-connector-java'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
