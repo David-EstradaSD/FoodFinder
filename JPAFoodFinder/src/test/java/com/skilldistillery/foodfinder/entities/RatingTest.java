@@ -49,5 +49,12 @@ class RatingTest {
 		assertNotNull(rating);
 		assertEquals(5, rating.getRating()); 
 	}
+	
+	@Test
+	void test_rating_joins_mapping() {
+		assertNotNull(rating);
+		assertEquals("CO", rating.getRecipient().getAddress().getState()); 
+		assertEquals("First Baptist Church", rating.getServiceLocation().getDescription()); 
+	}
 
 }
