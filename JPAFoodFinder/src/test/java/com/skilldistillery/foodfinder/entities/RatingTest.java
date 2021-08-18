@@ -32,7 +32,10 @@ class RatingTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager(); 
-		rating = em.find(Rating.class, 1); 
+		RatingId id = new RatingId();
+		id.setRecipientId(1);
+		id.setServiceLocationId(1);
+		rating = em.find(Rating.class, id);
 	}
 
 	@AfterEach
