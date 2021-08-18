@@ -1,5 +1,6 @@
 package com.skilldistillery.foodfinder.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,10 +13,18 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
+	@Column(name="first_name")
+	private String firstName;
+	@Column(name="last_name")
+	private String lastName;
 	private String username;
 	private String password;
-	private Boolean enabled;
+	private String email;
+	private String phone;
+	private String image; // this is profile picture (stretch goal)
 	private String role;
+	private boolean enabled; // this is for authentication 
+	
 	
 	
 
