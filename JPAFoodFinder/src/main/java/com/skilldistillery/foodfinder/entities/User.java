@@ -1,10 +1,13 @@
 package com.skilldistillery.foodfinder.entities;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class User {
@@ -24,11 +27,12 @@ public class User {
 	private String image; // this is profile picture (stretch goal)
 	private String role;
 	private boolean enabled; // this is for authentication 
+	@OneToMany(mappedBy= "user")
+	private List<Recipient> recipients; // TODO: FIX ME 
+	@OneToMany(mappedBy= "user")
+	private List<Donor> donors; // TODO: FIX ME 
 	
-	
-	public User() {
-	}
-	
+	public User() {}
 	
 	public String getPassword() {
 		return password;

@@ -1,9 +1,19 @@
 package com.skilldistillery.foodfinder.entities;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Recipient {
@@ -11,16 +21,25 @@ public class Recipient {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	// map user_id
-	// map address_id
-	// map to comment
-	// map to service_location_has_recipient many to many
-	// map to rating 
-
+	@ManyToOne
+	@JoinColumn(name="user_id") // TODO: FIX ME
+	private User user;
+	@JoinColumn(name="address_id")
+	@OneToOne
+	private Address address;
+	@JoinColumn(name="recipient")
+	@OneToMany
+	private List<Comment> comments;
+	@JsonIgnore
+	@ManyToMany
+	@JoinTable(name="service_location_has_recipient",
+				joinColumns = @JoinColumn(name="recipient_id"),
+				inverseJoinColumns = @JoinColumn(name="service_location_id"))
+	private List<ServiceLocation> serviceLocations;
+	@OneToMany
+	private List<Rating> ratings;
 	
-	public Recipient() {
-	}
-
+	public Recipient() {}
 
 	public int getId() {
 		return id;
