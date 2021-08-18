@@ -2,6 +2,7 @@ package com.skilldistillery.foodfinder.entities;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -43,21 +44,48 @@ class ServiceLocationTest {
 	}
 
 	@Test
-	void test_mapping_service_location() {
-		assertNotNull(serviceLocation);
-		assertEquals("Denver", serviceLocation.getLocationName()); 
-	}
-
-	@Test
-	void test_mapping_of_joins() {
+	@DisplayName("test entity mapping")
+	void test1() {
 		assertNotNull(serviceLocation);
 		assertEquals("Denver", serviceLocation.getLocationName()); 
 	}
 	
 	@Test
-	@DisplayName("test many to many mapping to service")
+	@DisplayName("test one to many mapping to rating")
+	void test2() {
+		assertNotNull(serviceLocation);
+		assertTrue(!serviceLocation.getRatings().isEmpty());
+	}
+	
+	@Test
+	@DisplayName("test one to one mapping to address")
 	void test3() {
 		assertNotNull(serviceLocation);
+		assertEquals("100 Baker Street", serviceLocation.getAddress().getStreet_address());
+	}
+	
+	@Test
+	@DisplayName("test many to many mapping to service")
+	void test4() {
+		assertNotNull(serviceLocation);
+		assertNotNull(serviceLocation.getServices().size());
+		assertTrue(!serviceLocation.getServices().isEmpty());
+	}
+	
+	@Test
+	@DisplayName("test many to many mapping to donor")
+	void test5() {
+		assertNotNull(serviceLocation);
+		assertNotNull(serviceLocation.getDonors().size());
+		assertTrue(!serviceLocation.getDonors().isEmpty());
+	}
+	
+	@Test
+	@DisplayName("test many to many mapping to recipient")
+	void test6() {
+		assertNotNull(serviceLocation);
+		assertNotNull(serviceLocation.getRecipients().size());
+		assertTrue(!serviceLocation.getRecipients().isEmpty());
 	}
 
 }
