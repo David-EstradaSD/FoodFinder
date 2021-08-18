@@ -12,65 +12,64 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-
 @Entity
-@Table(name="service_location")
+@Table(name = "service_location")
 public class ServiceLocation {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	@Column(name="location_name")
+	@Column(name = "location_name")
 	private String locationName;
-	@Column(name="location_phone")
+	@Column(name = "location_phone")
 	private String locationPhone;
 	private String hours;
 	private String description;
-	@Column(name="create_date")
+	@Column(name = "create_date")
 	private LocalDateTime createdDateTime;
-	@Column(name="image_url")
+	@Column(name = "image_url")
 	private String imageUrl;
+
+	// map rating
+	@OneToMany(mappedBy = "serviceLocation")
+	private List <Rating> ratings;
 	
-	// map user_id 
+	// map user_id
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;
-	
+
 	// map address_id
 	@OneToOne
-	@JoinColumn(name="address_id")
+	@JoinColumn(name = "address_id")
 	private Address address;
-	
-	// map service many to many 
+
+	// map service many to many
 	@JsonIgnore
 	@ManyToMany
-	@JoinTable(name="service_location_has_service",
-	joinColumns = @JoinColumn(name="service_id"),
-	inverseJoinColumns = @JoinColumn(name="service_location_id"))
+	@JoinTable(name = "service_location_has_service", joinColumns = @JoinColumn(name = "service_id"), inverseJoinColumns = @JoinColumn(name = "service_location_id"))
 	private List<Service> services;
-	
+
 	// map donor many to many
 	@JsonIgnore
 	@ManyToMany
-	@JoinTable(name="donor_has_service_location",
-	joinColumns = @JoinColumn(name="donor_id"),
-	inverseJoinColumns = @JoinColumn(name="service_location_id"))
+	@JoinTable(name = "donor_has_service_location", joinColumns = @JoinColumn(name = "donor_id"), inverseJoinColumns = @JoinColumn(name = "service_location_id"))
 	private List<Donor> donors;
-	
+
 	// map recipient many to many
 	@JsonIgnore
 	@ManyToMany
-	@JoinTable(name="service_location_has_recipient",
-	joinColumns = @JoinColumn(name="recipient_id"),
-	inverseJoinColumns = @JoinColumn(name="service_location_id"))
+	@JoinTable(name = "service_location_has_recipient", joinColumns = @JoinColumn(name = "recipient_id"), inverseJoinColumns = @JoinColumn(name = "service_location_id"))
 	private List<Recipient> recipients;
-	
-	public ServiceLocation() {}
+
+	public ServiceLocation() {
+	}
 
 	public int getId() {
 		return id;
@@ -112,12 +111,12 @@ public class ServiceLocation {
 		this.description = description;
 	}
 
-	public LocalDateTime getCreateTime() {
+	public LocalDateTime getCreatedDateTime() {
 		return createdDateTime;
 	}
 
-	public void setCreateTime(LocalDateTime createTime) {
-		this.createdDateTime = createTime;
+	public void setCreatedDateTime(LocalDateTime createdDateTime) {
+		this.createdDateTime = createdDateTime;
 	}
 
 	public String getImageUrl() {
@@ -127,12 +126,53 @@ public class ServiceLocation {
 	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
 	}
-	
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
+	public List<Service> getServices() {
+		return services;
+	}
+
+	public void setServices(List<Service> services) {
+		this.services = services;
+	}
+
+	public List<Donor> getDonors() {
+		return donors;
+	}
+
+	public void setDonors(List<Donor> donors) {
+		this.donors = donors;
+	}
+
+	public List<Recipient> getRecipients() {
+		return recipients;
+	}
+
+	public void setRecipients(List<Recipient> recipients) {
+		this.recipients = recipients;
+	}
+
 	@Override
 	public String toString() {
 		return "ServiceLocation [id=" + id + ", locationName=" + locationName + ", locationPhone=" + locationPhone
-				+ ", hours=" + hours + ", description=" + description + ", createTime=" + createdDateTime + ", imageUrl="
-				+ imageUrl + "]";
+				+ ", hours=" + hours + ", description=" + description + ", createdDateTime=" + createdDateTime
+				+ ", imageUrl=" + imageUrl + ", user=" + user + ", address=" + address + ", services=" + services
+				+ ", donors=" + donors + ", recipients=" + recipients + "]";
 	}
 
 	@Override
@@ -156,6 +196,5 @@ public class ServiceLocation {
 			return false;
 		return true;
 	}
-	
 
 }

@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Comment {
@@ -15,23 +17,26 @@ public class Comment {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String comment;
+	
 	@Column(name="private_comment")
 	private boolean privateComment; // do they want to post anonymously? 
+	
 	@Column(name="create_date")
 	private LocalDateTime createDate;
+	
 	// map service_location_id
-	// map recipient_id
-	@Column(name="recipient_id")
+	@ManyToOne
+	@JoinColumn(name="service_location_id")
+	private ServiceLocation serviceLocation;
+	
+	@ManyToOne
+	@JoinColumn(name="recipient_id")
 	private Recipient recipient;
 	
 	public Comment() {}
 
 	public int getId() {
 		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public String getComment() {
@@ -58,10 +63,30 @@ public class Comment {
 		this.createDate = createDate;
 	}
 
+	public ServiceLocation getServiceLocation() {
+		return serviceLocation;
+	}
+
+	public void setServiceLocation(ServiceLocation serviceLocation) {
+		this.serviceLocation = serviceLocation;
+	}
+
+	public Recipient getRecipient() {
+		return recipient;
+	}
+
+	public void setRecipient(Recipient recipient) {
+		this.recipient = recipient;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	@Override
 	public String toString() {
 		return "Comment [id=" + id + ", comment=" + comment + ", privateComment=" + privateComment + ", createDate="
-				+ createDate + "]";
+				+ createDate + ", serviceLocation=" + serviceLocation + ", recipient=" + recipient + "]";
 	}
 
 	@Override
@@ -85,6 +110,6 @@ public class Comment {
 			return false;
 		return true;
 	}
-	
 
+	
 }
