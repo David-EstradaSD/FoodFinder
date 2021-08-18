@@ -47,4 +47,10 @@ class ServiceLocationTest {
 		assertEquals("Denver", serviceLocation.getLocationName()); 
 	}
 
+	@Test
+	void test_mapping_of_joins() {
+		assertNotNull(serviceLocation);
+		assertEquals("Denver", serviceLocation.getLocationName()); 
+	}
+
 }

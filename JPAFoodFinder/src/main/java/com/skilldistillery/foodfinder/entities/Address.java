@@ -5,7 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 
 @Entity
 public class Address {
@@ -13,20 +12,23 @@ public class Address {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private String street_address;
+	@Column(name = "street_address")
+	private String streetAddress;
 	private String city;
 	private String state;
 	private String zip;
-	// map service_location 
-	@Column(name="address")
-	@OneToOne
-	private ServiceLocation serviceLocation;
-	// map to donor 
-	@Column(name="address")
-	private Donor donor;
-	// map to recipient 
-	@Column(name="address")
-	private Recipient recipient;
+	
+//	// map service_location 
+//	@OneToOne
+//	private ServiceLocation serviceLocation;
+
+//	// map to donor 
+//	@Column(name="address")
+//	private Donor donor;
+//	
+//	// map to recipient 
+//	@Column(name="address")
+//	private Recipient recipient;
 	
 	public Address() {}
 
@@ -39,11 +41,11 @@ public class Address {
 	}
 
 	public String getStreet_address() {
-		return street_address;
+		return streetAddress;
 	}
 
 	public void setStreet_address(String street_address) {
-		this.street_address = street_address;
+		this.streetAddress = street_address;
 	}
 
 	public String getCity() {
@@ -72,7 +74,7 @@ public class Address {
 
 	@Override
 	public String toString() {
-		return "Address [id=" + id + ", street_address=" + street_address + ", city=" + city + ", state=" + state
+		return "Address [id=" + id + ", street_address=" + streetAddress + ", city=" + city + ", state=" + state
 				+ ", zip=" + zip + "]";
 	}
 

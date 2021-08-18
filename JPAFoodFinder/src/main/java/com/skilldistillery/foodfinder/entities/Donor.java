@@ -1,30 +1,38 @@
 package com.skilldistillery.foodfinder.entities;
 
-import javax.persistence.Column;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
 public class Donor {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String category;
-	@Column(name="user_id") 
-	@ManyToOne		// TODO: FIX ME
-	private User user;	
-	@JoinColumn(name="address_id")
+
+	@JoinColumn(name = "user_id")
+	@ManyToOne // TODO: FIX ME - Rob
+	private User user;
+
+	@JoinColumn(name = "address_id")
 	@OneToOne
 	private Address address; // this is for personal address | contact information
-	
-	public Donor() {}
-	
+
+	@ManyToMany(mappedBy = "donors")
+	private List<ServiceLocation> serviceLocations;
+
+	public Donor() {
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -41,9 +49,34 @@ public class Donor {
 		this.category = category;
 	}
 
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
+	public List<ServiceLocation> getServiceLocations() {
+		return serviceLocations;
+	}
+
+	public void setServiceLocations(List<ServiceLocation> serviceLocations) {
+		this.serviceLocations = serviceLocations;
+	}
+
 	@Override
 	public String toString() {
-		return "Donor [id=" + id + ", category=" + category + "]";
+		return "Donor [id=" + id + ", category=" + category + ", user=" + user + ", address=" + address
+				+ ", serviceLocations=" + serviceLocations + "]";
 	}
 
 	@Override
@@ -67,5 +100,5 @@ public class Donor {
 			return false;
 		return true;
 	}
-	
+
 }
