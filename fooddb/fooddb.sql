@@ -16,16 +16,36 @@ CREATE SCHEMA IF NOT EXISTS `fooddb` DEFAULT CHARACTER SET utf8 ;
 USE `fooddb` ;
 
 -- -----------------------------------------------------
--- Table `admin`
+-- Table `user`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `admin` ;
+DROP TABLE IF EXISTS `user` ;
 
-CREATE TABLE IF NOT EXISTS `admin` (
+CREATE TABLE IF NOT EXISTS `user` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `first_name` VARCHAR(45) NULL,
-  `last_name` VARCHAR(45) NULL,
-  `username` VARCHAR(45) NULL,
-  `password` VARCHAR(45) NULL,
+  `first_name` VARCHAR(45) NOT NULL,
+  `last_name` VARCHAR(45) NOT NULL,
+  `username` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(45) NOT NULL,
+  `email` VARCHAR(200) NOT NULL,
+  `role` VARCHAR(100) NULL,
+  `enabled` TINYINT NULL,
+  `phone` VARCHAR(45) NULL,
+  `image` VARCHAR(1000) NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `address`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `address` ;
+
+CREATE TABLE IF NOT EXISTS `address` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `street_address` VARCHAR(500) NULL,
+  `city` VARCHAR(45) NULL,
+  `state` VARCHAR(45) NULL,
+  `zip` VARCHAR(10) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -39,25 +59,23 @@ CREATE TABLE IF NOT EXISTS `service_location` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `location_name` VARCHAR(45) NULL,
   `location_phone` VARCHAR(45) NULL,
-  `street_address` VARCHAR(500) NULL,
-  `city` VARCHAR(45) NULL,
-  `state` VARCHAR(45) NULL,
-  `zip` INT NULL,
-  `rating` INT NULL,
-  `food` TINYINT NULL,
-  `laundry` TINYINT NULL,
-  `shower` TINYINT NULL,
-  `shelter` TINYINT NULL,
-  `counseling` TINYINT NULL,
-  `medical` TINYINT NULL,
-  `bilingual` TINYINT NULL,
   `hours` VARCHAR(45) NULL,
-  `admin_id` INT NULL,
+  `user_id` INT NULL,
+  `address_id` INT NOT NULL,
+  `description` TEXT NULL,
+  `create_date` DATETIME NULL,
+  `image_url` VARCHAR(1000) NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_service_location_admin1_idx` (`admin_id` ASC),
+  INDEX `fk_service_location_admin1_idx` (`user_id` ASC),
+  INDEX `fk_service_location_address1_idx` (`address_id` ASC),
   CONSTRAINT `fk_service_location_admin1`
-    FOREIGN KEY (`admin_id`)
-    REFERENCES `admin` (`id`)
+    FOREIGN KEY (`user_id`)
+    REFERENCES `user` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_service_location_address1`
+    FOREIGN KEY (`address_id`)
+    REFERENCES `address` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -70,22 +88,20 @@ DROP TABLE IF EXISTS `donor` ;
 
 CREATE TABLE IF NOT EXISTS `donor` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `first_name` VARCHAR(45) NOT NULL,
-  `last_name` VARCHAR(45) NOT NULL,
-  `username` VARCHAR(45) NOT NULL,
-  `password` VARCHAR(45) NOT NULL,
-  `category` VARCHAR(45) NOT NULL,
-  `phone` VARCHAR(45) NOT NULL,
-  `street_address` VARCHAR(500) NOT NULL,
-  `city` VARCHAR(45) NOT NULL,
-  `state` VARCHAR(45) NOT NULL,
-  `zip` INT NOT NULL,
-  `admin_id` INT NOT NULL,
+  `category` VARCHAR(45) NULL,
+  `user_id` INT NOT NULL,
+  `address_id` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_donor_admin1_idx` (`admin_id` ASC),
+  INDEX `fk_donor_admin1_idx` (`user_id` ASC),
+  INDEX `fk_donor_address1_idx` (`address_id` ASC),
   CONSTRAINT `fk_donor_admin1`
-    FOREIGN KEY (`admin_id`)
-    REFERENCES `admin` (`id`)
+    FOREIGN KEY (`user_id`)
+    REFERENCES `user` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_donor_address1`
+    FOREIGN KEY (`address_id`)
+    REFERENCES `address` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -98,40 +114,36 @@ DROP TABLE IF EXISTS `recipient` ;
 
 CREATE TABLE IF NOT EXISTS `recipient` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `first_name` VARCHAR(45) NOT NULL,
-  `last_name` VARCHAR(45) NOT NULL,
-  `username` VARCHAR(45) NOT NULL,
-  `password` VARCHAR(45) NOT NULL,
-  `phone` VARCHAR(45) NOT NULL,
-  `street_address` VARCHAR(500) NOT NULL,
-  `city` VARCHAR(45) NOT NULL,
-  `state` VARCHAR(45) NOT NULL,
-  `zip` INT NOT NULL,
-  `admin_id` INT NOT NULL,
+  `user_id` INT NOT NULL,
+  `address_id` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_recipient_admin1_idx` (`admin_id` ASC),
+  INDEX `fk_recipient_admin1_idx` (`user_id` ASC),
+  INDEX `fk_recipient_address1_idx` (`address_id` ASC),
   CONSTRAINT `fk_recipient_admin1`
-    FOREIGN KEY (`admin_id`)
-    REFERENCES `admin` (`id`)
+    FOREIGN KEY (`user_id`)
+    REFERENCES `user` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_recipient_address1`
+    FOREIGN KEY (`address_id`)
+    REFERENCES `address` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `comments`
+-- Table `comment`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `comments` ;
+DROP TABLE IF EXISTS `comment` ;
 
-CREATE TABLE IF NOT EXISTS `comments` (
+CREATE TABLE IF NOT EXISTS `comment` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `first_name` VARCHAR(45) NOT NULL,
-  `last_name` VARCHAR(45) NOT NULL,
-  `username` VARCHAR(45) NOT NULL,
-  `comment` VARCHAR(45) NOT NULL,
+  `comment` VARCHAR(500) NOT NULL,
   `private_comment` TINYINT NOT NULL,
   `service_location_id` INT NOT NULL,
   `recipient_id` INT NOT NULL,
+  `create_date` DATETIME NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_comments_service_location1_idx` (`service_location_id` ASC),
   INDEX `fk_comments_recipient1_idx` (`recipient_id` ASC),
@@ -197,18 +209,63 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `user`
+-- Table `service`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `user` ;
+DROP TABLE IF EXISTS `service` ;
 
-CREATE TABLE IF NOT EXISTS `user` (
+CREATE TABLE IF NOT EXISTS `service` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `username` VARCHAR(45) NULL,
-  `password` VARCHAR(200) NULL,
-  `enabled` TINYINT NULL,
-  `role` VARCHAR(45) NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE INDEX `username_UNIQUE` (`username` ASC))
+  `description` VARCHAR(500) NULL,
+  `service_name` VARCHAR(100) NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `service_location_has_service`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `service_location_has_service` ;
+
+CREATE TABLE IF NOT EXISTS `service_location_has_service` (
+  `service_location_id` INT NOT NULL,
+  `service_id` INT NOT NULL,
+  PRIMARY KEY (`service_location_id`, `service_id`),
+  INDEX `fk_service_location_has_service_service1_idx` (`service_id` ASC),
+  INDEX `fk_service_location_has_service_service_location1_idx` (`service_location_id` ASC),
+  CONSTRAINT `fk_service_location_has_service_service_location1`
+    FOREIGN KEY (`service_location_id`)
+    REFERENCES `service_location` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_service_location_has_service_service1`
+    FOREIGN KEY (`service_id`)
+    REFERENCES `service` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `rating`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `rating` ;
+
+CREATE TABLE IF NOT EXISTS `rating` (
+  `recipient_id` INT NOT NULL,
+  `service_location_id` INT NOT NULL,
+  `rating` INT NULL,
+  PRIMARY KEY (`recipient_id`, `service_location_id`),
+  INDEX `fk_rating_service_location1_idx` (`service_location_id` ASC),
+  CONSTRAINT `fk_rating_recipient1`
+    FOREIGN KEY (`recipient_id`)
+    REFERENCES `recipient` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_rating_service_location1`
+    FOREIGN KEY (`service_location_id`)
+    REFERENCES `service_location` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 SET SQL_MODE = '';
@@ -223,21 +280,111 @@ SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 -- -----------------------------------------------------
--- Data for table `service_location`
+-- Data for table `user`
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `fooddb`;
-INSERT INTO `service_location` (`id`, `location_name`, `location_phone`, `street_address`, `city`, `state`, `zip`, `rating`, `food`, `laundry`, `shower`, `shelter`, `counseling`, `medical`, `bilingual`, `hours`, `admin_id`) VALUES (1, 'Denver', '867-5309', '100 Baker Street', 'Denver', 'CO', 12345, 4, true, true, true, true, true, true, true, '0800-1700', NULL);
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `username`, `password`, `email`, `role`, `enabled`, `phone`, `image`) VALUES (1, 'Mary', 'Moore', 'username', 'password', 'mary.morre@yahoo.com', 'admin', true, '867-5309', '\'images/mary.jpeg\'');
 
 COMMIT;
 
 
 -- -----------------------------------------------------
--- Data for table `user`
+-- Data for table `address`
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `fooddb`;
-INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`) VALUES (1, 'hello', 'goodbye', true, NULL);
+INSERT INTO `address` (`id`, `street_address`, `city`, `state`, `zip`) VALUES (1, '100 Baker Street', 'Denver', 'CO', '12345');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `service_location`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `fooddb`;
+INSERT INTO `service_location` (`id`, `location_name`, `location_phone`, `hours`, `user_id`, `address_id`, `description`, `create_date`, `image_url`) VALUES (1, 'Denver', '867-5309', '0800-1700', 1, 1, 'First Baptist Church', '2021-01-20 12:00:00', 'https://www.spam.com');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `donor`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `fooddb`;
+INSERT INTO `donor` (`id`, `category`, `user_id`, `address_id`) VALUES (1, 'food', 1, 1);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `recipient`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `fooddb`;
+INSERT INTO `recipient` (`id`, `user_id`, `address_id`) VALUES (1, 1, 1);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `comment`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `fooddb`;
+INSERT INTO `comment` (`id`, `comment`, `private_comment`, `service_location_id`, `recipient_id`, `create_date`) VALUES (1, 'Great service', false, 1, 1, '2021-01-20 12:00:00');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `donor_has_service_location`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `fooddb`;
+INSERT INTO `donor_has_service_location` (`donor_id`, `service_location_id`) VALUES (1, 1);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `service_location_has_recipient`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `fooddb`;
+INSERT INTO `service_location_has_recipient` (`service_location_id`, `recipient_id`) VALUES (1, 1);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `service`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `fooddb`;
+INSERT INTO `service` (`id`, `description`, `service_name`) VALUES (1, 'hot', 'shower');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `service_location_has_service`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `fooddb`;
+INSERT INTO `service_location_has_service` (`service_location_id`, `service_id`) VALUES (1, 1);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `rating`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `fooddb`;
+INSERT INTO `rating` (`recipient_id`, `service_location_id`, `rating`) VALUES (1, 1, 5);
 
 COMMIT;
 
