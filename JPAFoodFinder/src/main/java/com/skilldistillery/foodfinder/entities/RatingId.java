@@ -16,8 +16,7 @@ public class RatingId implements Serializable {
 	@Column(name="recipient_id")
 	private int recipientId;
 
-	public RatingId() {
-	}
+	public RatingId() {}
 	
 	public RatingId(int serviceLocationId, int recipientId) {
 		super();

@@ -1,9 +1,11 @@
 package com.skilldistillery.foodfinder.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Address {
@@ -16,13 +18,17 @@ public class Address {
 	private String state;
 	private String zip;
 	// map service_location 
+	@Column(name="address")
+	@OneToOne
+	private ServiceLocation serviceLocation;
 	// map to donor 
+	@Column(name="address")
+	private Donor donor;
 	// map to recipient 
+	@Column(name="address")
+	private Recipient recipient;
 	
-	
-	public Address() {
-	}
-
+	public Address() {}
 
 	public int getId() {
 		return id;

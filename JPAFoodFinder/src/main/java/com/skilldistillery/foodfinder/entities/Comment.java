@@ -21,11 +21,10 @@ public class Comment {
 	private LocalDateTime createDate;
 	// map service_location_id
 	// map recipient_id
+	@Column(name="recipient_id")
+	private Recipient recipient;
 	
-	
-	public Comment() {
-	}
-
+	public Comment() {}
 
 	public int getId() {
 		return id;

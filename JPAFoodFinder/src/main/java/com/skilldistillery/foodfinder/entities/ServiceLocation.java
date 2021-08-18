@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -29,14 +31,14 @@ public class ServiceLocation {
 	
 	// map user_id 
 	// map address_id
+	@OneToOne
+	@JoinColumn(name="address_id")
+	private Address address;
 	// map service many to many 
 	// map donor many to many
 	// map recipient many to many
 	
-	
-	public ServiceLocation() {
-	}
-
+	public ServiceLocation() {}
 
 	public int getId() {
 		return id;
