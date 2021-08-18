@@ -9,6 +9,13 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org
 	
 	<!-- list Entities here -->
 	<!-- we added the full path of the class that has the @Entity annotation inside a <class></class> tag  -->
+		<class>com.skilldistillery.foodfinder.entities.Address</class> 
+		<class>com.skilldistillery.foodfinder.entities.Comment</class> 
+		<class>com.skilldistillery.foodfinder.entities.Donor</class> 
+<!-- 		<class>com.skilldistillery.foodfinder.entities.Rating</class>
+ -->		<class>com.skilldistillery.foodfinder.entities.Recipient</class> 
+		<class>com.skilldistillery.foodfinder.entities.Service</class> 
+		<class>com.skilldistillery.foodfinder.entities.ServiceLocation</class> 
 		<class>com.skilldistillery.foodfinder.entities.User</class> 
  
 	<!-- end of Entities list -->
