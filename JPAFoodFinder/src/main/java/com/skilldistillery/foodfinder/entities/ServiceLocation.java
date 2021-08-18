@@ -36,40 +36,39 @@ public class ServiceLocation {
 	@Column(name = "image_url")
 	private String imageUrl;
 
-	// map rating
+	@JsonIgnore
 	@OneToMany(mappedBy = "serviceLocation")
 	private List <Rating> ratings;
 	
-	// map user_id
+	@JsonIgnore
+	@OneToMany(mappedBy = "serviceLocation")
+	private List <Comment> comments;
+	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;
 
-	// map address_id
 	@OneToOne
 	@JoinColumn(name = "address_id")
 	private Address address;
 
-	// map service many to many
 	@JsonIgnore
 	@ManyToMany
 	@JoinTable(name = "service_location_has_service", joinColumns = @JoinColumn(name = "service_id"), inverseJoinColumns = @JoinColumn(name = "service_location_id"))
 	private List<Service> services;
 
-	// map donor many to many
 	@JsonIgnore
 	@ManyToMany
 	@JoinTable(name = "donor_has_service_location", joinColumns = @JoinColumn(name = "donor_id"), inverseJoinColumns = @JoinColumn(name = "service_location_id"))
 	private List<Donor> donors;
 
-	// map recipient many to many
 	@JsonIgnore
 	@ManyToMany
 	@JoinTable(name = "service_location_has_recipient", joinColumns = @JoinColumn(name = "recipient_id"), inverseJoinColumns = @JoinColumn(name = "service_location_id"))
 	private List<Recipient> recipients;
 
-	public ServiceLocation() {
-	}
+	public ServiceLocation() {}
 
 	public int getId() {
 		return id;
@@ -165,6 +164,14 @@ public class ServiceLocation {
 
 	public void setRecipients(List<Recipient> recipients) {
 		this.recipients = recipients;
+	}
+
+	public List<Rating> getRatings() {
+		return ratings;
+	}
+
+	public void setRatings(List<Rating> ratings) {
+		this.ratings = ratings;
 	}
 
 	@Override
