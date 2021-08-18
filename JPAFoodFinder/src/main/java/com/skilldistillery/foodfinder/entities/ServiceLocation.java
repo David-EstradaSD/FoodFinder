@@ -1,6 +1,7 @@
 package com.skilldistillery.foodfinder.entities;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,8 +9,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 @Table(name="service_location")
@@ -25,18 +32,43 @@ public class ServiceLocation {
 	private String hours;
 	private String description;
 	@Column(name="create_date")
-	private LocalDateTime createTime;
+	private LocalDateTime createdDateTime;
 	@Column(name="image_url")
 	private String imageUrl;
 	
 	// map user_id 
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private User user;
+	
 	// map address_id
 	@OneToOne
 	@JoinColumn(name="address_id")
 	private Address address;
+	
 	// map service many to many 
+	@JsonIgnore
+	@ManyToMany
+	@JoinTable(name="service_location_has_service",
+	joinColumns = @JoinColumn(name="service_id"),
+	inverseJoinColumns = @JoinColumn(name="service_location_id"))
+	private List<Service> services;
+	
 	// map donor many to many
+	@JsonIgnore
+	@ManyToMany
+	@JoinTable(name="donor_has_service_location",
+	joinColumns = @JoinColumn(name="donor_id"),
+	inverseJoinColumns = @JoinColumn(name="service_location_id"))
+	private List<Donor> donors;
+	
 	// map recipient many to many
+	@JsonIgnore
+	@ManyToMany
+	@JoinTable(name="service_location_has_recipient",
+	joinColumns = @JoinColumn(name="recipient_id"),
+	inverseJoinColumns = @JoinColumn(name="service_location_id"))
+	private List<Recipient> recipients;
 	
 	public ServiceLocation() {}
 
@@ -81,11 +113,11 @@ public class ServiceLocation {
 	}
 
 	public LocalDateTime getCreateTime() {
-		return createTime;
+		return createdDateTime;
 	}
 
 	public void setCreateTime(LocalDateTime createTime) {
-		this.createTime = createTime;
+		this.createdDateTime = createTime;
 	}
 
 	public String getImageUrl() {
@@ -99,7 +131,7 @@ public class ServiceLocation {
 	@Override
 	public String toString() {
 		return "ServiceLocation [id=" + id + ", locationName=" + locationName + ", locationPhone=" + locationPhone
-				+ ", hours=" + hours + ", description=" + description + ", createTime=" + createTime + ", imageUrl="
+				+ ", hours=" + hours + ", description=" + description + ", createTime=" + createdDateTime + ", imageUrl="
 				+ imageUrl + "]";
 	}
 

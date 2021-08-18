@@ -1,11 +1,14 @@
 package com.skilldistillery.foodfinder.entities;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
@@ -16,12 +19,17 @@ public class Donor {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String category;
+	
 	@Column(name="user_id") 
-	@ManyToOne		// TODO: FIX ME
+	@ManyToOne		// TODO: FIX ME - Rob
 	private User user;	
+	
 	@JoinColumn(name="address_id")
 	@OneToOne
 	private Address address; // this is for personal address | contact information
+	
+	@ManyToMany(mappedBy = "donors")
+	private List<ServiceLocation> serviceLocations;
 	
 	public Donor() {}
 	

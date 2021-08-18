@@ -1,10 +1,13 @@
 package com.skilldistillery.foodfinder.entities;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Service {
@@ -15,8 +18,10 @@ public class Service {
 	@Column(name="service_name")
 	private String serviceName;
 	private String description;
-	// map to service_location many to many
 	
+	// map to service_location many to many
+	@ManyToMany(mappedBy = "services")
+	private List<ServiceLocation> serviceLocations;
 	
 	public Service() {
 	}

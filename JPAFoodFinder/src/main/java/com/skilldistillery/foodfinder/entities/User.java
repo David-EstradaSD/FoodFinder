@@ -27,10 +27,15 @@ public class User {
 	private String image; // this is profile picture (stretch goal)
 	private String role;
 	private boolean enabled; // this is for authentication 
+	
 	@OneToMany(mappedBy= "user")
-	private List<Recipient> recipients; // TODO: FIX ME 
+	private List<ServiceLocation> serviceLocation;
+	
 	@OneToMany(mappedBy= "user")
-	private List<Donor> donors; // TODO: FIX ME 
+	private List<Recipient> recipients; // TODO: FIX ME - Waiting for Rob
+	@OneToMany(mappedBy= "user")
+	private List<Donor> donors; // TODO: FIX ME - Waiting for Rob
+
 	
 	public User() {}
 	

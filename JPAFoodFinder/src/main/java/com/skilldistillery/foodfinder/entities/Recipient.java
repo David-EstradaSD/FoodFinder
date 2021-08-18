@@ -30,12 +30,10 @@ public class Recipient {
 	@JoinColumn(name="recipient")
 	@OneToMany
 	private List<Comment> comments;
-	@JsonIgnore
-	@ManyToMany
-	@JoinTable(name="service_location_has_recipient",
-				joinColumns = @JoinColumn(name="recipient_id"),
-				inverseJoinColumns = @JoinColumn(name="service_location_id"))
+	
+	@ManyToMany(mappedBy = "recipients")
 	private List<ServiceLocation> serviceLocations;
+	
 	@OneToMany
 	private List<Rating> ratings;
 	
