@@ -33,6 +33,7 @@ public class Recipient {
 	@OneToMany(mappedBy = "recipient")
 	private List<Comment> comments;
 
+	@JsonIgnore
 	@ManyToMany(mappedBy = "recipients")
 	private List<ServiceLocation> serviceLocations;
 

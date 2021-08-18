@@ -47,8 +47,8 @@ class CommentTest {
 		assertNotNull(comment);
 		assertEquals("Great service", comment.getComment()); 
 		assertTrue(!comment.isPrivateComment()); 
-		assertEquals(1, comment.getServiceLocation()); 
-		assertEquals("2021", comment.getCreateDate()); 
+		assertEquals(1, comment.getServiceLocation().getId()); 
+		assertEquals(2021, comment.getCreateDate().getYear()); 
 	}
 	
 	@Test
@@ -58,4 +58,5 @@ class CommentTest {
 		assertEquals(1, comment.getRecipient().getUser()); 
 	}
 
+	
 }
