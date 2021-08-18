@@ -10,30 +10,34 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Comment {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String comment;
-	
-	@Column(name="private_comment")
-	private boolean privateComment; // do they want to post anonymously? 
-	
-	@Column(name="create_date")
+
+	@Column(name = "private_comment")
+	private boolean privateComment; // do they want to post anonymously?
+
+	@Column(name = "create_date")
 	private LocalDateTime createDate;
-	
-	// map service_location_id
+
+	@JsonIgnore
 	@ManyToOne
-	@JoinColumn(name="service_location_id")
+	@JoinColumn(name = "service_location_id")
 	private ServiceLocation serviceLocation;
-	
+
+	@JsonIgnore
 	@ManyToOne
-	@JoinColumn(name="recipient_id")
+	@JoinColumn(name = "recipient_id")
 	private Recipient recipient;
-	
-	public Comment() {}
+
+	public Comment() {
+	}
 
 	public int getId() {
 		return id;
@@ -111,5 +115,4 @@ public class Comment {
 		return true;
 	}
 
-	
 }

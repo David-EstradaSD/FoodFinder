@@ -174,12 +174,17 @@ public class ServiceLocation {
 		this.ratings = ratings;
 	}
 
+
+
 	@Override
 	public String toString() {
-		return "ServiceLocation [id=" + id + ", locationName=" + locationName + ", locationPhone=" + locationPhone
-				+ ", hours=" + hours + ", description=" + description + ", createdDateTime=" + createdDateTime
-				+ ", imageUrl=" + imageUrl + ", user=" + user + ", address=" + address + ", services=" + services
-				+ ", donors=" + donors + ", recipients=" + recipients + "]";
+		StringBuilder builder = new StringBuilder();
+		builder.append("ServiceLocation [id=").append(id).append(", locationName=").append(locationName)
+				.append(", locationPhone=").append(locationPhone).append(", hours=").append(hours)
+				.append(", description=").append(description).append(", createdDateTime=").append(createdDateTime)
+				.append(", imageUrl=").append(imageUrl).append(", comments=").append(comments).append(", user=")
+				.append(user).append(", address=").append(address).append("]");
+		return builder.toString();
 	}
 
 	@Override
