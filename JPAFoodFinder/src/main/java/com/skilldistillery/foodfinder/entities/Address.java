@@ -18,5 +18,79 @@ public class Address {
 	// map service_location 
 	// map to donor 
 	// map to recipient 
+	
+	
+	public Address() {
+	}
+
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getStreet_address() {
+		return street_address;
+	}
+
+	public void setStreet_address(String street_address) {
+		this.street_address = street_address;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public String getZip() {
+		return zip;
+	}
+
+	public void setZip(String zip) {
+		this.zip = zip;
+	}
+
+	@Override
+	public String toString() {
+		return "Address [id=" + id + ", street_address=" + street_address + ", city=" + city + ", state=" + state
+				+ ", zip=" + zip + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Address other = (Address) obj;
+		if (id != other.id)
+			return false;
+		return true;
+	}
+	
 
 }

@@ -26,14 +26,10 @@ public class User {
 	private boolean enabled; // this is for authentication 
 	
 	
-	
-
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", password=" + password + ", enabled=" + enabled
-				+ ", role=" + role + "]";
+	public User() {
 	}
-
+	
+	
 	public String getPassword() {
 		return password;
 	}
@@ -58,10 +54,6 @@ public class User {
 		this.role = role;
 	}
 
-	public User() {
-		super();
-	}
-
 	public int getId() {
 		return id;
 	}
@@ -76,6 +68,12 @@ public class User {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+	
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", enabled=" + enabled
+				+ ", role=" + role + "]";
 	}
 
 	@Override
@@ -99,8 +97,6 @@ public class User {
 			return false;
 		return true;
 	}
-	
-	
 	
 	
 }

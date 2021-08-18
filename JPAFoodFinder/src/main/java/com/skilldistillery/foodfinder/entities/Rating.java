@@ -1,10 +1,5 @@
 package com.skilldistillery.foodfinder.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
 //@Entity
 public class Rating {
 
@@ -13,4 +8,22 @@ public class Rating {
 ////	private int id; // map recipient_id
 	private int rating;
 	// map service_location_id
+
+	public Rating() {
+	}
+
+	public int getRating() {
+		return rating;
+	}
+
+	public void setRating(int rating) {
+		this.rating = rating;
+	}
+
+	@Override
+	public String toString() {
+		return "Rating [rating=" + rating + "]";
+	}
+	
+	
 }
