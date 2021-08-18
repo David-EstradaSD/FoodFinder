@@ -42,9 +42,17 @@ class DonorTest {
 	}
 
 	@Test
-	void test_user() {
+	void test_donor() {
 		assertNotNull(donor);
 		assertEquals("food", donor.getCategory()); 
+	}
+
+	@Test
+	void test_donor_joins() {
+		assertNotNull(donor);
+		assertEquals("Mary", donor.getUser().getFirstName()); 
+		assertEquals("100 Baker Street", donor.getAddress().getStreetAddress()); 
+		assertEquals(1, donor.getServiceLocations().size()); 
 	}
 
 }
