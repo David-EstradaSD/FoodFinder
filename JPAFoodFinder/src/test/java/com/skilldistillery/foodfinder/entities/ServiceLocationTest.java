@@ -61,7 +61,7 @@ class ServiceLocationTest {
 	@DisplayName("test one to one mapping to address")
 	void test3() {
 		assertNotNull(serviceLocation);
-		assertEquals("100 Baker Street", serviceLocation.getAddress().getStreet_address());
+		assertEquals("100 Baker Street", serviceLocation.getAddress().getStreetAddress());
 	}
 	
 	@Test
