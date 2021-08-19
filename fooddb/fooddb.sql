@@ -31,7 +31,8 @@ CREATE TABLE IF NOT EXISTS `user` (
   `enabled` TINYINT NULL,
   `phone` VARCHAR(45) NULL,
   `image` VARCHAR(1000) NULL,
-  PRIMARY KEY (`id`))
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `username_UNIQUE` (`username` ASC))
 ENGINE = InnoDB;
 
 
