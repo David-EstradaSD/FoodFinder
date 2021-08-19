@@ -7,8 +7,6 @@ import com.skilldistillery.foodfinder.entities.Recipient;
 
 public interface RatingService {
 
-	public List<Rating> userIndex(String username);
-
 	public List<Rating> index(String locationName);
 
 	public Rating create(Recipient recipient, Rating rating, String username);

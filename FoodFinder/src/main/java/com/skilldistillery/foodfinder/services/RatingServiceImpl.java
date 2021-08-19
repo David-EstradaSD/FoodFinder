@@ -20,12 +20,6 @@ public class RatingServiceImpl implements RatingService {
 	private RecipientRepository recRepo;
 
 	@Override
-	public List<Rating> userIndex(String username) {
-//		return ratingRepo.findByUser_Username(username);
-		return null;
-	}
-
-	@Override
 	public List<Rating> index(String locationName) {
 		return ratingRepo.findByServiceLocation_LocationName(locationName);
 	}
@@ -47,6 +41,7 @@ public class RatingServiceImpl implements RatingService {
 	public Rating update(String username, Rating rating) {
 		Recipient recipient = recRepo.findByUser_Username(username); 
 		Optional<Rating> ratingOpt = ratingRepo.findById(rating.getId());
+		
 		Rating managedRating = null;
 		if (ratingOpt.isPresent()) {
 			managedRating = ratingOpt.get();
