@@ -8,13 +8,16 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.skilldistillery.foodfinder.entities.ServiceLocation;
-import com.skilldistillery.foodfinder.entities.User;
 import com.skilldistillery.foodfinder.repositories.ServiceLocationRepository;
 import com.skilldistillery.foodfinder.services.ServiceLocationService;
 
@@ -42,5 +45,63 @@ public class ServiceLocationController {
 			Principal principal) {
 		return locationService.index(principal.getName());
 	}
+	
+	@PostMapping("service-locations")
+	public ServiceLocation create(
+			HttpServletRequest req, 
+			HttpServletResponse res, 
+			@RequestBody ServiceLocation location,
+			Principal principal) {
+		location = locationService.create(principal.getName(), location);
+		try {
+			if (location == null) {
+				res.setStatus(404);
+			} else {
+				res.setStatus(201); // Created
+				StringBuffer url = req.getRequestURL();
+				url.append("/").append(location.getId());
+				res.setHeader("Location", url.toString());
+			}
+		} catch (Exception e) {
+			res.setStatus(400); // Bad Request
+			location = null;
+		}
+		return location;
+	}
+	
+	@PutMapping("service-locations/{slId}")
+	public ServiceLocation update(
+			HttpServletRequest req, 
+			HttpServletResponse res,
+			@PathVariable int slId, 
+			@RequestBody ServiceLocation location,
+			Principal principal) {
+		try {
+			location = locationService.update(principal.getName(), slId, location);
+		} catch (Exception e) {
+			res.setStatus(400);
+			location = null;
+		}
+		if (location == null) {
+			res.setStatus(404);
+		}
+		return location;
+	}
+	
+	@DeleteMapping("service-locations/{slId}")
+	public void destroy(HttpServletRequest req, HttpServletResponse res, @PathVariable int slId, Principal principal) {
+		try {
+			boolean deleted = locationService.destroy(principal.getName(), slId);
+			if (deleted) {
+				res.setStatus(204); // No Content
+			} else {
+				res.setStatus(404);
+			}
+		} catch (Exception e) {
+			res.setStatus(400); 
+		}
+	}
+	
+	
 
 }
