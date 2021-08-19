@@ -58,11 +58,11 @@ public class RatingController {
 			@RequestBody Rating rating, Principal principal) {
 		System.out.println(rating);
 		try {
-			rating = ratingService.update(principal.getName(), rid, rating);
+			rating = ratingService.update(principal.getName(), rating);
 		} catch (Exception e) {
 			e.printStackTrace();
 			res.setStatus(400);
-//			rating = null;
+			rating = null;
 		}
 		if (rating == null) {
 			res.setStatus(404);
