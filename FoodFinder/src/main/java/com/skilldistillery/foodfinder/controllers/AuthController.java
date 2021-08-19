@@ -15,7 +15,7 @@ import com.skilldistillery.foodfinder.entities.User;
 import com.skilldistillery.foodfinder.services.AuthService;
 
 @RestController
-@CrossOrigin({"*", "http://localhost:4201"})
+@CrossOrigin({"*", "http://localhost:4202"})
 public class AuthController {
 
 	@Autowired
