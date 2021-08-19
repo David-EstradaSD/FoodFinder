@@ -151,8 +151,7 @@ public class User {
 	public String toString() {
 		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", username=" + username
 				+ ", password=" + password + ", email=" + email + ", phone=" + phone + ", image=" + image + ", role="
-				+ role + ", enabled=" + enabled + ", serviceLocation=" + serviceLocation + ", recipients=" + recipients
-				+ ", donors=" + donors + "]";
+				+ role + ", enabled=" + enabled + "]";
 	}
 
 	@Override

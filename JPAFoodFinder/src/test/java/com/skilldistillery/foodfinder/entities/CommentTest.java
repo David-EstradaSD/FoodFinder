@@ -55,7 +55,7 @@ class CommentTest {
 	void test_comment_joins_mapping() {
 		assertNotNull(comment);
 		assertEquals("First Baptist Church", comment.getServiceLocation().getDescription()); 
-		assertEquals(1, comment.getRecipient().getUser()); 
+		assertEquals(1, comment.getRecipient().getUser().getId()); 
 	}
 
 	
