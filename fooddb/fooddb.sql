@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `first_name` VARCHAR(45) NOT NULL,
   `last_name` VARCHAR(45) NOT NULL,
   `username` VARCHAR(45) NOT NULL,
-  `password` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(200) NOT NULL,
   `email` VARCHAR(200) NOT NULL,
   `role` VARCHAR(100) NULL,
   `enabled` TINYINT NULL,
@@ -284,7 +284,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `fooddb`;
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `username`, `password`, `email`, `role`, `enabled`, `phone`, `image`) VALUES (1, 'Mary', 'Moore', 'username', 'password', 'mary.morre@yahoo.com', 'admin', true, '867-5309', '\'images/mary.jpeg\'');
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `username`, `password`, `email`, `role`, `enabled`, `phone`, `image`) VALUES (1, 'Mary', 'Moore', 'username', '$2a$10$sYPe08XBasp4gh9wBoe.yeCHhICbXzg/yT3KthXUxcRL8fMFABXva', 'mary.morre@yahoo.com', 'admin', true, '867-5309', '\'images/mary.jpeg\'');
 
 COMMIT;
 
