@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class User {
 
@@ -28,11 +30,13 @@ public class User {
 	private String role;
 	private boolean enabled; // this is for authentication
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "user")
 	private List<ServiceLocation> serviceLocation;
-
+	@JsonIgnore
 	@OneToMany(mappedBy = "user")
 	private List<Recipient> recipients; // TODO: FIX ME - Waiting for Rob
+	@JsonIgnore
 	@OneToMany(mappedBy = "user")
 	private List<Donor> donors; // TODO: FIX ME - Waiting for Rob
 
@@ -147,8 +151,7 @@ public class User {
 	public String toString() {
 		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", username=" + username
 				+ ", password=" + password + ", email=" + email + ", phone=" + phone + ", image=" + image + ", role="
-				+ role + ", enabled=" + enabled + ", serviceLocation=" + serviceLocation + ", recipients=" + recipients
-				+ ", donors=" + donors + "]";
+				+ role + ", enabled=" + enabled + "]";
 	}
 
 	@Override

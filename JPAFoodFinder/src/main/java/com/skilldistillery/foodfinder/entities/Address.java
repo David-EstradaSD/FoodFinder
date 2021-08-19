@@ -8,16 +8,17 @@ import javax.persistence.Id;
 
 @Entity
 public class Address {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+
 	@Column(name = "street_address")
 	private String streetAddress;
 	private String city;
 	private String state;
 	private String zip;
-	
+
 //	// map service_location 
 //	@OneToOne
 //	private ServiceLocation serviceLocation;
@@ -29,8 +30,9 @@ public class Address {
 //	// map to recipient 
 //	@Column(name="address")
 //	private Recipient recipient;
-	
-	public Address() {}
+
+	public Address() {
+	}
 
 	public int getId() {
 		return id;
@@ -40,12 +42,12 @@ public class Address {
 		this.id = id;
 	}
 
-	public String getStreet_address() {
+	public String getStreetAddress() {
 		return streetAddress;
 	}
 
-	public void setStreet_address(String street_address) {
-		this.streetAddress = street_address;
+	public void setStreetAddress(String streetAddress) {
+		this.streetAddress = streetAddress;
 	}
 
 	public String getCity() {
@@ -74,7 +76,7 @@ public class Address {
 
 	@Override
 	public String toString() {
-		return "Address [id=" + id + ", street_address=" + streetAddress + ", city=" + city + ", state=" + state
+		return "Address [id=" + id + ", streetAddress=" + streetAddress + ", city=" + city + ", state=" + state
 				+ ", zip=" + zip + "]";
 	}
 
@@ -99,6 +101,5 @@ public class Address {
 			return false;
 		return true;
 	}
-	
 
 }

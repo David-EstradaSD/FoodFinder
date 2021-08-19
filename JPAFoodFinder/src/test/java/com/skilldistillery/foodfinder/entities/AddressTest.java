@@ -42,9 +42,18 @@ class AddressTest {
 	}
 
 	@Test
-	void test_address_mapping() {
+	void test_address_class_fields() {
 		assertNotNull(address);
+		assertEquals("100 Baker Street", address.getStreetAddress()); 
 		assertEquals("Denver", address.getCity()); 
+		assertEquals("CO", address.getState()); 
+		assertEquals("12345", address.getZip()); 		
 	}
+	
+//	@Test
+//	void test_address_joins_mapping() {
+//		assertNotNull(address);
+//		assertEquals("Denver", address.getCity()); 
+//	}
 
 }

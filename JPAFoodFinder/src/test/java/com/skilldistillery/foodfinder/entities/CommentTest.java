@@ -2,6 +2,7 @@ package com.skilldistillery.foodfinder.entities;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -45,6 +46,17 @@ class CommentTest {
 	void test_comment_mapping() {
 		assertNotNull(comment);
 		assertEquals("Great service", comment.getComment()); 
+		assertTrue(!comment.isPrivateComment()); 
+		assertEquals(1, comment.getServiceLocation().getId()); 
+		assertEquals(2021, comment.getCreateDate().getYear()); 
+	}
+	
+	@Test
+	void test_comment_joins_mapping() {
+		assertNotNull(comment);
+		assertEquals("First Baptist Church", comment.getServiceLocation().getDescription()); 
+		assertEquals(1, comment.getRecipient().getUser().getId()); 
 	}
 
+	
 }
