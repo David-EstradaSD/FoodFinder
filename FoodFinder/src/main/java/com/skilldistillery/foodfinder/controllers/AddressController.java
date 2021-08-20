@@ -95,11 +95,31 @@ public class AddressController {
 		return address;
 	}
 	
-//	@DeleteMapping("address/{id}")
-//	public String deleteAddress(@PathVariable Integer id, Principal principal, HttpServletResponse res) {
+//	@DeleteMapping("address/donor/{addressId}")
+//	public String deleteDonorAddress(@PathVariable int addressId, Principal principal, HttpServletResponse res) {
 //		
 //		try {
-//			boolean deleted = addressService.delete(id);
+//			boolean deleted = addressService.donorDelete(principal.getName(), addressId);
+//			if (deleted) {
+//				res.setStatus(204);
+//				return "Deleted";
+//				
+//			} else {
+//				res.setStatus(404);
+//				return "Not Found";
+//			}
+//			
+//		} catch (Exception e) {
+//			res.setStatus(400);
+//			return "Failed to delete";
+//		}
+//	}	
+//	
+//	@DeleteMapping("address/recipient/{addressId}")
+//	public String deleteRecipientAddress(@PathVariable int addressId, Principal principal, HttpServletResponse res) {
+//		
+//		try {
+//			boolean deleted = addressService.recipientDelete(principal.getName(), addressId);
 //			if (deleted) {
 //				res.setStatus(204);
 //				return "Deleted";
