@@ -30,6 +30,7 @@ public class ServiceServiceImpl implements ServiceService {
 	@Override
 	public com.skilldistillery.foodfinder.entities.Service update(
 			com.skilldistillery.foodfinder.entities.Service service) {
+		
 		return serviceRepo.saveAndFlush(service);
 	}
 
@@ -46,7 +47,6 @@ public class ServiceServiceImpl implements ServiceService {
 		}
 		return isDeleted;
 	}
-	
 	
 
 }
