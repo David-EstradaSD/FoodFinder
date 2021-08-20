@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.skilldistillery.foodfinder.entities.Recipient;
 import com.skilldistillery.foodfinder.entities.User;
+import com.skilldistillery.foodfinder.services.RecipientService;
 import com.skilldistillery.foodfinder.services.UserService;
 
 @RestController
@@ -27,6 +29,11 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
+
+	@Autowired
+	private RecipientService recService;
+	
+	
 
 	@GetMapping("users/{username}")
 	public User getUserByUsername(@PathVariable String username, HttpServletResponse res) {
@@ -41,7 +48,7 @@ public class UserController {
 		return users;
 	}
 	
-	
+
 	
 	@PutMapping("users")
 	public User update(@RequestBody User user, HttpServletRequest req, HttpServletResponse resp) {
@@ -69,5 +76,51 @@ public class UserController {
 			resp.setStatus(404);
 		}
 	}
+	
+	@GetMapping("users/recipients")
+	public List<Recipient> listRecipients() {
+		return recService.index();
+	}
 
+	@GetMapping("users/recipients/{rid}")
+	public Recipient getRecipient(@PathVariable int rid) {
+		return recService.show(rid);
+	}
+	
+	@PostMapping("users/recipients")
+	public Recipient addRecipient(@RequestBody Recipient recipient, HttpServletRequest req, HttpServletResponse resp) {
+		Recipient newRecipient = new Recipient();
+
+		try {
+			newRecipient = recService.create(recipient);
+			resp.setStatus(201);
+			StringBuffer url = req.getRequestURL();
+			url.append("/").append(newRecipient.getId());
+			resp.setHeader("Location", url.toString());
+		} catch (Exception e) {
+			resp.setStatus(400);
+			e.printStackTrace();
+		}
+		return newRecipient;
+	}
+	
+	@PutMapping("users/recipients")
+	public Recipient update(@RequestBody Recipient recipient, HttpServletRequest req, HttpServletResponse resp) {
+		try {
+			recipient = recService.update(recipient);
+			if (recipient == null) {
+				resp.setStatus(404);
+			}
+		} catch (Exception e) {
+			resp.setStatus(400);
+			recipient = null;
+			e.printStackTrace();
+		}
+		return recipient;
+	}
+	
+	@DeleteMapping("users/recipients/{rid}")
+	public void delete(@PathVariable Integer rid, HttpServletResponse resp) {
+		recService.destroy(rid);
+	}
 }

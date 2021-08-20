@@ -1,12 +1,12 @@
 package com.skilldistillery.foodfinder.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.foodfinder.entities.Recipient;
-import com.skilldistillery.foodfinder.entities.User;
 import com.skilldistillery.foodfinder.repositories.RecipientRepository;
 
 @Service
@@ -31,14 +31,25 @@ public class RecipientServiceImpl implements RecipientService {
 	}
 
 	@Override
-	public boolean destroy(String username) {
+	public boolean destroy(int id) {
 		boolean isDeleted = false;
-		Recipient recipient = recRepo.findByUser_Username(username);
-		if (recipient != null) {
+		Optional<Recipient> opt = recRepo.findById(id);
+		Recipient recipient = null;
+		
+		if (opt.isPresent()) {
+			recipient = opt.get();
 			recRepo.delete(recipient);
 			isDeleted = true;
-			return isDeleted;
 		}
-		return false;
+		return isDeleted;
 	}
+
+	@Override
+	public Recipient show(int id) {
+		Optional<Recipient> opt = recRepo.findById(id);
+		Recipient recipient = null;
+		if (opt.isPresent()) {
+			recipient = opt.get();
+		}
+		return recipient;	}
 }
