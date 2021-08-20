@@ -20,12 +20,6 @@ public class RatingServiceImpl implements RatingService {
 	private RecipientRepository recRepo;
 
 	@Override
-	public List<Rating> userIndex(String username) {
-//		return ratingRepo.findByUser_Username(username);
-		return null;
-	}
-
-	@Override
 	public List<Rating> index(String locationName) {
 		return ratingRepo.findByServiceLocation_LocationName(locationName);
 	}
@@ -44,21 +38,17 @@ public class RatingServiceImpl implements RatingService {
 	}
 
 	@Override
-	public Rating update(String username, int rid, Rating rating) {
-		Recipient recipient = recRepo.findByUser_Username(username);
+	public Rating update(String username, Rating rating) {
+		Recipient recipient = recRepo.findByUser_Username(username); 
 		Optional<Rating> ratingOpt = ratingRepo.findById(rating.getId());
-
+		
 		Rating managedRating = null;
-		System.out.println("***********RATING OPT IS PRESENT********" + ratingOpt.isPresent());
 		if (ratingOpt.isPresent()) {
 			managedRating = ratingOpt.get();
 			if (!(managedRating.getRecipient().getId() == recipient.getId())) {
 				managedRating = null;
-				System.out.println("Inside nested if");
 			}
-			System.out.println("*************OPT IS PRESENT *************");
 		}
-//		System.out.println(managed);
 		if (managedRating != null) {
 			managedRating.setId(rating.getId());
 			managedRating.setRating(rating.getRating());

@@ -11,6 +11,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Donor {
 
@@ -19,10 +21,12 @@ public class Donor {
 	private int id;
 	private String category;
 
+	@JsonIgnore
 	@JoinColumn(name = "user_id")
 	@ManyToOne // TODO: FIX ME - Rob
 	private User user;
 
+	@JsonIgnore
 	@JoinColumn(name = "address_id")
 	@OneToOne
 	private Address address; // this is for personal address | contact information

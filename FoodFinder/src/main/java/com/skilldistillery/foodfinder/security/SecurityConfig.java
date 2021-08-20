@@ -35,6 +35,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .antMatchers(HttpMethod.GET, "/api/service-locations").permitAll() // This ALLOWS the specified path to be permitted to access without authentication (aka to the general public)
         .antMatchers(HttpMethod.GET, "/api/services").permitAll() // This ALLOWS the specified path to be permitted to access without authentication (aka to the general public)
         .antMatchers(HttpMethod.POST, "/api/register").permitAll() // This ALLOWS the specified path to be permitted to access without authentication (aka to the general public)
+        .antMatchers(HttpMethod.GET, "/api/ratings/{locationName}").permitAll()
+        .antMatchers(HttpMethod.GET, "/api/donors/{category}").permitAll()
         .antMatchers("/api/**").authenticated() // Requests for our REST API must be authorized.
         .anyRequest().permitAll()               // All other requests are allowed without authorization.
         .and()

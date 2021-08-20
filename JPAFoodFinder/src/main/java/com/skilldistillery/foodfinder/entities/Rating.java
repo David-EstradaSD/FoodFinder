@@ -16,11 +16,13 @@ public class Rating {
 
 	private int rating;
 
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "recipient_id")
 	@MapsId(value = "recipientId")
 	private Recipient recipient;
 
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "service_location_id")
 	@MapsId(value = "serviceLocationId")
