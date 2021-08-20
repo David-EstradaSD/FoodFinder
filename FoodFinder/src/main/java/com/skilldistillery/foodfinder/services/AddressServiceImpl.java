@@ -52,9 +52,7 @@ public class AddressServiceImpl implements AddressService {
 		} catch (Exception e) {
 			address = null;
 		}
-
 		return address;
-		
 	}
 
 	@Override
@@ -84,4 +82,37 @@ public class AddressServiceImpl implements AddressService {
 		}
 		return managedAddress; 
 	}
+	
+//	@Override
+//	public boolean donorDelete(String username, int addressId) {
+//		boolean deleted = false;
+//		
+//		Donor donor = donorRepo.findByUser_Username(username);
+//		addressId = donor.getAddress().getId(); 
+//		
+//		if (donor.getAddress() != null) {
+//			addressRepo.delete(donor.getAddress());
+//			donorRepo.deleteById(addressId);
+//			deleted = true;
+//		}
+//		return deleted;	
+//		}
+//	
+//	@Override
+//	public boolean recipientDelete(String username, int addressId) {
+//		boolean deleted = false;
+//		
+//		Recipient recipient = recipientRepo.findByUser_Username(username);
+//		addressId = recipient.getAddress().getId(); 
+//		
+//		if (recipient.getAddress() != null) {
+//			addressRepo.delete(recipient.getAddress());
+//			deleted = true;
+//		}
+//		return deleted;	
+//		}
+	
+	
 }
+
+
