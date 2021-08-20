@@ -429,6 +429,14 @@ INSERT INTO `service_location_has_recipient` (`service_location_id`, `recipient_
 INSERT INTO `service_location_has_recipient` (`service_location_id`, `recipient_id`) VALUES (8, 8);
 INSERT INTO `service_location_has_recipient` (`service_location_id`, `recipient_id`) VALUES (9, 9);
 INSERT INTO `service_location_has_recipient` (`service_location_id`, `recipient_id`) VALUES (10, 10);
+INSERT INTO `service_location_has_recipient` (`service_location_id`, `recipient_id`) VALUES (1, 9);
+INSERT INTO `service_location_has_recipient` (`service_location_id`, `recipient_id`) VALUES (1, 2);
+INSERT INTO `service_location_has_recipient` (`service_location_id`, `recipient_id`) VALUES (1, 3);
+INSERT INTO `service_location_has_recipient` (`service_location_id`, `recipient_id`) VALUES (1, 4);
+INSERT INTO `service_location_has_recipient` (`service_location_id`, `recipient_id`) VALUES (1, 5);
+INSERT INTO `service_location_has_recipient` (`service_location_id`, `recipient_id`) VALUES (2, 1);
+INSERT INTO `service_location_has_recipient` (`service_location_id`, `recipient_id`) VALUES (3, 1);
+INSERT INTO `service_location_has_recipient` (`service_location_id`, `recipient_id`) VALUES (4, 1);
 
 COMMIT;
 
