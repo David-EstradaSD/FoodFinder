@@ -37,6 +37,7 @@ public class Recipient {
 	@ManyToMany(mappedBy = "recipients")
 	private List<ServiceLocation> serviceLocations;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "recipient")
 	private List<Rating> ratings;
 
@@ -93,8 +94,7 @@ public class Recipient {
 
 	@Override
 	public String toString() {
-		return "Recipient [id=" + id + ", user=" + user + ", address=" + address + ", comments=" + comments
-				+ ", serviceLocations=" + serviceLocations + ", ratings=" + ratings + "]";
+		return "Recipient [id=" + id + ", user=" + user + ", address=" + address + "]";
 	}
 
 	@Override

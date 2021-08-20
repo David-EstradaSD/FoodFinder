@@ -11,6 +11,8 @@ public interface ServiceLocationRepository extends JpaRepository<ServiceLocation
 	List<ServiceLocation> findByUser_Username(String username);
 	
 	ServiceLocation findByIdAndUser_Username(int slId, String username);
+	
+	ServiceLocation queryById(int slId);
 
 	
 }

@@ -14,5 +14,8 @@ public interface RatingRepository extends JpaRepository<Rating, RatingId> {
 	List<Rating> findByServiceLocation_LocationName(String locationName);
 
 	Rating findByIdAndRecipient_User_Username(int rid, String username);
+	
+	Rating queryById(int rid);
+	
 
 }
