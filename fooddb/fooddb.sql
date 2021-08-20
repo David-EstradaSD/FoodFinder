@@ -257,7 +257,6 @@ CREATE TABLE IF NOT EXISTS `rating` (
   `rating` INT NULL,
   PRIMARY KEY (`recipient_id`, `service_location_id`),
   INDEX `fk_rating_service_location1_idx` (`service_location_id` ASC),
-  UNIQUE INDEX `recipient_id_UNIQUE` (`recipient_id` ASC),
   CONSTRAINT `fk_rating_recipient1`
     FOREIGN KEY (`recipient_id`)
     REFERENCES `recipient` (`id`)
@@ -287,10 +286,10 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 START TRANSACTION;
 USE `fooddb`;
 INSERT INTO `user` (`id`, `first_name`, `last_name`, `username`, `password`, `email`, `role`, `enabled`, `phone`, `image`) VALUES (1, 'Mary', 'Moore', 'username', '$2a$10$sYPe08XBasp4gh9wBoe.yeCHhICbXzg/yT3KthXUxcRL8fMFABXva', 'mary.morre@yahoo.com', 'admin', true, '867-5309', '\'images/mary.jpeg\'');
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `username`, `password`, `email`, `role`, `enabled`, `phone`, `image`) VALUES (2, 'a', 'a', 'a', 'a', 'a', 'admin', true, 'a', 'a');
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `username`, `password`, `email`, `role`, `enabled`, `phone`, `image`) VALUES (3, 'Paul', 'Smith', 'MufflerMan', 'ThisIsMyPassword@29', 'MyEmail@yahoo.com', 'recipient', true, '712-2534', '\'images/tomato.jpeg\'');
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `username`, `password`, `email`, `role`, `enabled`, `phone`, `image`) VALUES (2, 'a', 'a', 'admin', '$2a$10$vC891D7ElRwAj2wueKORkeiCCzpLJGllY.JBqOWWdOvezsqXWOnYO', 'a', 'admin', true, 'a', 'a');
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `username`, `password`, `email`, `role`, `enabled`, `phone`, `image`) VALUES (3, 'b', 'b', 'recipient', '$2a$10$SyMftr/TQdlyyHzkr8kpnuJIpiWhAVWao43ccjTcWnVibJw0VgLSC', 'b', 'recipient', true, '712-2534', 'b');
 INSERT INTO `user` (`id`, `first_name`, `last_name`, `username`, `password`, `email`, `role`, `enabled`, `phone`, `image`) VALUES (4, 'Beth', 'Hunter', 'Kitten132', 'YodelOnMountain000', 'MrCar@gmail.com', 'recipient', true, '987-9078', '\'images/justme.jpeg\'');
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `username`, `password`, `email`, `role`, `enabled`, `phone`, `image`) VALUES (5, 'Cyndi', 'Slattery', 'Sunshine999', 'MySweet16', 'BigTimePrez@yahoo.com', 'donor', true, '836-7823', '\'images/lastyearphoto.jpeg\'');
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `username`, `password`, `email`, `role`, `enabled`, `phone`, `image`) VALUES (5, 'c', 'c', 'donor', '$2a$10$mBGXhxPGYOvjIB4ox.0EVO.6Vcel1pwRFp5lKc7ldd0z5H8.UFfsa', 'c', 'donor', true, '836-7823', 'c');
 INSERT INTO `user` (`id`, `first_name`, `last_name`, `username`, `password`, `email`, `role`, `enabled`, `phone`, `image`) VALUES (6, 'Mike', 'Pitts', 'GumbyClay76', 'TVOnTheRadio100', 'DontTredOnMe@gmail.com', 'recipient', true, '816-8032', '\'images/2020.jpeg\'');
 INSERT INTO `user` (`id`, `first_name`, `last_name`, `username`, `password`, `email`, `role`, `enabled`, `phone`, `image`) VALUES (7, 'Ronald', 'Albers', 'MeatballYumYum23', 'NamedAfterPresidents1', 'Wanderer@yahoo.com', 'donor', true, '623-6719', '\'images/vacation.jpeg\'');
 INSERT INTO `user` (`id`, `first_name`, `last_name`, `username`, `password`, `email`, `role`, `enabled`, `phone`, `image`) VALUES (8, 'Robert', 'Paulson', 'FightClubSoap11', 'JustLetGoCrash', 'SenorFrog@gmail.com', 'recipient', true, '510-3529', '\'images/summer69.jpeg\'');
@@ -343,16 +342,9 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `fooddb`;
-INSERT INTO `donor` (`id`, `category`, `user_id`, `address_id`) VALUES (1, 'food', 1, 1);
-INSERT INTO `donor` (`id`, `category`, `user_id`, `address_id`) VALUES (2, 'food', 2, 2);
-INSERT INTO `donor` (`id`, `category`, `user_id`, `address_id`) VALUES (3, 'food', 3, 3);
-INSERT INTO `donor` (`id`, `category`, `user_id`, `address_id`) VALUES (4, 'laundry', 4, 4);
-INSERT INTO `donor` (`id`, `category`, `user_id`, `address_id`) VALUES (5, 'counseling', 5, 5);
-INSERT INTO `donor` (`id`, `category`, `user_id`, `address_id`) VALUES (6, 'medical', 6, 6);
-INSERT INTO `donor` (`id`, `category`, `user_id`, `address_id`) VALUES (7, 'counseling', 7, 7);
-INSERT INTO `donor` (`id`, `category`, `user_id`, `address_id`) VALUES (8, 'food', 8, 8);
-INSERT INTO `donor` (`id`, `category`, `user_id`, `address_id`) VALUES (9, 'shelter', 9, 9);
-INSERT INTO `donor` (`id`, `category`, `user_id`, `address_id`) VALUES (10, 'showers', 10, 10);
+INSERT INTO `donor` (`id`, `category`, `user_id`, `address_id`) VALUES (1, 'Church', 5, 1);
+INSERT INTO `donor` (`id`, `category`, `user_id`, `address_id`) VALUES (2, 'NGO', 7, 2);
+INSERT INTO `donor` (`id`, `category`, `user_id`, `address_id`) VALUES (3, 'Shelter', 10, 3);
 
 COMMIT;
 
@@ -362,16 +354,11 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `fooddb`;
-INSERT INTO `recipient` (`id`, `user_id`, `address_id`) VALUES (1, 1, 1);
-INSERT INTO `recipient` (`id`, `user_id`, `address_id`) VALUES (2, 2, 2);
-INSERT INTO `recipient` (`id`, `user_id`, `address_id`) VALUES (3, 3, 3);
-INSERT INTO `recipient` (`id`, `user_id`, `address_id`) VALUES (4, 4, 4);
-INSERT INTO `recipient` (`id`, `user_id`, `address_id`) VALUES (5, 5, 5);
-INSERT INTO `recipient` (`id`, `user_id`, `address_id`) VALUES (6, 6, 6);
-INSERT INTO `recipient` (`id`, `user_id`, `address_id`) VALUES (7, 7, 7);
-INSERT INTO `recipient` (`id`, `user_id`, `address_id`) VALUES (8, 8, 8);
-INSERT INTO `recipient` (`id`, `user_id`, `address_id`) VALUES (9, 9, 9);
-INSERT INTO `recipient` (`id`, `user_id`, `address_id`) VALUES (10, 10, 10);
+INSERT INTO `recipient` (`id`, `user_id`, `address_id`) VALUES (1, 3, 4);
+INSERT INTO `recipient` (`id`, `user_id`, `address_id`) VALUES (2, 4, 5);
+INSERT INTO `recipient` (`id`, `user_id`, `address_id`) VALUES (3, 6, 6);
+INSERT INTO `recipient` (`id`, `user_id`, `address_id`) VALUES (4, 8, 7);
+INSERT INTO `recipient` (`id`, `user_id`, `address_id`) VALUES (5, 9, 8);
 
 COMMIT;
 
@@ -386,11 +373,6 @@ INSERT INTO `comment` (`id`, `comment`, `private_comment`, `service_location_id`
 INSERT INTO `comment` (`id`, `comment`, `private_comment`, `service_location_id`, `recipient_id`, `create_date`) VALUES (3, 'Comfortable chairs, tasty food!', false, 3, 3, '2021-02-12 02:21:00');
 INSERT INTO `comment` (`id`, `comment`, `private_comment`, `service_location_id`, `recipient_id`, `create_date`) VALUES (4, 'Excellent portions', false, 4, 4, '2021-02-02 10:54:00');
 INSERT INTO `comment` (`id`, `comment`, `private_comment`, `service_location_id`, `recipient_id`, `create_date`) VALUES (5, 'Clean showers and a hot meal', false, 5, 5, '2021-03-05 05:15:00');
-INSERT INTO `comment` (`id`, `comment`, `private_comment`, `service_location_id`, `recipient_id`, `create_date`) VALUES (6, 'Was grateful for laundry', false, 6, 6, '2021-03-26 18:01:00');
-INSERT INTO `comment` (`id`, `comment`, `private_comment`, `service_location_id`, `recipient_id`, `create_date`) VALUES (7, 'Nice refuge, felt safe and welcome', false, 7, 7, '2021-04-15 23:12:00');
-INSERT INTO `comment` (`id`, `comment`, `private_comment`, `service_location_id`, `recipient_id`, `create_date`) VALUES (8, 'Understanding counselors and good food', false, 8, 8, '2021-04-18 09:17:00');
-INSERT INTO `comment` (`id`, `comment`, `private_comment`, `service_location_id`, `recipient_id`, `create_date`) VALUES (9, 'Felt like family', false, 9, 9, '2021-05-27 11:52:00');
-INSERT INTO `comment` (`id`, `comment`, `private_comment`, `service_location_id`, `recipient_id`, `create_date`) VALUES (10, 'Grateful for a bed and good sleep', false, 10, 10, '2021-07-12 15:37:00');
 
 COMMIT;
 
@@ -403,13 +385,13 @@ USE `fooddb`;
 INSERT INTO `donor_has_service_location` (`donor_id`, `service_location_id`) VALUES (1, 1);
 INSERT INTO `donor_has_service_location` (`donor_id`, `service_location_id`) VALUES (2, 2);
 INSERT INTO `donor_has_service_location` (`donor_id`, `service_location_id`) VALUES (3, 3);
-INSERT INTO `donor_has_service_location` (`donor_id`, `service_location_id`) VALUES (4, 4);
-INSERT INTO `donor_has_service_location` (`donor_id`, `service_location_id`) VALUES (5, 5);
-INSERT INTO `donor_has_service_location` (`donor_id`, `service_location_id`) VALUES (6, 6);
-INSERT INTO `donor_has_service_location` (`donor_id`, `service_location_id`) VALUES (7, 7);
-INSERT INTO `donor_has_service_location` (`donor_id`, `service_location_id`) VALUES (8, 8);
-INSERT INTO `donor_has_service_location` (`donor_id`, `service_location_id`) VALUES (9, 9);
-INSERT INTO `donor_has_service_location` (`donor_id`, `service_location_id`) VALUES (10, 10);
+INSERT INTO `donor_has_service_location` (`donor_id`, `service_location_id`) VALUES (1, 4);
+INSERT INTO `donor_has_service_location` (`donor_id`, `service_location_id`) VALUES (2, 5);
+INSERT INTO `donor_has_service_location` (`donor_id`, `service_location_id`) VALUES (3, 6);
+INSERT INTO `donor_has_service_location` (`donor_id`, `service_location_id`) VALUES (1, 7);
+INSERT INTO `donor_has_service_location` (`donor_id`, `service_location_id`) VALUES (2, 8);
+INSERT INTO `donor_has_service_location` (`donor_id`, `service_location_id`) VALUES (3, 9);
+INSERT INTO `donor_has_service_location` (`donor_id`, `service_location_id`) VALUES (1, 10);
 
 COMMIT;
 
@@ -424,19 +406,14 @@ INSERT INTO `service_location_has_recipient` (`service_location_id`, `recipient_
 INSERT INTO `service_location_has_recipient` (`service_location_id`, `recipient_id`) VALUES (3, 3);
 INSERT INTO `service_location_has_recipient` (`service_location_id`, `recipient_id`) VALUES (4, 4);
 INSERT INTO `service_location_has_recipient` (`service_location_id`, `recipient_id`) VALUES (5, 5);
-INSERT INTO `service_location_has_recipient` (`service_location_id`, `recipient_id`) VALUES (6, 6);
-INSERT INTO `service_location_has_recipient` (`service_location_id`, `recipient_id`) VALUES (7, 7);
-INSERT INTO `service_location_has_recipient` (`service_location_id`, `recipient_id`) VALUES (8, 8);
-INSERT INTO `service_location_has_recipient` (`service_location_id`, `recipient_id`) VALUES (9, 9);
-INSERT INTO `service_location_has_recipient` (`service_location_id`, `recipient_id`) VALUES (10, 10);
-INSERT INTO `service_location_has_recipient` (`service_location_id`, `recipient_id`) VALUES (1, 9);
-INSERT INTO `service_location_has_recipient` (`service_location_id`, `recipient_id`) VALUES (1, 2);
-INSERT INTO `service_location_has_recipient` (`service_location_id`, `recipient_id`) VALUES (1, 3);
-INSERT INTO `service_location_has_recipient` (`service_location_id`, `recipient_id`) VALUES (1, 4);
-INSERT INTO `service_location_has_recipient` (`service_location_id`, `recipient_id`) VALUES (1, 5);
+INSERT INTO `service_location_has_recipient` (`service_location_id`, `recipient_id`) VALUES (6, 1);
+INSERT INTO `service_location_has_recipient` (`service_location_id`, `recipient_id`) VALUES (7, 2);
+INSERT INTO `service_location_has_recipient` (`service_location_id`, `recipient_id`) VALUES (8, 3);
+INSERT INTO `service_location_has_recipient` (`service_location_id`, `recipient_id`) VALUES (9, 4);
+INSERT INTO `service_location_has_recipient` (`service_location_id`, `recipient_id`) VALUES (10, 5);
 INSERT INTO `service_location_has_recipient` (`service_location_id`, `recipient_id`) VALUES (2, 1);
-INSERT INTO `service_location_has_recipient` (`service_location_id`, `recipient_id`) VALUES (3, 1);
-INSERT INTO `service_location_has_recipient` (`service_location_id`, `recipient_id`) VALUES (4, 1);
+INSERT INTO `service_location_has_recipient` (`service_location_id`, `recipient_id`) VALUES (3, 2);
+INSERT INTO `service_location_has_recipient` (`service_location_id`, `recipient_id`) VALUES (4, 3);
 
 COMMIT;
 
@@ -489,11 +466,11 @@ INSERT INTO `rating` (`recipient_id`, `service_location_id`, `rating`) VALUES (2
 INSERT INTO `rating` (`recipient_id`, `service_location_id`, `rating`) VALUES (3, 3, 4);
 INSERT INTO `rating` (`recipient_id`, `service_location_id`, `rating`) VALUES (4, 4, 5);
 INSERT INTO `rating` (`recipient_id`, `service_location_id`, `rating`) VALUES (5, 5, 5);
-INSERT INTO `rating` (`recipient_id`, `service_location_id`, `rating`) VALUES (6, 6, 5);
-INSERT INTO `rating` (`recipient_id`, `service_location_id`, `rating`) VALUES (7, 7, 4);
-INSERT INTO `rating` (`recipient_id`, `service_location_id`, `rating`) VALUES (8, 8, 5);
-INSERT INTO `rating` (`recipient_id`, `service_location_id`, `rating`) VALUES (9, 9, 5);
-INSERT INTO `rating` (`recipient_id`, `service_location_id`, `rating`) VALUES (10, 10, 4);
+INSERT INTO `rating` (`recipient_id`, `service_location_id`, `rating`) VALUES (1, 6, 5);
+INSERT INTO `rating` (`recipient_id`, `service_location_id`, `rating`) VALUES (2, 7, 4);
+INSERT INTO `rating` (`recipient_id`, `service_location_id`, `rating`) VALUES (3, 8, 5);
+INSERT INTO `rating` (`recipient_id`, `service_location_id`, `rating`) VALUES (4, 9, 5);
+INSERT INTO `rating` (`recipient_id`, `service_location_id`, `rating`) VALUES (5, 10, 4);
 
 COMMIT;
 
