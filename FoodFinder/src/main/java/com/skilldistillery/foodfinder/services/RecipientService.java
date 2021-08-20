@@ -13,4 +13,6 @@ public interface RecipientService {
 	public Recipient update(Recipient recipient);
 
 	public boolean destroy(String username);
+
+	public Recipient show(String username);
 }

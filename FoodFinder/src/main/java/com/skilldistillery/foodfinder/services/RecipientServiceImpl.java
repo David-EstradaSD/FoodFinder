@@ -41,4 +41,9 @@ public class RecipientServiceImpl implements RecipientService {
 		}
 		return false;
 	}
+
+	@Override
+	public Recipient show(String username) {
+		return recRepo.findByUser_Username(username);
+	}
 }

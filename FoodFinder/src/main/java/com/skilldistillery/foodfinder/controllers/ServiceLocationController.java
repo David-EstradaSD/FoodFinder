@@ -122,4 +122,21 @@ public class ServiceLocationController {
 		}
 		return service;
 	}
+
+	@PutMapping("services/{sid}")
+	public Service update(HttpServletRequest req, HttpServletResponse res, @PathVariable int sid,
+			@RequestBody Service service) {
+		System.out.println(service);
+		try {
+			service = serviceSvc.update(service);
+		} catch (Exception e) {
+			res.setStatus(400);
+			service = null;
+		}
+		if (service == null) {
+			res.setStatus(404);
+		}
+		System.out.println("***** AFTER TRY CATCH*****" + service);
+		return service;
+	}
 }

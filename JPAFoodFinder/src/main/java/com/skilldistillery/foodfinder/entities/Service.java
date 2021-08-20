@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,7 +21,7 @@ public class Service {
 	private String description;
 
 	// map to service_location many to many
-	@ManyToMany(mappedBy = "services")
+	@ManyToMany(mappedBy = "services", fetch = FetchType.EAGER)
 	private List<ServiceLocation> serviceLocations;
 
 	public Service() {
