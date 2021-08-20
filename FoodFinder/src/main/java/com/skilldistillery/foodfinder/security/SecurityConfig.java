@@ -33,6 +33,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()     // will hit the OPTIONS on the route
  //       .antMatchers(HttpMethod.GET, "/api/todos").hasRole("admin") // Can access this routing when admin is in their role
         .antMatchers(HttpMethod.GET, "/api/service-locations").permitAll() // This ALLOWS the specified path to be permitted to access without authentication (aka to the general public)
+        .antMatchers(HttpMethod.GET, "/api/services").permitAll() // This ALLOWS the specified path to be permitted to access without authentication (aka to the general public)
         .antMatchers(HttpMethod.POST, "/api/register").permitAll() // This ALLOWS the specified path to be permitted to access without authentication (aka to the general public)
         .antMatchers("/api/**").authenticated() // Requests for our REST API must be authorized.
         .anyRequest().permitAll()               // All other requests are allowed without authorization.
