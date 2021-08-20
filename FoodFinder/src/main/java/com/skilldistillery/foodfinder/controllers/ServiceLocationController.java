@@ -122,7 +122,6 @@ public class ServiceLocationController {
 		}
 		return service;
 	}
-<<<<<<< HEAD
 
 	@PutMapping("services/{sid}")
 	public Service update(HttpServletRequest req, HttpServletResponse res, @PathVariable int sid,
@@ -140,8 +139,7 @@ public class ServiceLocationController {
 		System.out.println("***** AFTER TRY CATCH*****" + service);
 		return service;
 	}
-=======
-	
+
 	@PutMapping("services")
 	public Service updateService(@RequestBody Service service, HttpServletResponse resp, HttpServletRequest req) {
 		try {
@@ -154,28 +152,11 @@ public class ServiceLocationController {
 			service = null;
 			e.printStackTrace();
 		}
-		return service;		
+		return service;
 	}
-	
-	
+
 	@DeleteMapping("services/{sid}")
 	public void delete(@PathVariable int sid, HttpServletResponse resp) {
 		serviceSvc.destroy(sid);
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
->>>>>>> 0790cf2b946998685a538ec98bb6c8384d76d779
 }
