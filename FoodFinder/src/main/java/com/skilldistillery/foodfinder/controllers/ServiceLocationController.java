@@ -122,4 +122,40 @@ public class ServiceLocationController {
 		}
 		return service;
 	}
+	
+	@PutMapping("services")
+	public Service updateService(@RequestBody Service service, HttpServletResponse resp, HttpServletRequest req) {
+		try {
+			service = serviceSvc.update(service);
+			if (service == null) {
+				resp.setStatus(404);
+			}
+		} catch (Exception e) {
+			resp.setStatus(400);
+			service = null;
+			e.printStackTrace();
+		}
+		return service;		
+	}
+	
+	
+	@DeleteMapping("services/{sid}")
+	public void delete(@PathVariable int sid, HttpServletResponse resp) {
+		serviceSvc.destroy(sid);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
