@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,6 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.skilldistillery.foodfinder.entities.Rating;
 import com.skilldistillery.foodfinder.entities.Recipient;
+import com.skilldistillery.foodfinder.entities.ServiceLocation;
+import com.skilldistillery.foodfinder.repositories.RatingRepository;
 import com.skilldistillery.foodfinder.services.RatingService;
 
 @RestController
@@ -27,19 +30,29 @@ public class RatingController {
 
 	@Autowired
 	private RatingService ratingService;
+	
+	@Autowired
+	private RatingRepository ratingRepo;
 
 	@GetMapping("ratings/{locationName}")
 	public List<Rating> index(@PathVariable String locationName) {
 		return ratingService.index(locationName);
 	}
 
-	@PostMapping("ratings/{locationName}")
-	public Rating create(@PathVariable String locationName, HttpServletRequest req, HttpServletResponse res,
-			@RequestBody Rating rating, Principal principal, Recipient recipient) {
-		rating = ratingService.create(recipient, rating, principal.getName());
+	@PostMapping("ratings/recipient/{recipientId}/serviceLocation/{locationId}")
+	public Rating create(
+			HttpServletRequest req, 
+			HttpServletResponse res,
+			@RequestBody Rating rating,
+			Principal principal,
+			@PathVariable int recipientId, 
+			@PathVariable int locationId) {
+		rating = ratingService.create(principal.getName(), rating, locationId, recipientId);
 		try {
 			if (rating == null) {
 				res.setStatus(404);
+				System.out.println(rating);
+				
 			} else {
 				res.setStatus(201); // Created
 				StringBuffer url = req.getRequestURL();
@@ -53,12 +66,15 @@ public class RatingController {
 		return rating;
 	}
 
-	@PutMapping("ratings/{rid}")
-	public Rating update(HttpServletRequest req, HttpServletResponse res, @PathVariable int rid,
-			@RequestBody Rating rating, Principal principal) {
+	@PutMapping("ratings/recipient/{recipientId}/serviceLocation/{locationId}")
+	public Rating update(HttpServletRequest req, HttpServletResponse res,
+			@RequestBody Rating rating, 
+			Principal principal, 
+			@PathVariable int recipientId, 
+			@PathVariable int locationId) {
 		System.out.println(rating);
 		try {
-			rating = ratingService.update(principal.getName(), rating);
+			rating = ratingService.update(principal.getName(), locationId, recipientId, rating);
 		} catch (Exception e) {
 			e.printStackTrace();
 			res.setStatus(400);
@@ -69,4 +85,25 @@ public class RatingController {
 		}
 		return rating;
 	}
+	
+	@DeleteMapping("ratings/recipient/{recipientId}/serviceLocation/{locationId}")
+	public void destroy(HttpServletRequest req,
+			HttpServletResponse res, 
+			@PathVariable int recipientId, 
+			@PathVariable int locationId, 
+			Principal principal) {
+		try {
+			boolean deleted = ratingService.delete(principal.getName(), locationId, recipientId);
+			if (deleted) {
+				res.setStatus(204); // No Content
+			} else {
+				res.setStatus(404);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			res.setStatus(400); 
+		}
+	}
+	
+	
 }

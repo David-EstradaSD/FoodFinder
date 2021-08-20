@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Service {
 
@@ -21,7 +23,8 @@ public class Service {
 	private String description;
 
 	// map to service_location many to many
-	@ManyToMany(mappedBy = "services", fetch = FetchType.EAGER)
+	@JsonIgnore
+	@ManyToMany(mappedBy = "services")
 	private List<ServiceLocation> serviceLocations;
 
 	public Service() {
