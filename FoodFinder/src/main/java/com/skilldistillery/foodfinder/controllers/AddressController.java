@@ -63,10 +63,26 @@ public class AddressController {
 		return address;
 	}
 	
-	@PutMapping("address/donor/{id}")
-	public Address update(@RequestBody Address address, Principal principal, HttpServletRequest req, HttpServletResponse resp) {
+	@PutMapping("address/donor/{addressId}")
+	public Address donorUpdate(@RequestBody Address address, Principal principal, HttpServletRequest req, HttpServletResponse resp, @PathVariable int addressId) {
 		try {
-			address = addressService.update();
+			address = addressService.donorUpdate(address, principal.getName(), addressId);
+			if (address == null) {
+				resp.setStatus(404);
+			}
+			
+		} catch (Exception e) {
+			resp.setStatus(400);
+			address = null;
+			e.printStackTrace();
+		}
+		return address;
+	}
+	
+	@PutMapping("address/recipient/{addressId}")
+	public Address recipientUpdate(@RequestBody Address address, Principal principal, HttpServletRequest req, HttpServletResponse resp, @PathVariable int addressId) {
+		try {
+			address = addressService.recipientUpdate(address, principal.getName(), addressId);
 			if (address == null) {
 				resp.setStatus(404);
 			}
