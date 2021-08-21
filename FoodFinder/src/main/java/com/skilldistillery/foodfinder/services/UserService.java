@@ -12,7 +12,7 @@ public interface UserService {
 
 	public User create(User user);
 
-    public User update(User user);
+    public User update(User user, String username);
 
     public boolean destroy(String username);
 }

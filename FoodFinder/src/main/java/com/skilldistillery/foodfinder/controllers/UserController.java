@@ -50,11 +50,11 @@ public class UserController {
 	
 
 	
-	@PutMapping("users")
-	public User update(@RequestBody User user, HttpServletRequest req, HttpServletResponse resp) {
-//		System.out.println("made it in update");
+	@PutMapping("users/{username}")
+	public User update(@RequestBody User user, HttpServletRequest req,
+			HttpServletResponse resp, Principal principal, @PathVariable String username) {
 		try {
-			user = userService.update(user);
+			user = userService.update(user, principal.getName());
 			if (user == null) {
 				resp.setStatus(404);
 			}
@@ -76,6 +76,26 @@ public class UserController {
 			resp.setStatus(404);
 		}
 	}
+	
+//	@DeleteMapping("user/{userId}")
+//	public void disableUser(@PathVariable int userId, Principal principal, HttpServletResponse res) {
+//		boolean isDisabled = userService.disableUser(userId, principal.getName());
+//		if(isDisabled) {
+//			res.setStatus(204);
+//		}else {
+//			res.setStatus(400);
+//		}
+//	}
+//	
+//	@PutMapping("user/{userId}")
+//	public void enableUser(@PathVariable int userId, Principal principal, HttpServletResponse res) {
+//		boolean isEnabled = userService.userEnable(userId, principal.getName());
+//		if(isEnabled) {
+//			res.setStatus(200);
+//		}else {
+//			res.setStatus(400);
+//		}
+//	}
 	
 	/////////////////////////////////////////// Recipient Stuff ////////////////////////////////////////////////////
 	
