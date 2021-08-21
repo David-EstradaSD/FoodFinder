@@ -29,31 +29,31 @@ public class AddressServiceImpl implements AddressService {
 		return addressRepo.findAll();
 	}
 
-	@Override
-	public Address donorCreate(Address address, String username) {
-		Donor donor = donorRepo.findByUser_Username(username);
-		donor.setAddress(address);
-		try {
-			addressRepo.saveAndFlush(address);
-		} catch (Exception e) {
-			address = null;
-		}
-
-		return address;
-		
-	}
-	
-	@Override
-	public Address recipientCreate(Address address, String username) {
-		Recipient recipient = recipientRepo.findByUser_Username(username);
-		recipient.setAddress(address);
-		try {
-			addressRepo.saveAndFlush(address);
-		} catch (Exception e) {
-			address = null;
-		}
-		return address;
-	}
+//	@Override
+//	public Address donorCreate(Address address, String username) {
+//		Donor donor = donorRepo.findByUser_Username(username);
+//		donor.setAddress(address);
+//		try {
+//			addressRepo.saveAndFlush(address);
+//		} catch (Exception e) {
+//			address = null;
+//		}
+//
+//		return address;
+//		
+//	}
+//	
+//	@Override
+//	public Address recipientCreate(Address address, String username) {
+//		Recipient recipient = recipientRepo.findByUser_Username(username);
+//		recipient.setAddress(address);
+//		try {
+//			addressRepo.saveAndFlush(address);
+//		} catch (Exception e) {
+//			address = null;
+//		}
+//		return address;
+//	}
 
 	@Override
 	public Address donorUpdate(Address address, String username, int id) {
