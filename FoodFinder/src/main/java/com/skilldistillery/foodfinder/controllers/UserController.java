@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.skilldistillery.foodfinder.entities.Recipient;
 import com.skilldistillery.foodfinder.entities.User;
+import com.skilldistillery.foodfinder.repositories.UserRepository;
 import com.skilldistillery.foodfinder.services.RecipientService;
 import com.skilldistillery.foodfinder.services.UserService;
 
@@ -33,7 +33,8 @@ public class UserController {
 	@Autowired
 	private RecipientService recService;
 	
-	
+	@Autowired
+	private UserRepository userRepo;
 
 	@GetMapping("users/{username}")
 	public User getUserByUsername(@PathVariable String username, HttpServletResponse res) {
@@ -41,14 +42,11 @@ public class UserController {
 		return user;
 	}
 
-//	 GET
 	@GetMapping("users")
 	public List<User> index(HttpServletRequest req, HttpServletResponse res, Principal principal) {
 		List<User> users = userService.index();
 		return users;
 	}
-	
-
 	
 	@PutMapping("users/{username}")
 	public User update(@RequestBody User user, HttpServletRequest req,
@@ -77,25 +75,29 @@ public class UserController {
 		}
 	}
 	
-//	@DeleteMapping("user/{userId}")
-//	public void disableUser(@PathVariable int userId, Principal principal, HttpServletResponse res) {
-//		boolean isDisabled = userService.disableUser(userId, principal.getName());
-//		if(isDisabled) {
-//			res.setStatus(204);
-//		}else {
-//			res.setStatus(400);
-//		}
-//	}
-//	
-//	@PutMapping("user/{userId}")
-//	public void enableUser(@PathVariable int userId, Principal principal, HttpServletResponse res) {
-//		boolean isEnabled = userService.userEnable(userId, principal.getName());
-//		if(isEnabled) {
-//			res.setStatus(200);
-//		}else {
-//			res.setStatus(400);
-//		}
-//	}
+	@PutMapping("users/disable/{username}")
+	public User disableUser(@PathVariable String username, Principal principal, HttpServletResponse res) {
+		User user = userRepo.findByUsername(username);
+		user = userService.disableUser(user, principal.getName());
+		if(user != null) {
+			res.setStatus(200);
+		} else {
+			res.setStatus(400);
+		}
+		return user;
+	}
+	
+	@PutMapping("users/enable/{username}")
+	public User enableUser(@PathVariable String username, Principal principal, HttpServletResponse res) {
+		User user = userRepo.findByUsername(username);
+		user = userService.enableUser(user, principal.getName());
+		if(user != null) {
+			res.setStatus(200);
+		}else {
+			res.setStatus(400);
+		}
+		return user;
+	}
 	
 	/////////////////////////////////////////// Recipient Stuff ////////////////////////////////////////////////////
 	
@@ -109,7 +111,7 @@ public class UserController {
 		return recService.show(rid);
 	}
 	
-//	@PostMapping("users/recipients")
+//	@PostMapping("users/recipients") // maybe we need to create a recipient after 
 //	public Recipient addRecipient(@RequestBody Recipient recipient, HttpServletRequest req, HttpServletResponse resp) {
 //		Recipient newRecipient = new Recipient();
 //

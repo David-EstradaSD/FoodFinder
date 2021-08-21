@@ -3,8 +3,6 @@ package com.skilldistillery.foodfinder.services;
 import java.util.List;
 
 import com.skilldistillery.foodfinder.entities.Rating;
-import com.skilldistillery.foodfinder.entities.Recipient;
-import com.skilldistillery.foodfinder.entities.ServiceLocation;
 
 public interface RatingService {
 

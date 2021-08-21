@@ -1,7 +1,6 @@
 package com.skilldistillery.foodfinder.services;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -51,6 +50,22 @@ public class UserServiceImpl implements UserService {
 		}
 		return deleted;	
 		}
+
+	@Override
+	public User disableUser(User user, String username) {
+		User dbUser = userRepo.findByUsername(username);
+		dbUser = user;
+		dbUser.setEnabled(false);
+		return userRepo.saveAndFlush(dbUser);
+	}
+
+	@Override
+	public User enableUser(User user, String username) {
+		User dbUser = userRepo.findByUsername(username);
+		dbUser = user;
+		dbUser.setEnabled(true);
+		return userRepo.saveAndFlush(dbUser);
+	}
 	
 	
 }

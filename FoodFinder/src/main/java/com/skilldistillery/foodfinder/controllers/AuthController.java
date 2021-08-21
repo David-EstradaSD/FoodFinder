@@ -73,13 +73,13 @@ public class AuthController {
 			Recipient recipient = new Recipient();
 			recipient.setUser(user);
 			recipient.setAddress(addressService.create(address));
-			recipService.create(recipient);
+			recipService.create(recipient); // Create a Recipient 
 		}
 	    if (user.getRole().equals("donor")) {
 	    	Donor donor = new Donor();
 	    	donor.setUser(user);
 	    	donor.setAddress(addressService.create(address));
-	    	donorService.create(donor, user.getUsername());
+	    	donorService.create(donor, user.getUsername()); // Create a Donor 
 	    }
 	    return user;
 	}
