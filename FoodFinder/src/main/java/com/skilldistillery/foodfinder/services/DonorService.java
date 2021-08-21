@@ -12,6 +12,8 @@ public interface DonorService {
 	
 	public Donor create(Donor donor, String username);
 	
+	public Donor create(Donor donor);
+	
 	public Donor update(Donor donor, int donorId, String username);
 	
 	public boolean destroy(int id, String username);

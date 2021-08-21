@@ -51,11 +51,15 @@ public class DonorServiceImpl implements DonorService {
 	@Override
 	public Donor update(Donor donor, int donorId, String username) {
 		Donor managed = donorRepo.findByIdAndUser_Username(donorId, username);
+//		donor.setAddress(managed.getAddress());
+//		donor.setUser(managed.getUser());
 		if (managed != null) {
-			managed.setAddress(donor.getAddress());
-			managed.setUser(donor.getUser());
-			managed.setCategory(donor.getCategory());
-			managed.setServiceLocations(donor.getServiceLocations());
+//			managed.setAddress(donor.getAddress());
+//			managed.setUser(donor.getUser());
+//			managed.setCategory(donor.getCategory());
+//			managed.setServiceLocations(donor.getServiceLocations());
+			managed = donor;
+			donorRepo.saveAndFlush(managed);
 		}
 		return managed;
 	}
@@ -77,6 +81,11 @@ public class DonorServiceImpl implements DonorService {
 //			isDeleted = true;
 //		}
 		return isDeleted;
+	}
+
+	@Override
+	public Donor create(Donor donor) {
+		return donorRepo.saveAndFlush(donor);
 	}
 
 }

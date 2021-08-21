@@ -19,7 +19,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.skilldistillery.foodfinder.entities.Service;
 import com.skilldistillery.foodfinder.entities.ServiceLocation;
+import com.skilldistillery.foodfinder.entities.User;
 import com.skilldistillery.foodfinder.repositories.ServiceLocationRepository;
+import com.skilldistillery.foodfinder.repositories.UserRepository;
 import com.skilldistillery.foodfinder.services.ServiceLocationService;
 import com.skilldistillery.foodfinder.services.ServiceService;
 
@@ -36,6 +38,9 @@ public class ServiceLocationController {
 
 	@Autowired
 	private ServiceLocationRepository locationRepo;
+	
+	@Autowired
+	private UserRepository userRepo;
 
 	@GetMapping("service-locations")
 	public List<ServiceLocation> index(HttpServletRequest req, HttpServletResponse res) {
@@ -97,6 +102,9 @@ public class ServiceLocationController {
 			res.setStatus(400);
 		}
 	}
+	
+/////////////////////////////////////////// Services Stuff ////////////////////////////////////////////////////
+
 
 	@GetMapping("services")
 	public List<Service> svcIndex(HttpServletRequest req, HttpServletResponse res) {
@@ -104,21 +112,26 @@ public class ServiceLocationController {
 	}
 
 	@PostMapping("services")
-	public Service create(HttpServletRequest req, HttpServletResponse res, @RequestBody Service service,
-			Principal principal) {
-		service = serviceSvc.create(service);
-		try {
-			if (service == null) {
-				res.setStatus(404);
-			} else {
-				res.setStatus(201); // Created
-				StringBuffer url = req.getRequestURL();
-				url.append("/").append(service.getId());
-				res.setHeader("Location", url.toString());
+	public Service create(HttpServletRequest req, HttpServletResponse res, @RequestBody Service service, Principal principal) {
+		User user = userRepo.findByUsername(principal.getName());
+		
+		if (user.getRole().equals("admin")) {
+			service = serviceSvc.create(service);
+			try {
+				if (service == null) {
+					res.setStatus(404);
+				} else {
+					res.setStatus(201); // Created
+					StringBuffer url = req.getRequestURL();
+					url.append("/").append(service.getId());
+					res.setHeader("Location", url.toString());
+				}
+			} catch (Exception e) {
+				res.setStatus(400); // Bad Request
+				service = null;
 			}
-		} catch (Exception e) {
-			res.setStatus(400); // Bad Request
-			service = null;
+		} else {
+			res.setStatus(401); // Unauthorized
 		}
 		return service;
 	}
@@ -141,22 +154,32 @@ public class ServiceLocationController {
 	}
 
 	@PutMapping("services")
-	public Service updateService(@RequestBody Service service, HttpServletResponse resp, HttpServletRequest req) {
-		try {
-			service = serviceSvc.update(service);
-			if (service == null) {
-				resp.setStatus(404);
+	public Service updateService(@RequestBody Service service, 
+			HttpServletResponse resp, HttpServletRequest req, Principal principal) {
+		User user = userRepo.findByUsername(principal.getName());
+
+		if (user.getRole().equals("admin")) {
+			try {
+				service = serviceSvc.update(service);
+				if (service == null) {
+					resp.setStatus(404);
+				}
+			} catch (Exception e) {
+				resp.setStatus(400);
+				service = null;
+				e.printStackTrace();
 			}
-		} catch (Exception e) {
-			resp.setStatus(400);
-			service = null;
-			e.printStackTrace();
+		} else {
+			resp.setStatus(401);
 		}
 		return service;
 	}
 
 	@DeleteMapping("services/{sid}")
-	public void delete(@PathVariable int sid, HttpServletResponse resp) {
+	public void delete(@PathVariable int sid, HttpServletResponse resp, Principal principal) {
+		User user = userRepo.findByUsername(principal.getName());
+		if (user.getRole().equals("admin")) {
 		serviceSvc.destroy(sid);
+		}
 	}
 }
