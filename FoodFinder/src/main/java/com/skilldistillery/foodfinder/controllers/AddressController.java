@@ -63,10 +63,10 @@ public class AddressController {
 		return address;
 	}
 	
-	@PutMapping("address/donor/{id}")
-	public Address update(@RequestBody Address address, Principal principal, HttpServletRequest req, HttpServletResponse resp) {
+	@PutMapping("address/donor/{addressId}")
+	public Address donorUpdate(@RequestBody Address address, Principal principal, HttpServletRequest req, HttpServletResponse resp, @PathVariable int addressId) {
 		try {
-			address = addressService.update();
+			address = addressService.donorUpdate(address, principal.getName(), addressId);
 			if (address == null) {
 				resp.setStatus(404);
 			}
@@ -79,11 +79,47 @@ public class AddressController {
 		return address;
 	}
 	
-//	@DeleteMapping("address/{id}")
-//	public String deleteAddress(@PathVariable Integer id, Principal principal, HttpServletResponse res) {
+	@PutMapping("address/recipient/{addressId}")
+	public Address recipientUpdate(@RequestBody Address address, Principal principal, HttpServletRequest req, HttpServletResponse resp, @PathVariable int addressId) {
+		try {
+			address = addressService.recipientUpdate(address, principal.getName(), addressId);
+			if (address == null) {
+				resp.setStatus(404);
+			}
+			
+		} catch (Exception e) {
+			resp.setStatus(400);
+			address = null;
+			e.printStackTrace();
+		}
+		return address;
+	}
+	
+//	@DeleteMapping("address/donor/{addressId}")
+//	public String deleteDonorAddress(@PathVariable int addressId, Principal principal, HttpServletResponse res) {
 //		
 //		try {
-//			boolean deleted = addressService.delete(id);
+//			boolean deleted = addressService.donorDelete(principal.getName(), addressId);
+//			if (deleted) {
+//				res.setStatus(204);
+//				return "Deleted";
+//				
+//			} else {
+//				res.setStatus(404);
+//				return "Not Found";
+//			}
+//			
+//		} catch (Exception e) {
+//			res.setStatus(400);
+//			return "Failed to delete";
+//		}
+//	}	
+//	
+//	@DeleteMapping("address/recipient/{addressId}")
+//	public String deleteRecipientAddress(@PathVariable int addressId, Principal principal, HttpServletResponse res) {
+//		
+//		try {
+//			boolean deleted = addressService.recipientDelete(principal.getName(), addressId);
 //			if (deleted) {
 //				res.setStatus(204);
 //				return "Deleted";

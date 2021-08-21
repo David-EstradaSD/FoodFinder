@@ -12,5 +12,14 @@ public interface AddressService {
 	
 	public Address recipientCreate(Address address, String username); 
 	
-	public Address update(); 
+	public Address create(Address address); 
+	
+	public Address donorUpdate(Address address, String username, int addressId); 
+	
+	public Address recipientUpdate(Address address, String username, int addressId);
+	
+//	public boolean recipientDelete(String username, int addressId);
+//
+//	public boolean donorDelete(String username, int addressId);
+	
 }

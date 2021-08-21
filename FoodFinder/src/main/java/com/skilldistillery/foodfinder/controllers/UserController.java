@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,11 +32,6 @@ public class UserController {
 
 	@Autowired
 	private RecipientService recService;
-<<<<<<< HEAD
-=======
-	
-	
->>>>>>> 293c7ca794f84966cbecd061cc94785129158ba8
 
 	@GetMapping("users/{username}")
 	public User getUserByUsername(@PathVariable String username, HttpServletResponse res) {
@@ -49,13 +45,7 @@ public class UserController {
 		List<User> users = userService.index();
 		return users;
 	}
-<<<<<<< HEAD
 
-=======
-	
-
-	
->>>>>>> 293c7ca794f84966cbecd061cc94785129158ba8
 	@PutMapping("users")
 	public User update(@RequestBody User user, HttpServletRequest req, HttpServletResponse resp) {
 //		System.out.println("made it in update");
@@ -82,7 +72,10 @@ public class UserController {
 			resp.setStatus(404);
 		}
 	}
-	
+
+	/////////////////////////////////////////// Recipient Stuff
+	/////////////////////////////////////////// ////////////////////////////////////////////////////
+
 	@GetMapping("users/recipients")
 	public List<Recipient> listRecipients() {
 		return recService.index();
@@ -92,19 +85,16 @@ public class UserController {
 	public Recipient getRecipient(@PathVariable int rid) {
 		return recService.show(rid);
 	}
-	
+
 	@PostMapping("users/recipients")
 	public Recipient addRecipient(@RequestBody Recipient recipient, HttpServletRequest req, HttpServletResponse resp) {
 		Recipient newRecipient = new Recipient();
-
-<<<<<<< HEAD
 //	@GetMapping("users/{username}/recipient")
 //	public Recipient getUserByUsername(@PathVariable String username, HttpServletResponse res) {
 //		Recipient recipient = recService
 //		return user;
 //	}
 
-=======
 		try {
 			newRecipient = recService.create(recipient);
 			resp.setStatus(201);
@@ -117,7 +107,23 @@ public class UserController {
 		}
 		return newRecipient;
 	}
-	
+//	@PostMapping("users/recipients")
+//	public Recipient addRecipient(@RequestBody Recipient recipient, HttpServletRequest req, HttpServletResponse resp) {
+//		Recipient newRecipient = new Recipient();
+//
+//		try {
+//			newRecipient = recService.create(recipient);
+//			resp.setStatus(201);
+//			StringBuffer url = req.getRequestURL();
+//			url.append("/").append(newRecipient.getId());
+//			resp.setHeader("Location", url.toString());
+//		} catch (Exception e) {
+//			resp.setStatus(400);
+//			e.printStackTrace();
+//		}
+//		return newRecipient;
+//	}
+
 	@PutMapping("users/recipients")
 	public Recipient update(@RequestBody Recipient recipient, HttpServletRequest req, HttpServletResponse resp) {
 		try {
@@ -132,10 +138,9 @@ public class UserController {
 		}
 		return recipient;
 	}
-	
+
 	@DeleteMapping("users/recipients/{rid}")
 	public void delete(@PathVariable Integer rid, HttpServletResponse resp) {
 		recService.destroy(rid);
 	}
->>>>>>> 293c7ca794f84966cbecd061cc94785129158ba8
 }
