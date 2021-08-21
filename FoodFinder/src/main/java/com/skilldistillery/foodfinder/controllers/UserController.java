@@ -77,6 +77,8 @@ public class UserController {
 		}
 	}
 	
+	/////////////////////////////////////////// Recipient Stuff ////////////////////////////////////////////////////
+	
 	@GetMapping("users/recipients")
 	public List<Recipient> listRecipients() {
 		return recService.index();
@@ -87,22 +89,22 @@ public class UserController {
 		return recService.show(rid);
 	}
 	
-	@PostMapping("users/recipients")
-	public Recipient addRecipient(@RequestBody Recipient recipient, HttpServletRequest req, HttpServletResponse resp) {
-		Recipient newRecipient = new Recipient();
-
-		try {
-			newRecipient = recService.create(recipient);
-			resp.setStatus(201);
-			StringBuffer url = req.getRequestURL();
-			url.append("/").append(newRecipient.getId());
-			resp.setHeader("Location", url.toString());
-		} catch (Exception e) {
-			resp.setStatus(400);
-			e.printStackTrace();
-		}
-		return newRecipient;
-	}
+//	@PostMapping("users/recipients")
+//	public Recipient addRecipient(@RequestBody Recipient recipient, HttpServletRequest req, HttpServletResponse resp) {
+//		Recipient newRecipient = new Recipient();
+//
+//		try {
+//			newRecipient = recService.create(recipient);
+//			resp.setStatus(201);
+//			StringBuffer url = req.getRequestURL();
+//			url.append("/").append(newRecipient.getId());
+//			resp.setHeader("Location", url.toString());
+//		} catch (Exception e) {
+//			resp.setStatus(400);
+//			e.printStackTrace();
+//		}
+//		return newRecipient;
+//	}
 	
 	@PutMapping("users/recipients")
 	public Recipient update(@RequestBody Recipient recipient, HttpServletRequest req, HttpServletResponse resp) {

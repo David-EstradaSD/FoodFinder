@@ -82,6 +82,11 @@ public class AddressServiceImpl implements AddressService {
 		}
 		return managedAddress; 
 	}
+
+	@Override
+	public Address create(Address address) {
+		return addressRepo.saveAndFlush(address);
+	}
 	
 //	@Override
 //	public boolean donorDelete(String username, int addressId) {
