@@ -79,4 +79,9 @@ public class DonorServiceImpl implements DonorService {
 		return isDeleted;
 	}
 
+	@Override
+	public Donor create(Donor donor) {
+		return donorRepo.saveAndFlush(donor);
+	}
+
 }

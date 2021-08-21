@@ -34,8 +34,8 @@ public class AuthController {
 	@Autowired
 	DonorService donorService;
 	
-	@PostMapping("register")
-	public User register(@RequestBody Map<String, Map> json, HttpServletResponse res, Principal principal) {
+	@PostMapping("register") // add role path variable
+	public User register(@RequestBody Map<String, Map> json, HttpServletResponse res) {
 		User user = new User();
 		Address address = new Address();	
 		Map<String, String> addressMap = json.get("address");
@@ -62,8 +62,6 @@ public class AuthController {
 		address.setState(state);
 		address.setZip(zip);
 		
-		
-		
 			if (user.equals(null)) {
 			    res.setStatus(400);
 			    System.out.println("In null error");
@@ -77,12 +75,12 @@ public class AuthController {
 			recipient.setAddress(addressService.create(address));
 			recipService.create(recipient);
 		}
-//	    if (user.getRole().equals("donor")) {
-//	    	Donor donor = new Donor();
-//	    	donor.setUser(user);
-//	    	donor.setAddress(addressService.create(address));
-//	    	donorService.create(donor);
-//	    }
+	    if (user.getRole().equals("donor")) {
+	    	Donor donor = new Donor();
+	    	donor.setUser(user);
+	    	donor.setAddress(addressService.create(address));
+	    	donorService.create(donor, user.getUsername());
+	    }
 	    return user;
 	}
 
