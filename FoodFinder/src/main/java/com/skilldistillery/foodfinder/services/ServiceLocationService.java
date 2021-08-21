@@ -6,9 +6,9 @@ import com.skilldistillery.foodfinder.entities.ServiceLocation;
 
 public interface ServiceLocationService {
 	
-	public List<ServiceLocation> index();
+	public List<ServiceLocation> index(); // for general public
 	
-	public List<ServiceLocation> index(String username);
+	public List<ServiceLocation> index(String username); // for a User logged in
 	
 	public ServiceLocation showDetails(String username, int slId);
 	
