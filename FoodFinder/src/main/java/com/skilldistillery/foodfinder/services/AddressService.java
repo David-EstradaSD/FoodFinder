@@ -11,6 +11,9 @@ public interface AddressService {
 	public Address donorCreate(Address address, String username); 
 	
 	public Address recipientCreate(Address address, String username); 
+	public Address create(Address address); 
+	
+	
 	
 	public Address donorUpdate(Address address, String username, int addressId); 
 	
