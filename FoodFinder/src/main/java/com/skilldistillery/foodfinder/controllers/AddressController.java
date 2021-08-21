@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,7 +18,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.skilldistillery.foodfinder.entities.Address;
+import com.skilldistillery.foodfinder.repositories.DonorRepository;
+import com.skilldistillery.foodfinder.repositories.UserRepository;
 import com.skilldistillery.foodfinder.services.AddressService;
+import com.skilldistillery.foodfinder.services.DonorService;
 
 @RestController
 @RequestMapping("api")
@@ -26,6 +30,15 @@ public class AddressController {
 	
 	@Autowired
 	private AddressService addressService;
+	
+	@Autowired
+	private DonorService donorService;
+	
+	@Autowired
+	private UserRepository userRepo;
+
+	@Autowired
+	private DonorRepository donorRepo;
 	
 	@GetMapping("addresses")
 	public List<Address> getAddressList(HttpServletResponse res) {
@@ -97,9 +110,12 @@ public class AddressController {
 	
 //	@DeleteMapping("address/donor/{addressId}")
 //	public String deleteDonorAddress(@PathVariable int addressId, Principal principal, HttpServletResponse res) {
+////		User user = userRepo.findByUsername(principal.getName());
+////		Donor donor = donorRepo.findByUser_Username(user.getUsername());
+////		donorService.destroy(donor.getId(), principal.getName());
 //		
 //		try {
-//			boolean deleted = addressService.donorDelete(principal.getName(), addressId);
+//			boolean deleted = addressService.deleteByAddressId(addressId);
 //			if (deleted) {
 //				res.setStatus(204);
 //				return "Deleted";

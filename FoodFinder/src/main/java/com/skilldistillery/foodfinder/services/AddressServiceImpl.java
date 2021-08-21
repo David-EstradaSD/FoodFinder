@@ -116,6 +116,20 @@ public class AddressServiceImpl implements AddressService {
 //		}
 //		return deleted;	
 //		}
+//
+//	@Override
+//	public boolean deleteByAddressId(int addressId) {
+//		boolean deleted = false;
+//		Address address = addressRepo.queryById(addressId); 
+//		
+//		if (address != null) {
+//			addressRepo.delete(address);
+//			deleted = true;
+//		}
+//		return deleted;
+//	}
+	
+	
 	
 	
 }

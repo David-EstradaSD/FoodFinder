@@ -22,4 +22,6 @@ public interface AddressService {
 //
 //	public boolean donorDelete(String username, int addressId);
 	
+//	public boolean deleteByAddressId(int addressId); 
+	
 }
