@@ -11,6 +11,8 @@ public interface DonorRepository extends JpaRepository<Donor, Integer> {
 	Donor findByUser_Username(String username);
 	
 	List<Donor> findByCategory(String category);
+	
+	Donor findByIdAndUser_Username(int donorId, String username);
 
 
 }
