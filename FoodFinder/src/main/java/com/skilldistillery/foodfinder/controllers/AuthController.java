@@ -25,37 +25,27 @@ public class AuthController {
 	@Autowired
 	private AuthService authService;
 	@Autowired
-	RecipientService recipServ;
+	RecipientService recipService;
 	@Autowired
-	AddressService addyServ;
+	AddressService addressService;
 	
 	@PostMapping("register")
-	public User register(@RequestBody User user, @RequestBody Address address, HttpServletResponse res) {
+	public User register(@RequestBody User user, HttpServletResponse res, Principal principal) {
 		
-		
-	    try {
-			if (user == null || address == null) {
+			if (user == null) {
 			    res.setStatus(400);
 			    System.out.println("In null error");
 			}
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	    
 	    user = authService.register(user);
 	    
 	    if (user.getRole().equals("recipient")) {
 			Recipient recipient = new Recipient();
-			
 			recipient.setUser(user);
-			address = addyServ.create(address);
-			recipient.setAddress(address);
-			recipServ.create(recipient);
-
+			Address address = new Address();
+			recipient.setAddress(addressService.create(address));
+			recipService.create(recipient);
 		}
-
-
 	    return user;
 	}
 
