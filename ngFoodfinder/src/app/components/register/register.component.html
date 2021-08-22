@@ -4,6 +4,8 @@
 <form>
   Username:<input type="text" name="username" placeholder="username" [(ngModel)]="newUser.username"><br>
   Password:<input type="password" name="password" placeholder="password" [(ngModel)]="newUser.password"><br>
+  First name:<input type="text" name="first name" placeholder="First name" [(ngModel)]="newUser.firstName"><br>
+  Last name:<input type="text" name="last name" placeholder="Last name" [(ngModel)]="newUser.lastName"><br>
   Email:<input type="email" name="user email" placeholder="email@example.com" [(ngModel)]="newUser.email">
   <input type="button" name="registration button" value="Register" (click)="register(newUser)">
 </form>
