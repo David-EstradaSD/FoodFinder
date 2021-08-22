@@ -72,10 +72,10 @@ public class CommentServiceImpl implements CommentService {
 		}
 	}
 
-	@Override
-	public Comment update(String username, Comment comment, int locationId, int commentId) {                  // delete me after making list of comments and iterating through it (above)
-		// TODO Auto-generated method stub
-		return null;
-	}	
+//	@Override
+//	public Comment update(String username, Comment comment, int locationId, int commentId) {                  // delete me after making list of comments and iterating through it (above)
+//		// TODO Auto-generated method stub
+//		return null;
+//	}	
 }
 	

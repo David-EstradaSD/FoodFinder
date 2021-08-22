@@ -161,18 +161,4 @@ public class ServiceLocationController {
 		}
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }

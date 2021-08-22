@@ -39,6 +39,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .antMatchers(HttpMethod.POST, "/api/service-locations").hasRole("donor")
         .antMatchers(HttpMethod.POST, "/api/services").hasRole("admin")
         .antMatchers(HttpMethod.GET, "/api/donors/{category}").permitAll()
+        .antMatchers(HttpMethod.GET, "/api/comments/{locationName}").permitAll()
         .antMatchers("/api/**").authenticated() // Requests for our REST API must be authorized.
         .anyRequest().permitAll()               // All other requests are allowed without authorization.
         .and()
