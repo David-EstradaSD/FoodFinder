@@ -1,1 +1,21 @@
-<p>food-finder works!</p>
+<h1>All our service locations</h1>
+
+<div >
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Hours</th>
+        <th>Address</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let servLoc of serviceLocations" >
+        <td>{{ servLoc.locationName }}</td>
+        <td>{{ servLoc.hours }}</td>
+        <td>{{ servLoc.address }}</td>
+
+      </tr>
+    </tbody>
+  </table>
+</div>
