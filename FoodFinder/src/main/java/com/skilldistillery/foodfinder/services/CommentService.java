@@ -10,7 +10,7 @@ public interface CommentService {
 
 	public Comment create(String username, Comment comment, int locationId);
 	
-	public Comment update(String username, Comment comment, int locationId, int commentId);
+//	public Comment update(String username, Comment comment, int locationId, int commentId);
 	
 	public boolean delete(String username, int commentId);
 
