@@ -1,11 +1,21 @@
-<h3>REGISTER</h3>
+<h3>REGISTER Recipient</h3>
 
-
+<!-- "streetAddress": "100 Way to Go",
+            "city": "Denver",
+            "state": "CO",
+            "zip": "12345" -->
 <form>
+  <input type="text" name="role" [(ngModel)]="newUser.role">
   Username:<input type="text" name="username" placeholder="username" [(ngModel)]="newUser.username"><br>
   Password:<input type="password" name="password" placeholder="password" [(ngModel)]="newUser.password"><br>
   First name:<input type="text" name="first name" placeholder="First name" [(ngModel)]="newUser.firstName"><br>
   Last name:<input type="text" name="last name" placeholder="Last name" [(ngModel)]="newUser.lastName"><br>
+
+  Street:<input type="text" name="street" placeholder="street" [(ngModel)]="newAddress.streetAddress"><br>
+  City:<input type="text" name="city" placeholder="city" [(ngModel)]="newAddress.city"><br>
+  State:<input type="text" name="state" placeholder="state" [(ngModel)]="newAddress.state"><br>
+  Zip:<input type="text" name="zip" placeholder="zip" [(ngModel)]="newAddress.zip"><br>
+
   Email:<input type="email" name="user email" placeholder="email@example.com" [(ngModel)]="newUser.email">
-  <input type="button" name="registration button" value="Register" (click)="register(newUser)">
+  <input type="button" name="registration button" value="Register" (click)="register(newUser, newAddress)">
 </form>
