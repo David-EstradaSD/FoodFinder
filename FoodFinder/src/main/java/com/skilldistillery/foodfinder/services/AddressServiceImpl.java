@@ -67,7 +67,7 @@ public class AddressServiceImpl implements AddressService {
 			addressRepo.saveAndFlush(managedAddress);
 		}
 		return managedAddress; 
-	}
+	} 
 	
 	@Override
 	public Address recipientUpdate(Address address, String username, int id) {
