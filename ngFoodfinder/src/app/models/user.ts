@@ -1,27 +1,47 @@
 export class User {
-  // private int id;
 
-	// @Column(name = "first_name")
-	// private String firstName;
-	// @Column(name = "last_name")
-	// private String lastName;
-	// private String username;
-	// private String password;
-	// private String email;
-	// private String phone;
-	// private String image; // this is profile picture (stretch goal)
-	// private String role;
-	// private boolean enabled; // this is for authentication
+  id: number; // Required
+  firstName: string; // Required
+  lastName: string; // Required
+  phone: string;
+  image: string;
+  enabled: boolean;
+  serviceLocation: object;
+  recipients: object[] | null;
+  donors: object[] | null;
+  email: string; // Required
+  username: string; // Required
+  password: string; // Required
+  role: string;
 
-	// @JsonIgnore
-	// @OneToMany(mappedBy = "user")
-	// private List<ServiceLocation> serviceLocation;
-	// @JsonIgnore
-	// @OneToMany(mappedBy = "user")
-	// private List<Recipient> recipients; // TODO: FIX ME - Waiting for Rob
-	// @JsonIgnore
-	// @OneToMany(mappedBy = "user")
-	// private List<Donor> donors; //
-
+  constructor(
+    id: number = 0,
+    firstName: string = '',
+    lastName: string = '',
+    phone: string = '',
+    image: string = '',
+    enabled: boolean = false,
+    serviceLocation: object = [],
+    recipients: object[] | null = [],
+    donors: object[] | null = [],
+    email: string = '',
+    username: string = '',
+    password: string = '',
+    role: string = ''
+  ) {
+    this.id = id;
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.phone = phone;
+    this.image = image;
+    this.enabled = enabled;
+    this.serviceLocation = serviceLocation;
+    this.recipients = recipients;
+    this.donors = donors;
+    this.email = email;
+    this.username = username;
+    this.password = password;
+    this.role = role;
+  }
 
 }
