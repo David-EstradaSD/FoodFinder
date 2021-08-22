@@ -15,4 +15,8 @@ public interface UserService {
     public User update(User user, String username);
 
     public boolean destroy(String username);
+    
+    public User disableUser(User user, String username);
+    
+    public User enableUser(User user, String username);
 }

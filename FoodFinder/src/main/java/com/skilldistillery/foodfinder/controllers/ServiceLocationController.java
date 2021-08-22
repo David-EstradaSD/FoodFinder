@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.skilldistillery.foodfinder.entities.Service;
 import com.skilldistillery.foodfinder.entities.ServiceLocation;
 import com.skilldistillery.foodfinder.entities.User;
-import com.skilldistillery.foodfinder.repositories.ServiceLocationRepository;
 import com.skilldistillery.foodfinder.repositories.UserRepository;
 import com.skilldistillery.foodfinder.services.ServiceLocationService;
 import com.skilldistillery.foodfinder.services.ServiceService;
@@ -37,9 +36,6 @@ public class ServiceLocationController {
 	private ServiceService serviceSvc;
 
 	@Autowired
-	private ServiceLocationRepository locationRepo;
-	
-	@Autowired
 	private UserRepository userRepo;
 
 	@GetMapping("service-locations")
@@ -49,7 +45,6 @@ public class ServiceLocationController {
 
 	@GetMapping("service-locations-user")
 	public List<ServiceLocation> userIndex(
-//			@PathVariable User username, 
 			HttpServletRequest req, HttpServletResponse res, Principal principal) {
 		return locationService.index(principal.getName());
 	}
@@ -104,7 +99,6 @@ public class ServiceLocationController {
 	}
 	
 /////////////////////////////////////////// Services Stuff ////////////////////////////////////////////////////
-
 
 	@GetMapping("services")
 	public List<Service> svcIndex(HttpServletRequest req, HttpServletResponse res) {

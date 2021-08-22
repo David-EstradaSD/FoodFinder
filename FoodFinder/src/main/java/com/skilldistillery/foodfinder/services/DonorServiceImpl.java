@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.foodfinder.entities.Donor;
-import com.skilldistillery.foodfinder.entities.Recipient;
 import com.skilldistillery.foodfinder.entities.User;
 import com.skilldistillery.foodfinder.repositories.DonorRepository;
 import com.skilldistillery.foodfinder.repositories.UserRepository;
@@ -51,15 +50,14 @@ public class DonorServiceImpl implements DonorService {
 	@Override
 	public Donor update(Donor donor, int donorId, String username) {
 		Donor managed = donorRepo.findByIdAndUser_Username(donorId, username);
-//		donor.setAddress(managed.getAddress());
-//		donor.setUser(managed.getUser());
+		System.out.println(managed);
 		if (managed != null) {
-//			managed.setAddress(donor.getAddress());
-//			managed.setUser(donor.getUser());
-//			managed.setCategory(donor.getCategory());
-//			managed.setServiceLocations(donor.getServiceLocations());
-			managed = donor;
+			managed.setAddress(donor.getAddress());
+			managed.setUser(donor.getUser());
+			managed.setCategory(donor.getCategory());
+			managed.setServiceLocations(donor.getServiceLocations());
 			donorRepo.saveAndFlush(managed);
+			System.out.println(managed);
 		}
 		return managed;
 	}

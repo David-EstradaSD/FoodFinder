@@ -32,12 +32,14 @@ public class DonorController {
 	}
 	
 	@PutMapping("donors/update/{donorId}")
-	public Donor update(HttpServletRequest req, HttpServletResponse res, @PathVariable int donorId,
+	public Donor update(HttpServletRequest req, 
+			HttpServletResponse res, @PathVariable int donorId,
 			@RequestBody Donor donor, Principal principal) {
 		try {
 			donor = donorService.update(donor, donorId, principal.getName());
 		} catch (Exception e) {
 			res.setStatus(400);
+			e.printStackTrace();
 			donor = null;
 		}
 		if (donor == null) {

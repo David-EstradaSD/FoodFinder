@@ -46,35 +46,35 @@ public class AddressController {
 		return addresses;
 	}
 	
-	@PostMapping("address/donor/{donorId}")
-	public Address donorCreate(@RequestBody Address address, Principal principal, HttpServletRequest req, HttpServletResponse resp, @PathVariable int donorId) {
-		try {
-			address = addressService.donorCreate(address, principal.getName());
-			//res.setStatus(201);
-			resp.setStatus(200);
-			return address;
-			
-		} catch (Exception e) {
-			resp.setStatus(400);
-			address = null;
-		}
-		return address;
-	}
-	
-	@PostMapping("address/recipient/{recipientId}")
-	public Address recipientCreate(@RequestBody Address address, Principal principal, HttpServletRequest req, HttpServletResponse resp, @PathVariable int recipientId) {
-		try {
-			address = addressService.recipientCreate(address, principal.getName());
-			//res.setStatus(201);
-			resp.setStatus(200);
-			return address;
-			
-		} catch (Exception e) {
-			resp.setStatus(400);
-			address = null;
-		}
-		return address;
-	}
+//	@PostMapping("address/donor/{donorId}")
+//	public Address donorCreate(@RequestBody Address address, Principal principal, HttpServletRequest req, HttpServletResponse resp, @PathVariable int donorId) {
+//		try {
+//			address = addressService.donorCreate(address, principal.getName());
+//			//res.setStatus(201);
+//			resp.setStatus(200);
+//			return address;
+//			
+//		} catch (Exception e) {
+//			resp.setStatus(400);
+//			address = null;
+//		}
+//		return address;
+//	}
+//	
+//	@PostMapping("address/recipient/{recipientId}")
+//	public Address recipientCreate(@RequestBody Address address, Principal principal, HttpServletRequest req, HttpServletResponse resp, @PathVariable int recipientId) {
+//		try {
+//			address = addressService.recipientCreate(address, principal.getName());
+//			//res.setStatus(201);
+//			resp.setStatus(200);
+//			return address;
+//			
+//		} catch (Exception e) {
+//			resp.setStatus(400);
+//			address = null;
+//		}
+//		return address;
+//	}
 	
 	@PutMapping("address/donor/{addressId}")
 	public Address donorUpdate(@RequestBody Address address, Principal principal, HttpServletRequest req, HttpServletResponse resp, @PathVariable int addressId) {
