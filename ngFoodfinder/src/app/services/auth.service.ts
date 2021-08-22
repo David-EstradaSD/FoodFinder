@@ -39,7 +39,7 @@ export class AuthService {
     );
   }
 
-  register(user: User): Observable<User> {
+  register(user: Object): Observable<User> {
     // create request to register a new account
     return this.http.post<User>(this.baseUrl + 'register', user).pipe(
       catchError((err: any) => {
