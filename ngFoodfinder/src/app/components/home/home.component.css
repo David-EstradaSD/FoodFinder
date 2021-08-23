@@ -1,0 +1,15 @@
+#account-type {
+  color: white;
+  padding: 2rem;
+  margin-top: 22em;
+margin-right: 22em;
+  align-content: center;
+  text-align: center;
+}
+
+.divider{
+  width:5px;
+  height:auto;
+  display:inline-block;
+  align-content: center;
+}
