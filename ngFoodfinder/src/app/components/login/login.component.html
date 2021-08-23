@@ -1,1 +1,7 @@
-<p>login works!</p>
+<div id="loginForm" class="offset-1">
+  <form>
+    <input type="text" name="username" placeholder="User name" [(ngModel)]="loginUser.username">
+    <input type="password" name="password" placeholder="Password" [(ngModel)]="loginUser.password">
+    <button (click)="login(loginUser)">Log In</button>
+  </form>
+</div>
