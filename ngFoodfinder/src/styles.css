@@ -6,7 +6,8 @@ html, body, app-root {
 }
 
 body {
-  background: url(https://images.unsplash.com/photo-1506672850714-d29ea47995f9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80) no-repeat center center fixed;
+  background: url(https://images.unsplash.com/photo-1494386346843-e12284507169?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80);
+  /* background: url(https://images.unsplash.com/photo-1588822534638-028d5ddc07ac?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80) no-repeat center center fixed; */
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -14,3 +15,26 @@ body {
   margin-bottom: 0;
   margin-top: 0;
 }
+
+/* extra background images
+hands out:
+https://images.unsplash.com/photo-1494386346843-e12284507169?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80
+
+unloading food truck:
+https://images.unsplash.com/photo-1593113598332-cd288d649433?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80
+
+dont take, just give purple beer sign
+https://images.unsplash.com/photo-1603827457577-609e6f42a45e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1489&q=80
+
+campbell food handout
+https://images.unsplash.com/photo-1599059813005-11265ba4b4ce?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1350&q=80
+
+bread basket:
+https://images.unsplash.com/photo-1508616185939-efe767994166?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=375&q=80
+
+cornucopia:
+https://images.unsplash.com/photo-1576021166899-06cb83611726?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1534&q=80
+
+food in bags
+https://images.unsplash.com/photo-1608686207856-001b95cf60ca?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1482&q=80
+*/
