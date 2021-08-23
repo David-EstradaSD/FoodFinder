@@ -28,7 +28,7 @@ import { NavbarFooterComponent } from './components/navbar-footer/navbar-footer.
     DonorComponent,
     RecipientComponent,
     AdminComponent,
-    NavbarFooterComponent
+    NavbarFooterComponent,
   ],
   imports: [
     BrowserModule,
