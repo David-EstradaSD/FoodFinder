@@ -129,7 +129,24 @@ public class ServiceLocationController {
 		}
 		return service;
 	}
-	
+
+	@PutMapping("services/{sid}")
+	public Service update(HttpServletRequest req, HttpServletResponse res, @PathVariable int sid,
+			@RequestBody Service service) {
+		System.out.println(service);
+		try {
+			service = serviceSvc.update(service);
+		} catch (Exception e) {
+			res.setStatus(400);
+			service = null;
+		}
+		if (service == null) {
+			res.setStatus(404);
+		}
+		System.out.println("***** AFTER TRY CATCH*****" + service);
+		return service;
+	}
+
 	@PutMapping("services")
 	public Service updateService(@RequestBody Service service, 
 			HttpServletResponse resp, HttpServletRequest req, Principal principal) {
@@ -149,10 +166,9 @@ public class ServiceLocationController {
 		} else {
 			resp.setStatus(401);
 		}
-		return service;		
+		return service;
 	}
-	
-	
+
 	@DeleteMapping("services/{sid}")
 	public void delete(@PathVariable int sid, HttpServletResponse resp, Principal principal) {
 		User user = userRepo.findByUsername(principal.getName());
@@ -160,5 +176,4 @@ public class ServiceLocationController {
 		serviceSvc.destroy(sid);
 		}
 	}
-	
 }

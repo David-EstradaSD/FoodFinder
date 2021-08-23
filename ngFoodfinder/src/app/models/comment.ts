@@ -1,5 +1,8 @@
+import { User } from "./user";
+import { ServiceLocation } from "./service-location";
+
 export class Comment {
-  id : number;
+  id: number;
   comment : string;
   privateComment : boolean;
   createDate : string | null;

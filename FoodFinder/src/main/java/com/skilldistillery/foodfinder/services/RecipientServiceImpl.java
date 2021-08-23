@@ -35,7 +35,7 @@ public class RecipientServiceImpl implements RecipientService {
 		boolean isDeleted = false;
 		Optional<Recipient> opt = recRepo.findById(id);
 		Recipient recipient = null;
-		
+
 		if (opt.isPresent()) {
 			recipient = opt.get();
 			recRepo.delete(recipient);
@@ -45,11 +45,22 @@ public class RecipientServiceImpl implements RecipientService {
 	}
 
 	@Override
+	public Recipient show(String username) {
+		return recRepo.findByUser_Username(username);
+	}
+
 	public Recipient show(int id) {
 		Optional<Recipient> opt = recRepo.findById(id);
 		Recipient recipient = null;
 		if (opt.isPresent()) {
 			recipient = opt.get();
 		}
-		return recipient;	}
+		return recipient;
+	}
+
+	@Override
+	public boolean destroy(String username) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }
