@@ -17,6 +17,7 @@ import { RecipientComponent } from './components/recipient/recipient.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { NavbarFooterComponent } from './components/navbar-footer/navbar-footer.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
