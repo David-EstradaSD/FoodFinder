@@ -1,10 +1,15 @@
 #account-type {
   color: white;
   padding: 2rem;
-  margin-top: 22em;
-margin-right: 22em;
+  margin-top: 15em;
+margin-left: 16em;
   align-content: center;
   text-align: center;
+}
+
+.account{
+  text-align: center;
+
 }
 
 .divider{
