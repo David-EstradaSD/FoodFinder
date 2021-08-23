@@ -1,0 +1,47 @@
+.content-outer-container {
+  min-height: 100%;
+}
+
+.content-inner-container {
+  padding-bottom: 36px;
+}
+
+.footer-container {
+  height: 55px;
+  margin-top: -36px;
+}
+
+.footer-content {
+  text-align:center;
+  color: white;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.footerDivBadge {
+	width: 15vw;
+	font-size: 20px;
+}
+
+.footer {
+	height: 55px;
+	background: rgba(0,0,0,.35);
+}
+
+.d-flex.footerDivBadge.justify-content-between {
+	width: 11vw;
+	font-size: 18px;
+}
+
+.footerName{
+	color:white;
+}
+
+p.footerName{
+	font-size: 1.2rem;
+}
+
+
+i.bi.bi-linkedin, i.bi.bi-github  {
+	font-size: 25px;
+}
