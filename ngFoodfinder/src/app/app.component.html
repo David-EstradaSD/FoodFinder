@@ -1,96 +1,26 @@
 <h1>Welcome to Food Finder, may I take your order?</h1>
-<div class="container-fluid">
-  <router-outlet></router-outlet>
+
+
+
+<div class="content-outer-container"> <!--we wrap our entire content inside a div
+  called content-outer-container to make a sticky footer / if we had put our other functionality
+  in other components (like we properly should have ) we would put each component in its
+  appropriate nested element here-->
+  <div class="router-container-fluid">
+    <router-outlet></router-outlet>
+  </div>
+  <!--NavBar-->
+  <div class="navbar-container">
+    <app-navbar></app-navbar>
+  </div>
+
+  <div class="content-inner-container">
+  </div>
 </div>
 
+<!-- Footer -->
 <!--NOTE: that the div for the footer is separate from the main content div's-->
-<!-- INSIDE THIS DIV HERE IS WHERE WE ARE GOING TO ADD OUR FOOTER STUFF LIKE LINKS-->
-
-<!-- Footer -->
-<div class="footer-container">
-<footer class="page-footer font-small blue pt-4 fixed-bottom">
-
-  <!-- Footer Links -->
-  <div class="container-fluid text-center text-md-left">
-
-    <!-- Grid row -->
-    <div class="row">
-
-      <!-- Grid column -->
-      <div class="col-md-6 mt-md-0 mt-3 map">
-
-        <!-- Content -->
-        <h5 class="text-uppercase">Find Locations Near You!</h5>
-        <p>LET'S PUT OUR MAP HERE</p>
-
-      </div>
-      <!-- Grid column -->
-      <hr class="clearfix w-100 d-md-none pb-3">
-
-      <!-- Grid column -->
-      <div class="col-md-3 mb-md-0 mb-3 creators">
-
-          <!-- Links -->
-          <h5 class="text-uppercase">Creators</h5>
-
-          <ul class="list-unstyled">
-            <li>
-              David Estrada <a class="" href="https://www.linkedin.com/in/david-a-estrada/" target="_blank"><i class="bi bi-linkedin"></i></a>
-              <a class="badge badge-light" href="https://github.com/David-EstradaSD" target="_blank"><i class="bi bi-github"></i></a>
-            </li>
-            <li>
-              Shaun Reass <a class="" href="https://www.linkedin.com/in/shaun-reass-ab544276/" target="_blank"><i class="bi bi-linkedin"></i></a>
-              <a class="badge badge-light" href="https://github.com/ShaunReass2" target="_blank"><i class="bi bi-github"></i></a>
-            </li>
-            <li>
-              Mick LaGassey <a class="" href="https://www.linkedin.com/in/michael-lagassey/" target="_blank"><i class="bi bi-linkedin"></i></a>
-              <a class="badge badge-light" href="https://github.com/mklagassey" target="_blank"><i class="bi bi-github"></i></a>
-            </li>
-            <li>
-              Brian Ramirez <a class="" href="https://www.linkedin.com/in/gbramirez/" target="_blank"><i class="bi bi-linkedin"></i></a>
-              <a class="badge badge-light" href="https://github.com/gbramirez" target="_blank"><i class="bi bi-github"></i></a>
-            </li>
-          </ul>
-
-        </div>
-        <!-- Grid column -->
-
-        <!-- Grid column -->
-        <div class="col-md-3 mb-md-0 mb-3 resources">
-
-          <!-- Links -->
-          <h5 class="text-uppercase">Resources</h5>
-
-          <ul class="list-unstyled">
-            <li>
-              <a href="#!">Newsletter</a>
-            </li>
-            <li>
-              <a href="#!">Community Partners(SL LIST)</a>
-            </li>
-            <li>
-              <a href="#!">Collaborate</a>
-            </li>
-            <li>
-              <a href="#!">Contact Us</a>
-            </li>
-          </ul>
-
-        </div>
-        <!-- Grid column -->
-
-    </div>
-    <!-- Grid row -->
-
+  <div class="footer-container">
+    <app-footer></app-footer>
   </div>
-  <!-- Footer Links -->
 
-  <!-- Copyright -->
-  <div class="footer-copyright text-center py-3">© 2021 Copyright:
-    <a href="https://skilldistillery.com/">skilldistillery.com</a>
-  </div>
-  <!-- Copyright -->
-</footer>
-<!-- Footer -->
-
-</div>
