@@ -30,8 +30,8 @@ public class ServiceLocationServiceImpl implements ServiceLocationService {
 	}
 	
 	@Override
-	public ServiceLocation showDetails(String username, int slId) {
-		return locationRepo.findByIdAndUser_Username(slId, username);
+	public ServiceLocation showDetails(int slId) {
+		return locationRepo.queryById(slId);
 	}
 
 	@Override

@@ -10,7 +10,7 @@ public interface ServiceLocationService {
 	
 	public List<ServiceLocation> index(String username); // for a User logged in
 	
-	public ServiceLocation showDetails(String username, int slId);
+	public ServiceLocation showDetails(int slId);
 	
 	public ServiceLocation create(String username, ServiceLocation location);
 	

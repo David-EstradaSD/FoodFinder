@@ -43,6 +43,11 @@ public class ServiceLocationController {
 		return locationService.index();
 	}
 
+	@GetMapping("service-locations/{slId}")
+	public ServiceLocation detail(HttpServletRequest req, HttpServletResponse res, @PathVariable int slId) {
+		return locationService.showDetails(slId);
+	}
+
 	@GetMapping("service-locations-user")
 	public List<ServiceLocation> userIndex(
 			HttpServletRequest req, HttpServletResponse res, Principal principal) {
@@ -59,11 +64,11 @@ public class ServiceLocationController {
 			} else {
 				res.setStatus(201); // Created
 				StringBuffer url = req.getRequestURL();
-				url.append("/").append(location.getId());
+				url.append("/").append(location.getId());             
 				res.setHeader("Location", url.toString());
 			}
 		} catch (Exception e) {
-			res.setStatus(400); // Bad Request
+			res.setStatus(400); // Bad Request                                     
 			location = null;
 		}
 		return location;
