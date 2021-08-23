@@ -12,6 +12,11 @@ import { FoodFinderComponent } from './components/food-finder/food-finder.compon
 import { HttpClientModule} from '@angular/common/http';
 import { DatePipe } from '@angular/common';
 import { AuthService } from './services/auth.service';
+import { DonorComponent } from './components/donor/donor.component';
+import { RecipientComponent } from './components/recipient/recipient.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { NavbarFooterComponent } from './components/navbar-footer/navbar-footer.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +25,12 @@ import { AuthService } from './services/auth.service';
     LoginComponent,
     LogoutComponent,
     RegisterComponent,
-    FoodFinderComponent
+    FoodFinderComponent,
+    DonorComponent,
+    RecipientComponent,
+    AdminComponent,
+    NavbarComponent,
+    NavbarFooterComponent
   ],
   imports: [
     BrowserModule,
