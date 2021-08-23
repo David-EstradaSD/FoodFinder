@@ -15,7 +15,6 @@ import { AuthService } from './services/auth.service';
 import { DonorComponent } from './components/donor/donor.component';
 import { RecipientComponent } from './components/recipient/recipient.component';
 import { AdminComponent } from './components/admin/admin.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
 import { NavbarFooterComponent } from './components/navbar-footer/navbar-footer.component';
 
 @NgModule({
@@ -29,7 +28,6 @@ import { NavbarFooterComponent } from './components/navbar-footer/navbar-footer.
     DonorComponent,
     RecipientComponent,
     AdminComponent,
-    NavbarComponent,
     NavbarFooterComponent
   ],
   imports: [
