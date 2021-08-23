@@ -24,6 +24,19 @@ body {
   background-color: #000;
 }
 
+#account-type {
+  color: white;
+  margin-bottom: 30rem;
+  margin-right: 48rem;
+  padding: 2rem;
+}
+
+.divider{
+  width:5px;
+  height:auto;
+  display:inline-block;
+}
+
 
 /* extra background images
 hands out:
