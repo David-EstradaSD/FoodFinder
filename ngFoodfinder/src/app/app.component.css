@@ -1,4 +1,4 @@
-.content-outer-container {
+/* .content-outer-container {
   min-height: 100%;
 }
 
@@ -22,9 +22,16 @@
 	width: 15vw;
 	font-size: 20px;
 }
+*/
 
-.footer {
-	height: 55px;
+.map {
+  background: rgba(2, 136, 170, 0.35);
+}
+
+.resources {
+	background: rgba(2, 136, 170, 0.35);
+}
+.creators {
 	background: rgba(0,0,0,.35);
 }
 
@@ -33,15 +40,6 @@
 	font-size: 18px;
 }
 
-.footerName{
-	color:white;
-}
-
-p.footerName{
-	font-size: 1.2rem;
-}
-
-
 i.bi.bi-linkedin, i.bi.bi-github  {
-	font-size: 25px;
+	font-size: 20px;
 }
