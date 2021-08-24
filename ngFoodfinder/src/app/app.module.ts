@@ -19,7 +19,11 @@ import { AdminComponent } from './components/admin/admin.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 import { NewsletterComponent } from './components/newsletter/newsletter.component';
+
+import { MissionComponent } from './components/mission/mission.component';
+import { AboutComponent } from './components/about/about.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +39,9 @@ import { NewsletterComponent } from './components/newsletter/newsletter.componen
     NavbarComponent,
     FooterComponent,
     NewsletterComponent,
+    MissionComponent,
+    AboutComponent,
+
   ],
   imports: [
     BrowserModule,
