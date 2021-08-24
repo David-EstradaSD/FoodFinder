@@ -1,0 +1,39 @@
+#newsletter-type {
+  color: white;
+  align-content: center;
+  text-align: center;
+}
+
+#newsletter-text {
+  font-size: x-large;
+  text-align: center;
+}
+
+.divider {
+  width:5px;
+  height:auto;
+  display:inline-block;
+  align-content: center;
+}
+
+.newsletter img {
+  width: 100%;
+  height: 781px;
+  object-position: center;
+  object-fit: cover;
+}
+
+.newslettercontent {
+  position: absolute;
+  top: 35%;
+  left: 27%;
+  transform: translate(-50%, -50%);
+}
+
+#newsletterButton {
+  padding: 15px;
+  width: 300px;
+  font-size: larger;
+  font-weight: 600;
+  margin: 5px;
+}

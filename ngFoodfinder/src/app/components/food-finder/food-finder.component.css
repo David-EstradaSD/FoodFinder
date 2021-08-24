@@ -10,21 +10,7 @@ border-radius: 5px;
   align-items: center;
 }
 
-.foodfinder img{
-  width: 100%;
-  height: 781px;
-  object-position: center;
-  object-fit: cover;
-}
-
-.foodfindercontent{
-  position: absolute;
-  top: 10%;
-  left: 63%;
-}
-
-#findertext{
-  color: white;
-  align-content: center;
+.listTitle {
+  align-items: center;
   text-align: center;
 }
