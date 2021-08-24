@@ -19,6 +19,9 @@ import { AdminComponent } from './components/admin/admin.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MapComponent } from './components/map/map.component';
+import { AgmCoreModule } from '@agm/core';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 
 
@@ -35,8 +38,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AdminComponent,
     NavbarComponent,
     FooterComponent,
+    MapComponent,
+    NotFoundComponent,
   ],
   imports: [
+    AgmCoreModule.forRoot({apiKey:'AIzaSyBf2VmxfBNxs1HkJpnNGHwYL36EM3V9R_U'}),
     BrowserModule,
     AppRoutingModule,
     FormsModule,
