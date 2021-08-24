@@ -1,18 +1,37 @@
-<h3>REGISTER Recipient</h3>
+<section class="register">
 
-<form>
+  <img src="../../assets/background.jpeg" alt="hands forming a heart">
+
+
+
+  <div class="registerForm col-4 offset-4">
+
+  <form class="registerContent">
+  <h3>Please fill out all forms</h3>
   <!-- TODO: Turn role into a hidden field -->
-  <input type="text" name="role" [(ngModel)]="newUser.role">
-  Username:<input type="text" name="username" placeholder="username" [(ngModel)]="newUser.username"><br>
-  Password:<input type="password" name="password" placeholder="password" [(ngModel)]="newUser.password"><br>
-  First name:<input type="text" name="first name" placeholder="First name" [(ngModel)]="newUser.firstName"><br>
-  Last name:<input type="text" name="last name" placeholder="Last name" [(ngModel)]="newUser.lastName"><br>
+  <label for="role">THIS WILL BE HIDDEN</label><br>
+  <input type="text" name="role" [(ngModel)]="newUser.role"><br>
+  <label for="username">Username</label><br>
+  <input type="text" name="username" placeholder="username" [(ngModel)]="newUser.username"><br>
+  <label for="password">Password</label><br>
+  <input type="password" name="password" placeholder="password" [(ngModel)]="newUser.password"><br>
+  <label for="first name">First Name</label><br>
+  <input type="text" name="first name" placeholder="First name" [(ngModel)]="newUser.firstName"><br>
+  <label for="last name">Last Name</label><br>
+  <input type="text" name="last name" placeholder="Last name" [(ngModel)]="newUser.lastName"><br>
 
-  Street:<input type="text" name="street" placeholder="street" [(ngModel)]="newAddress.streetAddress"><br>
-  City:<input type="text" name="city" placeholder="city" [(ngModel)]="newAddress.city"><br>
-  State:<input type="text" name="state" placeholder="state" [(ngModel)]="newAddress.state"><br>
-  Zip:<input type="text" name="zip" placeholder="zip" [(ngModel)]="newAddress.zip"><br>
-
-  Email:<input type="email" name="user email" placeholder="email@example.com" [(ngModel)]="newUser.email">
-  <input type="button" name="registration button" value="Register" (click)="register(newUser, newAddress)">
+  <label for="street">Address</label><br>
+  <input type="text" name="street" placeholder="street" [(ngModel)]="newAddress.streetAddress"><br>
+  <label for="city">City</label><br>
+  <input type="text" name="city" placeholder="city" [(ngModel)]="newAddress.city"><br>
+  <label for="state">State</label><br>
+  <input type="text" name="state" placeholder="state" [(ngModel)]="newAddress.state"><br>
+  <label for="zip">Zip</label><br>
+  <input type="text" name="zip" placeholder="zip" [(ngModel)]="newAddress.zip"><br>
+  <label for="user email">User Email</label><br>
+  <input type="email" name="user email" placeholder="email@example.com" [(ngModel)]="newUser.email"><br>
+  <input type="button" class="btn btn-outline-info" name="registration button" value="Register" (click)="register(newUser, newAddress)">
 </form>
+</div>
+
+</section>
