@@ -19,11 +19,12 @@ import { AdminComponent } from './components/admin/admin.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
-import { NewsletterComponent } from './components/newsletter/newsletter.component';
-
+import { MapComponent } from './components/map/map.component';
+import { AgmCoreModule } from '@agm/core';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 import { MissionComponent } from './components/mission/mission.component';
 import { AboutComponent } from './components/about/about.component';
+import { NewsletterComponent } from './components/newsletter/newsletter.component';
 
 @NgModule({
   declarations: [
@@ -39,11 +40,14 @@ import { AboutComponent } from './components/about/about.component';
     NavbarComponent,
     FooterComponent,
     NewsletterComponent,
+    MapComponent,
+    NotFoundComponent,
     MissionComponent,
     AboutComponent,
 
   ],
   imports: [
+    AgmCoreModule.forRoot({apiKey:'AIzaSyBf2VmxfBNxs1HkJpnNGHwYL36EM3V9R_U'}),
     BrowserModule,
     AppRoutingModule,
     FormsModule,
