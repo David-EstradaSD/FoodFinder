@@ -8,6 +8,8 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class NavbarComponent implements OnInit {
 
+  public isCollapsed = false;
+
   constructor(
     private auth : AuthService
   ) { }
