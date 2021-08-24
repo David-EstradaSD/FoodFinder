@@ -1,15 +1,11 @@
 #account-type {
   color: white;
-  padding: 2rem;
-  margin-top: 15em;
-margin-left: 16em;
   align-content: center;
   text-align: center;
 }
 
-.account{
-  text-align: center;
-
+#account-text{
+  font-size: x-large;
 }
 
 .divider{
@@ -17,4 +13,18 @@ margin-left: 16em;
   height:auto;
   display:inline-block;
   align-content: center;
+}
+
+.home img{
+  width: 100%;
+  height: 781px;
+  object-position: center;
+  object-fit: cover;
+}
+
+.homecontent{
+  position: absolute;
+  top: 35%;
+  left: 27%;
+  transform: translate(-50%, -50%);
 }

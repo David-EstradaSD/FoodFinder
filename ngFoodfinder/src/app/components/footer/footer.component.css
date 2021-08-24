@@ -1,24 +1,30 @@
-.footer-copyright {
+
+/* .footer-copyright {
   background: rgba(0,0,0,.75);
   color: white;
-}
+} */
 
 .map {
-  background: rgba(2, 136, 170, 0.35);
+  background: #f8f9fa;
 }
 
 .resources {
-	background: rgba(2, 136, 170, 0.35);
+  background: #f8f9fa;
 }
 .creators {
-	background: rgba(0,0,0,.35);
+  background: #f8f9fa;
 }
 
 .d-flex.footerDivBadge.justify-content-between {
-	width: 11vw;
-	font-size: 18px;
+  width: 11vw;
+  font-size: 18px;
 }
 
 i.bi.bi-linkedin, i.bi.bi-github  {
-	font-size: 20px;
+  font-size: 20px;
+}
+
+.page-footer{
+line-height: 1;
+margin-top: 1px;
 }
