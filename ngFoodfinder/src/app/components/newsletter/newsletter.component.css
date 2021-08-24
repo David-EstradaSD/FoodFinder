@@ -5,6 +5,7 @@
 }
 
 #newsletter-text {
+  color: aliceblue;
   font-size: x-large;
   text-align: center;
 }
@@ -24,13 +25,15 @@
 }
 
 .newslettercontent {
+  margin: auto;
   position: absolute;
-  top: 35%;
+  top: 40%;
   left: 27%;
   transform: translate(-50%, -50%);
 }
 
 #newsletterButton {
+  margin: auto;
   padding: 15px;
   width: 300px;
   font-size: larger;
