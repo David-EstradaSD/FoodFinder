@@ -1,7 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { throwError } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { ServiceLocation } from '../models/service-location';
@@ -11,7 +11,7 @@ import { AuthService } from './auth.service';
   providedIn: 'root'
 })
 export class ServiceLocationService {
-  private baseUrl = environment.baseUrl + 'api/';
+  private url = environment.baseUrl + 'api/';
 
   constructor(
     private http: HttpClient,
@@ -23,13 +23,14 @@ export class ServiceLocationService {
   /**
    * index() makes a defensive copy of array to return to caller
    */
-   public index() {
-    return this.http.get<ServiceLocation[]>(this.baseUrl + 'service-locations', this.getHttpOptions()).pipe(
+   index(): Observable<ServiceLocation[]> {
+    return this.http.get<ServiceLocation[]>(`${this.url}service-locations`).pipe(
       catchError((err: any) => {
-        console.log(err);
-        return throwError("YOU BROKE SOMETHING IN index()");
+        console.error('serviceLocationService.index() error');
+        return throwError(err);
       })
-    )
+
+    );
   }
 
 //   /**
@@ -37,7 +38,7 @@ export class ServiceLocationService {
 //    */
   public create(servLoc: ServiceLocation) {
 
-    return this.http.post<ServiceLocation>(this.baseUrl + 'service-locations', servLoc, this.getHttpOptions())
+    return this.http.post<ServiceLocation>(`${this.url}service-locations`, servLoc, this.getHttpOptions())
       .pipe(
         catchError((err: any) => {
           console.log(err);
@@ -50,7 +51,7 @@ export class ServiceLocationService {
 // //    * update
 // //  */
   public update(servLoc: ServiceLocation) {
-    return this.http.put<ServiceLocation>(this.baseUrl +  "service-locations/" + servLoc.id, servLoc, this.getHttpOptions())
+    return this.http.put<ServiceLocation>(`${this.url}service-locations/${servLoc.id}`, servLoc, this.getHttpOptions())
     .pipe(
       catchError((err: any) => {
         console.log(err);
@@ -63,7 +64,7 @@ export class ServiceLocationService {
 // //    * destroy
 // //    */
   public destroy(id: number) {
-    return this.http.delete(this.baseUrl + "service-locations/" + id, this.getHttpOptions())
+    return this.http.delete(this.url + "service-locations/" + id, this.getHttpOptions())
     .pipe(
       catchError((err: any) => {
         console.log(err);
@@ -76,7 +77,7 @@ export class ServiceLocationService {
 //    * show
 //    */
   public show(id: string) {
-    return this.http.get<ServiceLocation>(this.baseUrl + "service-locations/" + id, this.getHttpOptions())
+    return this.http.get<ServiceLocation>(this.url + "service-locations/" + id, this.getHttpOptions())
     .pipe(
       catchError((err: any) => {
         console.log(err);

@@ -51,7 +51,7 @@ public class ServiceLocationController {
 	@GetMapping("service-locations-user")
 	public List<ServiceLocation> userIndex(
 			HttpServletRequest req, HttpServletResponse res, Principal principal) {
-		return locationService.index(principal.getName());
+		return locationService.indexLoggedIn(principal.getName());
 	}
 
 	@PostMapping("service-locations")
