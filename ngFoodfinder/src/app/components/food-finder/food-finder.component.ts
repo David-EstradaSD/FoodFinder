@@ -12,7 +12,6 @@ import { ServiceLocationService } from 'src/app/services/service-location.servic
 export class FoodFinderComponent implements OnInit {
   serviceLocations: ServiceLocation[] = []; // An empty array that will end up holding 'ground truth' data from service
 
-
   constructor(
     private serviceLocationService: ServiceLocationService,
     private datePipe: DatePipe,
