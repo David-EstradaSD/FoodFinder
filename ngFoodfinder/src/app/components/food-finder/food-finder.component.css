@@ -6,3 +6,8 @@
 .locationsList {
   align-items: center;
 }
+
+.listTitle {
+  align-items: center;
+  text-align: center;
+}
