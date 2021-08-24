@@ -19,6 +19,8 @@ import { AdminComponent } from './components/admin/admin.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MissionComponent } from './components/mission/mission.component';
+import { AboutComponent } from './components/about/about.component';
 
 
 
@@ -35,6 +37,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AdminComponent,
     NavbarComponent,
     FooterComponent,
+    MissionComponent,
+    AboutComponent,
   ],
   imports: [
     BrowserModule,

@@ -20,8 +20,13 @@
   font-size: 18px;
 }
 
-i.bi.bi-linkedin, i.bi.bi-github  {
+i.bi.bi-linkedin {
   font-size: 20px;
+}
+
+i.bi.bi-github  {
+  font-size: 20px;
+  color : black;
 }
 
 .page-footer{
