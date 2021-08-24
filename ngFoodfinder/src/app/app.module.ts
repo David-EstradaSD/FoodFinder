@@ -15,7 +15,12 @@ import { AuthService } from './services/auth.service';
 import { DonorComponent } from './components/donor/donor.component';
 import { RecipientComponent } from './components/recipient/recipient.component';
 import { AdminComponent } from './components/admin/admin.component';
-import { NavbarFooterComponent } from './components/navbar-footer/navbar-footer.component';
+
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+
 
 @NgModule({
   declarations: [
@@ -28,13 +33,15 @@ import { NavbarFooterComponent } from './components/navbar-footer/navbar-footer.
     DonorComponent,
     RecipientComponent,
     AdminComponent,
-    NavbarFooterComponent,
+    NavbarComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [
     DatePipe,

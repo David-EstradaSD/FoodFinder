@@ -1,1 +1,10 @@
-<p>login works!</p>
+<div class="login justify-content-between" id="outer" class="offset-1">
+
+  <form class="form-inline">
+    <div class="inner"> <input id="username" class="form-control mr-sm-2" type="text" style="text-align: center;" name="username" placeholder="Enter Username" [(ngModel)]="loginUser.username"/> </div>
+    &nbsp;
+   <div class="inner"> <input id="pword" class="form-control mr-sm-2" type="password" style="text-align: center;" name="password" placeholder="Enter Password" [(ngModel)]="loginUser.password"/> </div>
+   &nbsp;
+  <div class="inner"> <button type="button" class="btn btn-outline-info my-2 my-sm-0" (click)="login(loginUser)">Log In</button> </div>
+  </form>
+</div>

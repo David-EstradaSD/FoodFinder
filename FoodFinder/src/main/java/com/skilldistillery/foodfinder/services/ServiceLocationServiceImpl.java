@@ -25,7 +25,7 @@ public class ServiceLocationServiceImpl implements ServiceLocationService {
 	}
 
 	@Override
-	public List<ServiceLocation> index(String username) {
+	public List<ServiceLocation> indexLoggedIn(String username) {
 		return locationRepo.findByUser_Username(username);
 	}
 	

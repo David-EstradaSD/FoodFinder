@@ -1,0 +1,13 @@
+#outer
+{
+    width:100%;
+    text-align: center;
+}
+.inner
+{
+    display: inline-block;
+}
+
+.login {
+  margin-left: 500em;
+}

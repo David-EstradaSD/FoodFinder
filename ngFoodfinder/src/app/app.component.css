@@ -24,22 +24,4 @@
 }
 */
 
-.map {
-  background: rgba(2, 136, 170, 0.35);
-}
 
-.resources {
-	background: rgba(2, 136, 170, 0.35);
-}
-.creators {
-	background: rgba(0,0,0,.35);
-}
-
-.d-flex.footerDivBadge.justify-content-between {
-	width: 11vw;
-	font-size: 18px;
-}
-
-i.bi.bi-linkedin, i.bi.bi-github  {
-	font-size: 20px;
-}
