@@ -1,9 +1,13 @@
 
-<div class="row">
-<section class="newsletterList col-md-2">
 
-  <!-- <img src="../../assets/background.jpeg" alt="stack of newspapers"> -->
+  <!-- <img src="../../assets/newspaperStack.jpeg" id="backgroundImage" alt="stack of newspapers"> -->
 
+<div>
+  <img src="../../assets/newspaperHeader.jpeg" id="headerImage" alt="stack of newspapers">
+</div>
+
+<h4 id="newsletter-text">Monthly Newsletter</h4>
+<div>
   <button id="newsletterMonthButton" class="btn btn-primary newsletterButton" value="show button" (click)="imageShow('../../assets/newsletterMarch.jpeg');">March 2021</button>
   <br>
   <button id="newsletterMonthButton" class="btn btn-primary newsletterButton" value="show button" (click)="imageShow('../../assets/newsletterApril.jpeg');">April 2021</button>
@@ -15,15 +19,19 @@
   <button id="newsletterMonthButton" class="btn btn-primary newsletterButton" value="show button" (click)="imageShow('../../assets/newsletterJuly.jpeg');">July 2021</button>
   <br>
   <button id="newsletterMonthButton" class="btn btn-primary newsletterButton" value="show button" (click)="imageShow('../../assets/newsletterAugust.jpeg');">August 2021</button>
+</div>
 
-  </section>
+<!-- <section class="newsletterList col-md-2"> -->
 
-<div class="newsletterContent col-md-8">
+<!-- <div class="newsletterContent col-md-6"> -->
 
+<br>
+<br>
+<br>
+<br>
 <img id="newsletterImage" [src]="contentImage">
 
-</div>
-</div>
+<!-- </div> -->
 
 
 <!-- Button trigger modal -->
