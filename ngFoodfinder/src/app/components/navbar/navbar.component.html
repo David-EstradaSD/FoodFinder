@@ -17,7 +17,7 @@
             <a class="nav-link active" [routerLink]="['/login']" >Account</a>
           </li>
           <li class="nav-item" *ngIf="! loggedIn()">
-            <a class="nav-link" [routerLink]="['/register']">Volunteer</a>
+            <a class="nav-link" [routerLink]="['/donor-registration']">Volunteer</a>
           </li>
           <div class="d-flex justify-content-right login">
             <li *ngIf="! loggedIn()"> <!--don't want to see if im already logged in-->

@@ -9,7 +9,8 @@ import { MapComponent } from './components/map/map.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { MissionComponent } from './components/mission/mission.component';
 import { AboutComponent } from './components/about/about.component';
-
+import { DonorComponent } from './components/donor/donor.component';
+import { RecipientComponent } from './components/recipient/recipient.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -19,7 +20,9 @@ const routes: Routes = [
   { path: 'foodfinder', component: FoodFinderComponent },
   { path: 'newsletter', component: NewsletterComponent },
   { path: 'map', component: MapComponent},
-  { path: 'missionStatement', component: MissionComponent },
+  { path: 'donor-registration', component: DonorComponent},
+  { path: 'recipient-registration', component: RecipientComponent},
+  { path: 'mission-statement', component: MissionComponent },
   { path: 'about', component: AboutComponent },
   { path: '**', component: NotFoundComponent}
 ];

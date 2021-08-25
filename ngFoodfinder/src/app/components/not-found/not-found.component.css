@@ -1,0 +1,30 @@
+#account-type {
+  color: white;
+  align-content: center;
+  text-align: center;
+}
+
+#account-text{
+  font-size: x-large;
+}
+
+.divider{
+  width:5px;
+  height:auto;
+  display:inline-block;
+  align-content: center;
+}
+
+.not-found img{
+  width: 100%;
+  height: 781px;
+  object-position: center;
+  object-fit: cover;
+}
+
+.homecontent{
+  position: absolute;
+  top: 35%;
+  left: 27%;
+  transform: translate(-50%, -50%);
+}
