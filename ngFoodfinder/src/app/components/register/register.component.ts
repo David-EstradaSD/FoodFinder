@@ -24,6 +24,7 @@ export class RegisterComponent implements OnInit {
   }
 
   register(userIn: User, addressIn: Address) {
+    this.newUser.role = 'donor';
     this.combinedAddressUser = { "user": userIn, "address": addressIn};
     console.log("In register() with user name: " + userIn.username + " password: " + userIn.password + " email: " + userIn.email);
     this.auth.register(this.combinedAddressUser).subscribe(
@@ -42,7 +43,7 @@ export class RegisterComponent implements OnInit {
       },
       fail => {
         console.log('RegisterComponent.register(): user registration failed.');
-              this.router.navigateByUrl('/login');
+              this.router.navigateByUrl('/foodfinder');
       }
     )
   }

@@ -1,18 +1,26 @@
-<h3>REGISTER Recipient</h3>
+<section class="register">
 
-<form>
+  <img src="assets/background.jpg" alt="hands forming a heart">
+
+  <div class="registerForm col-4 offset-4">
+
+  <form class="registerContent">
+  <h3 class="title">Registration Form</h3>
+  (Please fill out all fields)
   <!-- TODO: Turn role into a hidden field -->
-  <input type="text" name="role" [(ngModel)]="newUser.role">
-  Username:<input type="text" name="username" placeholder="username" [(ngModel)]="newUser.username"><br>
-  Password:<input type="password" name="password" placeholder="password" [(ngModel)]="newUser.password"><br>
-  First name:<input type="text" name="first name" placeholder="First name" [(ngModel)]="newUser.firstName"><br>
-  Last name:<input type="text" name="last name" placeholder="Last name" [(ngModel)]="newUser.lastName"><br>
+  <input type="hidden" name="role" [(ngModel)]="newUser.role"><br>
+  <input type="text" name="username" placeholder="Username" [(ngModel)]="newUser.username"><br>
+  <input type="password" name="password" placeholder="Password" [(ngModel)]="newUser.password"><br>
+  <input type="text" name="first name" placeholder="First Name" [(ngModel)]="newUser.firstName"><br>
+  <input type="text" name="last name" placeholder="Last Name" [(ngModel)]="newUser.lastName"><br>
 
-  Street:<input type="text" name="street" placeholder="street" [(ngModel)]="newAddress.streetAddress"><br>
-  City:<input type="text" name="city" placeholder="city" [(ngModel)]="newAddress.city"><br>
-  State:<input type="text" name="state" placeholder="state" [(ngModel)]="newAddress.state"><br>
-  Zip:<input type="text" name="zip" placeholder="zip" [(ngModel)]="newAddress.zip"><br>
-
-  Email:<input type="email" name="user email" placeholder="email@example.com" [(ngModel)]="newUser.email">
-  <input type="button" name="registration button" value="Register" (click)="register(newUser, newAddress)">
+  <input type="text" name="street" placeholder="Address" [(ngModel)]="newAddress.streetAddress"><br>
+  <input type="text" name="city" placeholder="City" [(ngModel)]="newAddress.city"><br>
+  <input type="text" name="state" placeholder="State" [(ngModel)]="newAddress.state"><br>
+  <input type="text" name="zip" placeholder="Zip" [(ngModel)]="newAddress.zip"><br>
+  <input type="email" name="user email" placeholder="Email" [(ngModel)]="newUser.email"><br>
+  <input type="button" class="btn btn-outline-dark" name="registration button" value="Register" (click)="register(newUser, newAddress)">
 </form>
+</div>
+
+</section>

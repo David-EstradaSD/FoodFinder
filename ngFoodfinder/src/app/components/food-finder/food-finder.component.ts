@@ -11,6 +11,7 @@ import { ServiceLocationService } from 'src/app/services/service-location.servic
 })
 export class FoodFinderComponent implements OnInit {
   serviceLocations: ServiceLocation[] = []; // An empty array that will end up holding 'ground truth' data from service
+  selected : ServiceLocation | null = null;
 
   constructor(
     private serviceLocationService: ServiceLocationService,
@@ -30,4 +31,12 @@ export class FoodFinderComponent implements OnInit {
     );
     // this.newTodo = new Todo();
   }
+
+  showDetails(id : number) {
+    this.serviceLocationService.show(this.selected.id).subscribe(
+      (data) => (this.selected = data),
+      (err) => console.error('Failed: ' + err)
+    );
+  }
+
 }
