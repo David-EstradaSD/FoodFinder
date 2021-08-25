@@ -24,7 +24,7 @@ export class DonorComponent implements OnInit {
   }
 
   register(userIn: User, addressIn: Address) {
-    this.newUser.role = 'donor';
+    this.newUser.role = 'donor'; // Auto setting the "role" field to "Donor"
     this.combinedAddressUser = { "user": userIn, "address": addressIn};
     console.log("In register() with user name: " + userIn.username + " password: " + userIn.password + " email: " + userIn.email);
     this.auth.register(this.combinedAddressUser).subscribe(
