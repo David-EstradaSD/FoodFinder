@@ -48,4 +48,8 @@ export class RecipientComponent implements OnInit {
     )
   }
 
+  redirectToHome = function() {
+    this.router.navigateByUrl('/home');
+  }
+
 }
