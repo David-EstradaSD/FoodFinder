@@ -1,1 +1,28 @@
-<p>donor works!</p>
+<section class="register">
+
+  <img src="../../assets/background.jpeg" alt="hands forming a heart">
+
+
+
+  <div class="registerForm col-4 offset-4">
+
+  <form class="registerContent">
+  <h3 class="title">Donor Registration Form</h3>
+  (Please fill out all fields)
+  <!-- TODO: Turn role into a hidden field -->
+  <input type="hidden" name="role" [(ngModel)]="newUser.role"><br>
+  <input type="text" name="username" placeholder="Username" [(ngModel)]="newUser.username"><br>
+  <input type="password" name="password" placeholder="Password" [(ngModel)]="newUser.password"><br>
+  <input type="text" name="first name" placeholder="First Name" [(ngModel)]="newUser.firstName"><br>
+  <input type="text" name="last name" placeholder="Last Name" [(ngModel)]="newUser.lastName"><br>
+
+  <input type="text" name="street" placeholder="Address" [(ngModel)]="newAddress.streetAddress"><br>
+  <input type="text" name="city" placeholder="City" [(ngModel)]="newAddress.city"><br>
+  <input type="text" name="state" placeholder="State" [(ngModel)]="newAddress.state"><br>
+  <input type="text" name="zip" placeholder="Zip" [(ngModel)]="newAddress.zip"><br>
+  <input type="email" name="user email" placeholder="Email" [(ngModel)]="newUser.email"><br>
+  <input type="button" class="btn btn-outline-dark" name="registration button" value="Register" (click)="register(newUser, newAddress)">
+</form>
+</div>
+
+</section>
