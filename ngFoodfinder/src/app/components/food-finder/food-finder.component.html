@@ -2,7 +2,7 @@
 
   <img src="../../assets/foodfinder.jpeg" alt="hand helping lift another">
 
-  <div class="foodfindercontent">
+  <!-- <div class="foodfindercontent">
 
 <div id="findertext">
 <h1>All our service locations</h1>
@@ -29,7 +29,37 @@
     </table>
   </div>
 </div>
+</div> -->
+<section class="pt-5 pb-5">
+<div class="foodfindercontent overflow-auto">
+  <div class="findertext">
+<div class="container container-fluid">
+  <div class="row">
+    <div class="col-6" *ngFor="let servLoc of serviceLocations">
+      <div class="col-md-4 mb-3">
+        <div class="card-deck">
+      <div
+        class="card text-center bg-light mb-3 border-info"
+        style="width: 20rem; text-align: center; padding-bottom: 10px;">
+        <!-- <img [src]="episode.poster" class="card-img-top" alt="..."> -->
+        <div>
+          <div class="card-body" style="background-color:azure;">
+            <h5 class="card-header bg-transparent">{{servLoc.locationName}}</h5>
+            <h6 class="card-title">{{servLoc.description}}</h6>
+            <p class="card-text" style="text-decoration: underline;">Hours <br> {{servLoc.hours}}</p>
+            <!-- <h6 class="card-footer mb-1 text-muted">hehe</h6> -->
+
+            <a href="#" class="btn btn-large btn-outline-primary">More Details</a>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>
+  </div>
 </div>
-
-
+</div>
+</div>
+</section>
 </section>
