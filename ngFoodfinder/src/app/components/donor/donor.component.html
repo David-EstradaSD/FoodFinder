@@ -6,23 +6,45 @@
 
   <div class="registerForm col-4 offset-4">
 
-  <form class="registerContent">
+  <form #donorForm="ngForm" class="registerContent">
   <h3 class="title">Donor Registration Form</h3>
   (Please fill out all fields)
-  <!-- TODO: Turn role into a hidden field -->
-  <input type="hidden" name="role" [(ngModel)]="newUser.role"><br>
-  <input type="text" name="username" placeholder="Username" [(ngModel)]="newUser.username"><br>
-  <input type="password" name="password" placeholder="Password" [(ngModel)]="newUser.password"><br>
-  <input type="text" name="first name" placeholder="First Name" [(ngModel)]="newUser.firstName"><br>
-  <input type="text" name="last name" placeholder="Last Name" [(ngModel)]="newUser.lastName"><br>
+  <!-- role is a hidden field / its auto-set in the function -->
+  <input type="hidden" id="role" name="role" [(ngModel)]="newUser.role"><br>
+  <div class="form-group">
+    <input required #username="ngModel" autocomplete="off" type="text" id="username" name="username" placeholder="Username" [(ngModel)]="newUser.username"><br>
+    <span *ngIf="username.invalid && username.touched" class="error">Username is required</span>
+  </div>
 
-  <input type="text" name="street" placeholder="Address" [(ngModel)]="newAddress.streetAddress"><br>
-  <input type="text" name="city" placeholder="City" [(ngModel)]="newAddress.city"><br>
-  <input type="text" name="state" placeholder="State" [(ngModel)]="newAddress.state"><br>
-  <input type="text" name="zip" placeholder="Zip" [(ngModel)]="newAddress.zip"><br>
-  <input type="email" name="user email" placeholder="Email" [(ngModel)]="newUser.email"><br>
-  <input type="button" class="btn btn-outline-dark" name="registration button" value="Register" (click)="register(newUser, newAddress)">
+  <div class="form-group">
+    <input required #email="ngModel" autocomplete="off" type="email" email ngModel id="email" name="email" placeholder="Email" [(ngModel)]="newUser.email"><br>
+    <span *ngIf="email.invalid && email.touched" class="error">Email is required</span>
+  </div>
+
+  <div class="form-group">
+    <input required #password="ngModel" minLength="3" type="password" id="password" name="password" placeholder="Password" [(ngModel)]="newUser.password"><br>
+    <span *ngIf="password.invalid && password.touched" class="error">Password is required</span>
+  </div>
+
+  <div class="form-group">
+    <input required #firstName='ngModel' type="text" id="firstName" name="firstName" placeholder="First Name" [(ngModel)]="newUser.firstName"><br>
+    <span *ngIf="firstName.invalid && firstName.touched" class="error">First Name is required</span>
+  </div>
+
+  <div class="form-group">
+    <input required #lastName='ngModel' type="text" id="lastName" name="lastName" placeholder="Last Name" [(ngModel)]="newUser.lastName"><br>
+    <span *ngIf="lastName.invalid && lastName.touched" class="error">Last Name is required</span>
+  </div>
+
+  <input type="text" id="street" name="street" placeholder="Address" [(ngModel)]="newAddress.streetAddress"><br>
+  <input type="text" id="city" name="city" placeholder="City" [(ngModel)]="newAddress.city"><br>
+  <input type="text" id="state" name="state" placeholder="State" [(ngModel)]="newAddress.state"><br>
+  <input type="text" id="zip" name="zip" placeholder="Zip" [(ngModel)]="newAddress.zip"><br>
+  <button [disabled]="donorForm.invalid" type="button" class="btn btn-outline-dark" (click)="register(newUser, newAddress)">Register</button>
+  <br><br><button type="button" id="submit" class="btn btn-outline-dark btn-sm" (click)="redirectToHome()">Go Back</button>
 </form>
 </div>
 
 </section>
+
+

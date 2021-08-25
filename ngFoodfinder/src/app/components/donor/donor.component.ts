@@ -48,4 +48,8 @@ export class DonorComponent implements OnInit {
     )
   }
 
+  redirectToHome = function() {
+    this.router.navigateByUrl('/home');
+  }
+
 }
