@@ -25,7 +25,6 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { MissionComponent } from './components/mission/mission.component';
 import { AboutComponent } from './components/about/about.component';
 import { NewsletterComponent } from './components/newsletter/newsletter.component';
-import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 @NgModule({
   declarations: [
@@ -54,7 +53,6 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     FormsModule,
     HttpClientModule,
     NgbModule,
-    PdfViewerModule
   ],
   providers: [
     DatePipe,
