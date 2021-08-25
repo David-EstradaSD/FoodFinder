@@ -1,8 +1,25 @@
 <h1>Maps working</h1>
 
-<agm-map [latitude]="latitude" [longitude]="longitude">
+<!-- <agm-map [latitude]="latitude" [longitude]="longitude">
   <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+</agm-map> -->
+<div class="form-group">
+  <label>Enter address</label>
+  <input type="text" class="form-control" (keydown.enter)="$event.preventDefault()" placeholder="Search Nearest Location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" #search>
+</div>
+
+<agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom" (mapReady)="loadMarkers()">
+  <agm-marker [latitude]="latitude" [longitude]="longitude"
+    (markerClick)="markerClick($event)"></agm-marker>
+    <agm-marker *ngFor="let marker of location.markers" [latitude]="marker.lat" [longitude]="marker.lng" [title]="marker.locName"
+    (markerClick)="showLocationDetail($event)"
+    ></agm-marker>
 </agm-map>
 
-<h1>Maps working</h1>
-<h1>Maps working</h1>
+<div>
+  <h5>Address: {{address}}</h5>
+  <div>Latitude: {{latitude}}</div>
+  <div>Longitude: {{longitude}}</div>
+  <div>Zoom: {{zoom}}</div>
+  <h1>Maps working</h1>
+</div>
