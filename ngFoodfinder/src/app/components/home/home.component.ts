@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
   pauseOnHover = true;
   pauseOnFocus = true;
 
-  images = ['../../assets/casaBonita.jpg', '../../assets/baptistChurch.jpg', '../../assets/havenOfHope.jpg'];
+  images = ['assets/casaBonita.jpg', 'assets/baptistChurch.jpg', 'assets/havenOfHope.jpg'];
 
   @ViewChild('carousel', {static : true}) carousel: NgbCarousel;
 
