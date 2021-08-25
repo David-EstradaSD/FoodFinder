@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewsletterComponent implements OnInit {
 
-contentImage: string = '../../assets/newspaper.jpeg';
+contentImage: string = '';
 
   constructor() { }
 
