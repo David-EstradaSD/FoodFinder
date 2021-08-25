@@ -22,6 +22,7 @@
     "@ng-bootstrap/ng-bootstrap": "^10.0.0",
     "@types/googlemaps": "^3.39.13",
     "bootstrap": "^5.1.0",
+    "ng2-pdf-viewer": "^7.0.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
