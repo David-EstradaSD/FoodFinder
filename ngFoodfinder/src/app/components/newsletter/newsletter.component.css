@@ -17,26 +17,40 @@
   align-content: center;
 }
 
-.newsletter img {
-  width: 100%;
-  height: 781px;
-  object-position: center;
-  object-fit: cover;
+#newsletterMonthButton {
+  padding: 5px;
+  width: 300px;
+  font-size: larger;
+  font-weight: 600;
+  margin: 3px;
 }
 
-.newslettercontent {
+#newsletterImage {
+  width: 100%;
+}
+
+.newsletterContent {
+  overflow-y: scroll;
+  height: 100vh;
+}
+
+/* #newsletterMonthButton {
+  margin: 3px;
+  width: 200px;
+  vertical-align: center;
+} */
+
+/* .newslettercontent {
   margin: auto;
   position: absolute;
   top: 40%;
   left: 27%;
   transform: translate(-50%, -50%);
-}
+} */
 
-#newsletterButton {
-  margin: auto;
-  padding: 15px;
-  width: 300px;
-  font-size: larger;
-  font-weight: 600;
-  margin: 5px;
-}
+/* #background {
+  width: 100%;
+  height: 781px;
+  object-position: center;
+  object-fit: cover;
+} */
