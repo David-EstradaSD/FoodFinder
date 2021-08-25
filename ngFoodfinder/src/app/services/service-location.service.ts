@@ -76,8 +76,8 @@ export class ServiceLocationService {
 //   /**
 //    * show
 //    */
-  public show(id: string) {
-    return this.http.get<ServiceLocation>(this.url + "service-locations/" + id, this.getHttpOptions())
+  public show(id: number) {
+    return this.http.get<ServiceLocation>(`${this.url}service-locations/${id}`, this.getHttpOptions())
     .pipe(
       catchError((err: any) => {
         console.log(err);

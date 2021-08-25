@@ -43,7 +43,7 @@ export class RegisterComponent implements OnInit {
       },
       fail => {
         console.log('RegisterComponent.register(): user registration failed.');
-              this.router.navigateByUrl('/login');
+              this.router.navigateByUrl('/foodfinder');
       }
     )
   }
