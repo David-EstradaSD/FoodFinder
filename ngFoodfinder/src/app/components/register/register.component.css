@@ -13,7 +13,11 @@ registerForm {
 .registerContent{
   position: absolute;
   text-align: center;
-  top: 10%;
+  top: 18%;
 
+}
+
+.title {
+  color: black;
 }
 
