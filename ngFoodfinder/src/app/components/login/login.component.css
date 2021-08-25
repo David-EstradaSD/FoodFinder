@@ -11,3 +11,7 @@
 .login {
   margin-left: 500em;
 }
+
+.error {
+  color: red;
+}
