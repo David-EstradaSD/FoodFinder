@@ -20,3 +20,7 @@ registerForm {
 .title {
   color: black;
 }
+
+.error {
+  color: red;
+}
