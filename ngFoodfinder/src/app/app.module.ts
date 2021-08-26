@@ -25,6 +25,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { MissionComponent } from './components/mission/mission.component';
 import { AboutComponent } from './components/about/about.component';
 import { NewsletterComponent } from './components/newsletter/newsletter.component';
+import { LocationDetailsModalComponent } from './components/location-details-modal/location-details-modal.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { NewsletterComponent } from './components/newsletter/newsletter.componen
     NotFoundComponent,
     MissionComponent,
     AboutComponent,
+    LocationDetailsModalComponent
 
   ],
   imports: [

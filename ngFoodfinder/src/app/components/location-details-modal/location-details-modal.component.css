@@ -1,0 +1,30 @@
+
+#modalTitle {
+  text-align: center;
+  background-color: rgb(168, 176, 194);
+  margin: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+#modalDetails {
+  text-align: center;
+  background-color: rgba(249, 250, 246, 0.596);
+  padding: 20px;
+}
+
+#detailSubHeaders {
+  text-decoration: underline;
+  font-size: smaller;
+}
+
+/* #modalSubTitle {
+  text-align: center;
+  background-color: rgb(168, 176, 194);
+  margin-bottom: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+} */
