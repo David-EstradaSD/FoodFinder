@@ -13,7 +13,7 @@
     <!-- USE THE INDEX TO ACCESS THE MARKER ARRAY AND FIND THE CORRESPONDING SERVICE LOCATION TO DISPLAY DETAILS -->
     <agm-marker *ngFor="let marker of location.markers; let i = index"
     [latitude]="marker.lat" [longitude]="marker.lng" [title]="'' + marker.locId"
-    [iconUrl]="'/assets/soupCanLogo32.png'"
+    [iconUrl]="'assets/soupCanLogo32.png'"
     (markerClick)="showLocationDetail($event, i)"
     ></agm-marker>
 </agm-map>
