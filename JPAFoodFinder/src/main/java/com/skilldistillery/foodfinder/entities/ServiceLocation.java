@@ -17,6 +17,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "service_location")
@@ -53,7 +54,7 @@ public class ServiceLocation {
 	@JoinColumn(name = "address_id")
 	private Address address;
 
-	@JsonIgnore
+	@JsonIgnoreProperties({"serviceLocations"})
 	@ManyToMany
 	@JoinTable(name = "service_location_has_service", joinColumns = @JoinColumn(name = "service_id"), inverseJoinColumns = @JoinColumn(name = "service_location_id"))
 	private List<Service> services;

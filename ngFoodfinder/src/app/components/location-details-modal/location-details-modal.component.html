@@ -12,7 +12,9 @@
 {{serviceLocation.hours}}<br>
 <br>
 <strong id="detailSubHeaders">Additional Services</strong><br>
-{{service.serviceName}}, {{service.description}}<br>
+
+  <p *ngFor="let service of serviceLocation.services">{{service.serviceName}}, {{service.description}}</p>
+
 <br>
 </div>
 <br>
