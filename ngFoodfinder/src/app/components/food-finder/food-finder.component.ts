@@ -20,7 +20,7 @@ export class FoodFinderComponent implements OnInit {
     private serviceLocationService: ServiceLocationService,
     // private datePipe: DatePipe,
     // private currentRoute: ActivatedRoute,
-    // private router: Router,
+    private router: Router,
     private modalService: NgbModal
   ) { }
 
@@ -51,7 +51,7 @@ export class FoodFinderComponent implements OnInit {
 
 
   showMap() {
-
+    this.router.navigateByUrl('/map');
   }
 
 }
