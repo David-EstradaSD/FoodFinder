@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
     this.auth.login(user.username, user.password).subscribe( // we use subscribe when we have an Observable
       loggedIn => {
         console.log('LoginComponenet.login(): User logged in');
-        this.router.navigateByUrl('/todo');
+        this.router.navigateByUrl('/foodfinder');
       },
       fail => {
         console.error('LoginComponenet.login(): login failed');

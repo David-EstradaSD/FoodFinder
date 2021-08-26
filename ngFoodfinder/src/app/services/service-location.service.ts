@@ -92,7 +92,7 @@ export class ServiceLocationService {
       headers: new HttpHeaders( {
         'Content-type': 'application/json',
         'X-Requested-With': 'XMLHttpRequest',
-        'Authorization': `Basic ${credentials}`
+        // 'Authorization': `Basic ${credentials}`
       }),
     }
     return httpOptions;
