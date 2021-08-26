@@ -8,7 +8,7 @@
 .aboutContent{
   position: absolute;
   text-align: center;
-  top: 15%;
+  top: 7%;
 
 }
 
@@ -21,4 +21,15 @@
 
 * {
   color:black;
+}
+
+.introCards{
+  margin-left: 45rem;
+  margin-top: 0rem;
+  padding-bottom: 10px;
+}
+
+.nameCards{
+  margin-bottom: 10rem;
+  margin-left: 40rem;
 }
