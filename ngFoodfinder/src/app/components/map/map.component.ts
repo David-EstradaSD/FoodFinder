@@ -180,19 +180,39 @@ export class MapComponent implements OnInit {
           // console.log("in show detail func with a streetAddress " + this.address);
         }
       });
+      console.log($event.latitude);
+
+      this.showStreetView($event.latitude, $event.longitude);
   }
 
-  markerIconUrl(id: number) {
-      this.serviceLocations.forEach(servLoc => {
-        if (servLoc.id == id) {
+  // markerIconUrl(id: number) {
+  //     this.serviceLocations.forEach(servLoc => {
+  //       if (servLoc.id == id) {
 
-        } else {
+  //       } else {
 
-        }
-      }
+  //       }
+  //     }
 
-      )
+  //     )
+  // }
+
+  showStreetView(latitude: number, longitude: number) {
+    var panorama = new google.maps.StreetViewPanorama(
+      document.getElementById('pano'), {
+      position: { lat: latitude, lng: longitude },
+      addressControl: false,
+      linksControl: false,
+      panControl: false,
+      fullscreenControl: false,
+      zoomControl: false,
+      enableCloseButton: false,
+      showRoadLabels: false
+  });
+  panorama.setVisible(true);
+
   }
+
 }
   export interface Location {
     latitude: number;

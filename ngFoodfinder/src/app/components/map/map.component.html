@@ -1,4 +1,4 @@
-<h1>Maps working</h1>
+<h1>Service Location Map</h1>
 
 <!-- <agm-map [latitude]="latitude" [longitude]="longitude">
   <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
@@ -17,12 +17,11 @@
     (markerClick)="showLocationDetail($event, i)"
     ></agm-marker>
 </agm-map>
+<div id="pano"></div>
+
 
 <div>
-  <h5>Address: {{address}}</h5>
   <h5>Name: {{description}}</h5>
-  <div>Latitude: {{latitude}}</div>
-  <div>Longitude: {{longitude}}</div>
-  <div>Zoom: {{zoom}}</div>
-  <h1>Maps working</h1>
+  <h5>Address: {{address}}</h5>
 </div>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBf2VmxfBNxs1HkJpnNGHwYL36EM3V9R_U&callback=initPano"></script>
