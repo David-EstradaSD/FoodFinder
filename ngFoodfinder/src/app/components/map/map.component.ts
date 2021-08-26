@@ -9,7 +9,6 @@ import { MapsAPILoader, AgmMarker } from '@agm/core';
 import { ServiceLocationService } from 'src/app/services/service-location.service';
 import { ServiceLocation } from 'src/app/models/service-location';
 import { Address } from 'src/app/models/address';
-// import { Location } from './location';
 
 @Component({
   selector: 'app-map',
@@ -19,11 +18,13 @@ import { Address } from 'src/app/models/address';
 
 export class MapComponent implements OnInit {
   serviceLocations: ServiceLocation[] = []; // An empty array that will end up holding 'ground truth' data from service
+  servLocAddress: Address;
+
   // markers: AgmMarker[] = [];
   marker: Marker = {
     lat: 0,
     lng: 0,
-    locName: ''
+    locId: 0
 };
   location: Location = {
     latitude: 19.0760,
@@ -34,7 +35,7 @@ export class MapComponent implements OnInit {
       {
         lat: 19.0760,
         lng: 72.8777,
-        locName: 'place'
+        locId: -1
       }
     ]
   }
@@ -43,6 +44,7 @@ export class MapComponent implements OnInit {
   longitude: number = -104.7;
   zoom: number;
   address: string;
+  description: string;
 
 
   @ViewChild('search')
@@ -91,15 +93,12 @@ export class MapComponent implements OnInit {
   private setCurrentLocation() {
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition((position) => {
-        this.latitude = 39.9578334;
-    this.longitude = -104.9818292;
-        this.zoom = 8;
+        this.latitude = 39.742502;
+    this.longitude = -104.971425;
+        this.zoom = 9;
         this.getAddress(this.latitude, this.longitude);
       });
     }
-    // this.latitude = 39.7392;
-    // this.longitude = 104.9903;
-    // this.getAddress(this.latitude, this.longitude);
   }
 
   markerClick($event: AgmMarker) {
@@ -157,7 +156,7 @@ export class MapComponent implements OnInit {
         let marker: Marker = {
           lat: results[0].geometry.location.lat(),
           lng: results[0].geometry.location.lng(),
-          locName: address.locationName
+          locId: address.id
         }
 
         location.markers.push(marker);
@@ -168,9 +167,31 @@ export class MapComponent implements OnInit {
     })
   }
 
-  showLocationDetail($event: AgmMarker) {
-      console.log($event.longitude);
+  showLocationDetail($event: AgmMarker, index: number) {
+      console.log($event.title);
+      console.log(index);
+      this.serviceLocations.forEach(servLoc => {
+        if ('' + servLoc.id == $event.title) {
+          // console.log("in show detail func with servLoc id " + servLoc.id);
+          // console.log("in show detail func with $event label " + $event.label);
 
+          this.address = servLoc?.address?.['streetAddress']
+          this.description = servLoc.description
+          // console.log("in show detail func with a streetAddress " + this.address);
+        }
+      });
+  }
+
+  markerIconUrl(id: number) {
+      this.serviceLocations.forEach(servLoc => {
+        if (servLoc.id == id) {
+
+        } else {
+
+        }
+      }
+
+      )
   }
 }
   export interface Location {
@@ -186,6 +207,6 @@ export class MapComponent implements OnInit {
 export interface Marker {
     lat: number;
     lng: number;
-    locName: string;
+    locId: number;
 }
 
