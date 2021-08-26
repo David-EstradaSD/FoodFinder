@@ -8,7 +8,8 @@
   <input type="text" class="form-control" (keydown.enter)="$event.preventDefault()" placeholder="Search Nearest Location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" #search>
 </div>
 
-<agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom" (mapReady)="loadMarkers()">
+<!-- <div *ngIf="markersLoaded"> -->
+  <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom"  (mapReady)="loadMarkers()">
 
     <!-- USE THE INDEX TO ACCESS THE MARKER ARRAY AND FIND THE CORRESPONDING SERVICE LOCATION TO DISPLAY DETAILS -->
     <agm-marker *ngFor="let marker of location.markers; let i = index"
@@ -16,7 +17,9 @@
     [iconUrl]="'assets/soupCanLogo32.png'"
     (markerClick)="showLocationDetail($event, i)"
     ></agm-marker>
-</agm-map>
+  </agm-map>
+<!-- </div> -->
+
 <div id="pano"></div>
 
 
