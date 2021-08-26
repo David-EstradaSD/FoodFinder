@@ -37,13 +37,13 @@ export class RecipientComponent implements OnInit {
           },
           badJuju => {
             console.log('RegisterComponent.register(): user login failed.');
-              this.router.navigateByUrl('/login');
+              this.router.navigateByUrl('/**');
           }
         )
       },
       fail => {
         console.log('RegisterComponent.register(): user registration failed.');
-              this.router.navigateByUrl('/login');
+              this.router.navigateByUrl('/**');
       }
     )
   }
