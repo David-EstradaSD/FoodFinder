@@ -8,7 +8,7 @@
 .aboutContent{
   position: absolute;
   text-align: center;
-  top: 25%;
+  top: 15%;
 
 }
 
@@ -16,5 +16,9 @@
   position: absolute;
   text-align: center;
   align-items: center;
-  top: 45%;
+  top: 35%;
+}
+
+* {
+  color:black;
 }
