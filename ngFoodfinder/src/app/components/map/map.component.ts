@@ -19,13 +19,12 @@ import { Address } from 'src/app/models/address';
 export class MapComponent implements OnInit {
   serviceLocations: ServiceLocation[] = []; // An empty array that will end up holding 'ground truth' data from service
   servLocAddress: Address;
-
   // markers: AgmMarker[] = [];
   marker: Marker = {
     lat: 0,
     lng: 0,
     locId: 0
-};
+  };
   location: Location = {
     latitude: 39.742502,
     longitude: -104.971425,
@@ -39,6 +38,7 @@ export class MapComponent implements OnInit {
       }
     ]
   }
+  markersLoaded: number = 0;
 
   latitude: number = 39.7;
   longitude: number = -104.7;
@@ -59,35 +59,9 @@ export class MapComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.reload(); // We want to ensure we start with the latest copy of our data
-    // load Places Autocomplete
-    this.mapsAPILoader.load()
-    .then(() => {
-      this.setCurrentLocation();
-      this.geoCoder = new google.maps.Geocoder();
-
-      let autocomplete = new google.maps.places.Autocomplete(
-        this.searchElementRef.nativeElement
-      );
-      autocomplete.addListener('place_changed', () => {
-        this.ngZone.run(() => {
-          //get the place result
-          let place: google.maps.places.PlaceResult = autocomplete.getPlace();
-          // console.log(place.formatted_address);
-
-
-          //verify result
-          if (place.geometry === undefined || place.geometry === null) {
-            return;
-          }
-
-          //set latitude, longitude and zoom
-          this.latitude = place.geometry.location.lat();
-          this.longitude = place.geometry.location.lng();
-          this.zoom = 12;
-        });
-      });
-    });
+    this.reload(); // Load serv locations to array
+    this.loadMarkers(); // Turn serv locations into markers
+    // this.loadMap();
   }
   // Get Current Location Coordinates
   private setCurrentLocation() {
@@ -115,7 +89,12 @@ export class MapComponent implements OnInit {
     this.serviceLocations.forEach(location => {
       this.makeMarkerFromServLoc(location);
     });
-    this.zoom = 5;
+    // Reload map here
+    // this.markersLoaded = this.location.markers.length;
+    this.loadMap();
+    console.log(this.location.markers.length);
+
+    // this.zoom = 5;
   }
 
   getAddress(latitude, longitude) {
@@ -126,7 +105,7 @@ export class MapComponent implements OnInit {
         console.log(status);
         if (status === 'OK') {
           if (results[0]) {
-            this.zoom = 12;
+            this.zoom = 9;
             this.address = results[0].formatted_address;
           } else {
             window.alert('No results found');
@@ -160,6 +139,8 @@ export class MapComponent implements OnInit {
         }
 
         location.markers.push(marker);
+        this.markersLoaded++;
+        // console.log("inside make marker with length " + location.markers.length );
 
       } else {
         console.log("You broke something in makeMarker function");
@@ -183,6 +164,37 @@ export class MapComponent implements OnInit {
       console.log($event.latitude);
 
       this.showStreetView($event.latitude, $event.longitude);
+  }
+
+  loadMap() {
+
+    this.mapsAPILoader.load()
+    .then(() => {
+      this.setCurrentLocation();
+      this.geoCoder = new google.maps.Geocoder();
+
+      let autocomplete = new google.maps.places.Autocomplete(
+        this.searchElementRef.nativeElement
+      );
+      autocomplete.addListener('place_changed', () => {
+        this.ngZone.run(() => {
+          //get the place result
+          let place: google.maps.places.PlaceResult = autocomplete.getPlace();
+          // console.log(place.formatted_address);
+
+
+          //verify result
+          if (place.geometry === undefined || place.geometry === null) {
+            return;
+          }
+
+          //set latitude, longitude and zoom
+          this.latitude = place.geometry.location.lat();
+          this.longitude = place.geometry.location.lng();
+          this.zoom = 12;
+        });
+      });
+    });
   }
 
   // markerIconUrl(id: number) {
