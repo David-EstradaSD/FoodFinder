@@ -1,8 +1,10 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ServiceLocation } from 'src/app/models/service-location';
 import { ServiceLocationService } from 'src/app/services/service-location.service';
+import { LocationDetailsModalComponent } from '../location-details-modal/location-details-modal.component';
 
 @Component({
   selector: 'app-food-finder',
@@ -17,7 +19,8 @@ export class FoodFinderComponent implements OnInit {
     private serviceLocationService: ServiceLocationService,
     private datePipe: DatePipe,
     private currentRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private modalService: NgbModal
   ) { }
 
   ngOnInit(): void {
@@ -33,10 +36,18 @@ export class FoodFinderComponent implements OnInit {
   }
 
   showDetails(id : number) {
-    this.serviceLocationService.show(this.selected.id).subscribe(
-      (data) => (this.selected = data),
+    this.serviceLocationService.show(id).subscribe(
+      (data) => {
+        this.selected = data;
+        const detailsModal = this.modalService.open(LocationDetailsModalComponent);
+        detailsModal.componentInstance.serviceLocation = data;
+      },
       (err) => console.error('Failed: ' + err)
     );
+  }
+
+  showMap() {
+
   }
 
 }
