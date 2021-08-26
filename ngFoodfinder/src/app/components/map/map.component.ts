@@ -27,14 +27,14 @@ export class MapComponent implements OnInit {
     locId: 0
 };
   location: Location = {
-    latitude: 19.0760,
-    longitude: 72.8777,
+    latitude: 39.742502,
+    longitude: -104.971425,
     zoom: 10,
     isFullScreen: true,
     markers: [
       {
-        lat: 19.0760,
-        lng: 72.8777,
+        lat: 39.742502,
+        lng: -104.971425,
         locId: -1
       }
     ]
