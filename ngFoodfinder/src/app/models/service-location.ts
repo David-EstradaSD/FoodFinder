@@ -1,3 +1,5 @@
+import { Service } from "./service";
+
 export class ServiceLocation {
 
   id: number; // Required
@@ -11,7 +13,7 @@ export class ServiceLocation {
   address: object; // Required
   ratings: object[];
   comments: object[];
-  services: object[];
+  services: Service[];
   donors: object[];
   recipients: object[];
 
@@ -26,7 +28,7 @@ export class ServiceLocation {
     imageUrl: string = '',
     ratings: object[] = [],
     address: object = {},
-    services: object[] = [],
+    services: Service[] = [],
     comments: object[] = [],
     recipients: object[] = [],
     donors: object[] = [],
