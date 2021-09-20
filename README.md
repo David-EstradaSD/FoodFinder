@@ -11,6 +11,8 @@
 
 This application provides a platform on which donors and volunteers can populate service locations where recipients in need can receive food and various services throughout the Denver area.  
 
+[Food Finder](http://18.119.82.56:8080/FoodFinder/#/home)
+
 ## Technologies Used
 * Coding Languages: Java, SQL, JavaScript, HTML5, TypeScript, and CSS
 * Object-Oriented Design
@@ -27,7 +29,6 @@ This application provides a platform on which donors and volunteers can populate
 * Agile, Iterative, and Pair Programming Development
 * Zoom
 
-## Graphic Examples
 
 
 
