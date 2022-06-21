@@ -1,4 +1,4 @@
-# [Food Finder](http://18.119.82.56:8080/FoodFinder/#/home)
+# [Food Finder]
 ## Skill Distillery Final Project
 
 ## Team Members
@@ -11,7 +11,7 @@
 
 This application provides a platform on which donors and volunteers can populate service locations where recipients in need can receive food and various services throughout the Denver area.  
 
-[Food Finder](http://18.119.82.56:8080/FoodFinder/#/home)
+### Food Finder was deployed out to my AWS EC2 server but the subscription has expired and I haven't found the need to renew it
 
 ## Technologies Used
 * Java, SQL, Angular, JavaScript, HTML, and CSS
@@ -27,9 +27,6 @@ This application provides a platform on which donors and volunteers can populate
 * MySQL Workbench
 * Spring Data JPA Repositories
 * Agile, Iterative, and Pair Programming Development
-
-## How to Run
-Food Finder is currently being deployed out to EC2. You can find the link [here](http://18.119.82.56:8080/FoodFinder/#/home)
 
 ## Challenges
 The biggest hurdle was implementing the Google Maps API to our site.  Despite the several difficulties it presented during development, it was vital to our team to solve due to the benefits it would provide to our clients.
